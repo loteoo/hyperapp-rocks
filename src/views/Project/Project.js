@@ -4,6 +4,7 @@ import './project.css'
 
 export const Project = () => (
   <div class="project" key="project">
+    <div class="img"></div>
     <h4>Title</h4>
     <p>New project component!</p>
   </div>

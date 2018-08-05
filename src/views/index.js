@@ -16,13 +16,16 @@ export const view = (state, actions) => (
     <header>
       <h1>Hyperapp real-world examples</h1>
       <h2>A curated list of live hyperapp projects</h2>
-      <form action={ev => actions.handleSearchForm(ev)} method="post">
+      {/* <form action={ev => actions.handleSearchForm(ev)} method="post">
         <SearchInput label="Search project..." name="search" value={state.search} setter={actions.set} />
-      </form>
+      </form> */}
     </header>
 
 
     <main>
+      <Project />
+      <Project />
+      <Project />
       <Project />
       <Project />
       <Project />

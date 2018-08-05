@@ -1,8 +1,13 @@
 .project {
-  padding: 1rem;
+  padding: 0 0 3rem 0;
   background-color: white;
   box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
   border-radius: 0.5rem;
+  overflow: hidden;
   text-align: center;
+  >.img {
+    background-color: var(--text-color);
+    padding: 6rem 0;
+  }
 }
  

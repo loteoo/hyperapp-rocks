@@ -70,9 +70,9 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 3rem 20rem 3rem;
+  padding: 16rem 3rem 24rem 3rem;
   background-color: white;
-  min-height: 66vh;
+  // min-height: 66vh;
   >h1 {
     font-size: 3.2rem;
   }
@@ -102,11 +102,16 @@ main {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3rem;
   padding: 3rem;
+  margin: 0 0 6rem 0;
 }
 
 
 
+
 footer {
+  background: url(bg_pattern.png),linear-gradient(315deg,#10192a 0,#161d29 100%);
+  background-size: contain;
   text-align: center;
-  padding: 3rem;
+  padding: 6rem;
+  margin: 6rem 0 0 0;
 }
