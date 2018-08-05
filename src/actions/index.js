@@ -18,5 +18,12 @@ export const actions = {
   init: () => {
     // Subscribe to the router
     window.unsubscribeRouter = location.subscribe(window.main.location)
+  },
+
+
+  handleSearchForm: ev => state => {
+    ev.preventDefault()
+
+    alert('search!')
   }
 }
