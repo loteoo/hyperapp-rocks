@@ -8,15 +8,20 @@
     "start": "parcel public/index.html --open",
     "build": "parcel build ./public/index.html --no-source-maps --experimental-scope-hoisting --detailed-report --public-url ./"
   },
+  "dependencies": {
+    "lodash": "4.x.x",
+    "strapi": "3.0.0-alpha.13.0.1",
+    "strapi-hook-mongoose": "3.0.0-alpha.13.0.1"
+  },
   "devDependencies": {
     "@hyperapp/router": "^0.7.0",
     "autoprefixer": "^9.0.0",
     "classcat": "^3.1.2",
     "deepmerge": "^2.1.0",
-    "eslint": "^5.1.0",
+    "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
@@ -26,6 +31,9 @@
     "postcss-modules": "^1.1.0",
     "postcss-nested": "^3.0.0",
     "rucksack-css": "^1.0.2",
-    "sanitize.css": "^6.0.0"
+    "sanitize.css": "^6.0.0",
+    "babel-eslint": "^7.1.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-react": "^6.8.0"
   }
 }

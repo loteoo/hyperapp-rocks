@@ -1,0 +1,36 @@
+{
+  "project": {
+    "attributes": {
+      "First Name": {
+        "appearance": ""
+      },
+      "Last Name": {
+        "appearance": ""
+      },
+      "Email": {
+        "appearance": ""
+      },
+      "Visible": {
+        "appearance": ""
+      },
+      "Description": {
+        "appearance": ""
+      },
+      "Status": {
+        "appearance": ""
+      },
+      "published at": {
+        "appearance": ""
+      },
+      "link": {
+        "appearance": ""
+      },
+      "Title": {
+        "appearance": ""
+      },
+      "Github": {
+        "appearance": ""
+      }
+    }
+  }
+}

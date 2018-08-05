@@ -1,0 +1,47 @@
+{
+  "connection": "default",
+  "collectionName": "project",
+  "info": {
+    "name": "project",
+    "description": "A submitted Hyperapp Project"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "First Name": {
+      "type": "string"
+    },
+    "Last Name": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Thumbnail": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "published",
+        "trashed"
+      ]
+    },
+    "Link": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Github": {
+      "type": "string"
+    }
+  }
+}
