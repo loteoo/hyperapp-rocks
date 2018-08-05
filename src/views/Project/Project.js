@@ -1,12 +1,16 @@
 import {h} from 'hyperapp'
 
+import {strapiUrl} from '../../utils/'
+
 import './project.css'
 
-export const Project = () => (
+export const Project = ({title, link, description, thumbnail}) => (
   <div class="project" key="project">
-    <div class="img"></div>
-    <h4>Title</h4>
-    <p>New project component!</p>
+    <div class="img" style={{backgroundImage: `url(${strapiUrl(thumbnail.url)})`}}></div>
+    <div class="info">
+      <h4>{title}</h4>
+      <p class="description">{description}</p>
+    </div>
   </div>
 )
 

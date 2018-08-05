@@ -8,3 +8,6 @@ export const generateUUID = () =>
       return (0 | Math.random() * 16)
         .toString(16)
     })
+
+
+export const strapiUrl = (path) => `${location.protocol}//${location.hostname}:1337${path}`

@@ -1,0 +1,10 @@
+main {
+  position: relative;
+  z-index: 1;
+  background: #f8faff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  padding: 3rem;
+  margin: 0 0 6rem 0;
+}

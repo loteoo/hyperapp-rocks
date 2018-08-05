@@ -1,6 +1,6 @@
 import {location} from '@hyperapp/router'
 import deepmerge from 'deepmerge'
-import {replace} from '../utils/'
+import {replace, strapiUrl} from '../utils/'
 
 // Global actions for the app
 export const actions = {
@@ -18,6 +18,12 @@ export const actions = {
   init: () => {
     // Subscribe to the router
     window.unsubscribeRouter = location.subscribe(window.main.location)
+  },
+
+  loadProjects: () => (state, actions) => {
+    fetch(strapiUrl('/project'))
+      .then(res => res.json())
+      .then(projects => actions.set({projects}))
   },
 
 
