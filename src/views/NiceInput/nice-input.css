@@ -1,31 +1,66 @@
 .nice-input {
   display: flex;
   flex-direction: column-reverse;
+  position: relative;
   &:first-child {
     margin-top: 0;
   }
   label {
+    pointer-events: none;
+    position: absolute 0 auto auto 0;
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    transition: transform 150ms;
+    transform-origin: left;
+    transform: translate(0, 0) scale(1);
     &::after {
       margin-left: 0.5em;
     }
   }
+  &>.border {
+    pointer-events: none;
+    display: block;
+    position: absolute 0;
+    background: transparent;
+    border-radius: 5px;
+    z-index: 0;
+    box-sizing: content-box;
+    padding: 1px;
+    margin: -1px;
+    transition: transform 150ms;
+    transform: scaleX(0);
+  }
   input {
-    border: none;
-    margin: 0;
-    border-bottom: 1px solid currentColor;
+    position: relative;
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    color: #555555;
+    background-color: #f8faff;
+    background-image: none;
+    border: 1px solid #eef0f7;
+    border-radius: 0.25rem;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     &:focus {
-      background: #f1f1fc;
-      & + label {
+      outline: 0;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
+      & ~ label {
         color: #5755d9;
+        transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
           content: "↻";
         }
       }
+      & ~ .border {
+        background-image: linear-gradient(to bottom right, #8e43e7 0%, #3369e7, #00aeff 100%);
+        transform: scaleX(1);
+      }
     }
     &:not(:placeholder-shown):invalid {
       background: #fcf1f4;
-      & + label {
+      & ~ label {
         color: #d95560;
+        transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
           content: "✗";
         }
@@ -33,8 +68,9 @@
     }
     &:not(:placeholder-shown):valid {
       background: #f1fcf6;
-      & + label {
+      & ~ label {
         color: #55d98c;
+        transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
           content: "✓";
         }

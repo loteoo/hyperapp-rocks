@@ -7,6 +7,7 @@ export const NiceInput = (props, children, {label = label || 'Label', name = nam
   <div class={cc(['nice-input', name])} key={name}>
     <input type={type} name={name} id={name} placeholder={placeholder} oninput={ev => setter({[name]: ev.target.value})} {...props} setter={null} />
     <label for={name}>{label}</label>
+    <div class="border"></div>
   </div>
 )
 
