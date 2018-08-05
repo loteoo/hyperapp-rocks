@@ -10,7 +10,9 @@ export const Projects = ({projects}) => (state, actions) => {
   } else {
     return (
       <main>
-        {projects.map(project => <Project {...project} />)}
+        <div class="projects">
+          {projects.map(project => <Project {...project} />)}
+        </div>
       </main>
     )
   }

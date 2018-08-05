@@ -1,7 +1,6 @@
 .nice-input {
   display: flex;
   flex-direction: column-reverse;
-  margin-top: 1rem;
   &:first-child {
     margin-top: 0;
   }
