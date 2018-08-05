@@ -1,0 +1,66 @@
+/* You can use the latest css has to offer,
+nested selectors and rucksack shortcuts */
+
+/*------------------------------------*\
+    Global
+\*------------------------------------*/
+
+:root {
+	--text-color: #50596c;
+	--background-color: #ffffff;
+	--border-color: #e7e9ed;
+	--accent-color: #5755d9;
+}
+
+body {
+	font-family: 'Arial', sans-serif;
+	font-size: responsive;
+	color: var(--text-color);
+	background-color: var(--background-color);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  padding: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+button, input, select, textarea {
+  color: inherit;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+	background: var(--accent-color);
+	color: white;
+	text-shadow: none;
+}
+
+/* @font-face {
+  font-family: 'My Font';
+  font-path: '/my/font/file';
+  font-weight: normal;
+  font-style: normal;
+} */
+
+
