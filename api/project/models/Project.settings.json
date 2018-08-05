@@ -9,24 +9,24 @@
     "timestamps": true
   },
   "attributes": {
-    "First Name": {
+    "firstName": {
       "type": "string"
     },
-    "Last Name": {
+    "lastName": {
       "type": "string"
     },
-    "Email": {
+    "email": {
       "type": "email"
     },
-    "Thumbnail": {
+    "thumbnail": {
       "model": "file",
       "via": "related",
       "plugin": "upload"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Status": {
+    "status": {
       "type": "enumeration",
       "enum": [
         "pending",
@@ -34,13 +34,13 @@
         "trashed"
       ]
     },
-    "Link": {
+    "link": {
       "type": "string"
     },
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Github": {
+    "github": {
       "type": "string"
     }
   }
