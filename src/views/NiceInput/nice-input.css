@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column-reverse;
   position: relative;
-  &:first-child {
-    margin-top: 0;
-  }
+  margin-top: 1.5rem;
   label {
     pointer-events: none;
     position: absolute 0 auto auto 0;
@@ -27,7 +25,7 @@
     box-sizing: content-box;
     padding: 1px;
     margin: -1px;
-    transition: transform 150ms;
+    transition: transform 100ms;
     transform: scaleX(0);
   }
   input {
@@ -46,6 +44,7 @@
       box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
       & ~ label {
         color: #5755d9;
+        pointer-events: all;
         transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
           content: "↻";
@@ -60,6 +59,7 @@
       background: #fcf1f4;
       & ~ label {
         color: #d95560;
+        pointer-events: all;
         transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
           content: "✗";
@@ -70,6 +70,7 @@
       background: #f1fcf6;
       & ~ label {
         color: #55d98c;
+        pointer-events: all;
         transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
           content: "✓";
