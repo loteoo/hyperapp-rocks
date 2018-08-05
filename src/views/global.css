@@ -63,7 +63,7 @@ img {
 	text-shadow: none;
 }
 
-.intro {
+header {
   position: relative;
   text-align: center;
   display: flex;
@@ -94,12 +94,19 @@ img {
 
 
 
-.listing {
+main {
   position: relative;
   z-index: 1;
   background: #f8faff;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3rem;
+  padding: 3rem;
+}
+
+
+
+footer {
+  text-align: center;
   padding: 3rem;
 }
