@@ -5,15 +5,17 @@ import './project-form.css'
 import {NiceInput} from '../NiceInput/NiceInput.js'
 
 
-export const ProjectForm = ({firstName, lastName, projectUrl, projectImg}) => (state, actions) => (
+export const ProjectForm = ({title, author, description, link, thumbnail, github}) => (state, actions) => (
   <form class="project-form" key="project-form" method="post" onsubmit={actions.handleProjectForm}>
     <h2>Submit your project!</h2>
-    {/* <p>Full name: <b>{firstName} {lastName}</b></p> */}
+    {/* <p>Full name: <b>{author} {description}</b></p> */}
 
-    <NiceInput label="First name" name="firstName" value={firstName} setter={actions.setProjectForm} />
-    <NiceInput label="Last name" name="lastName" value={lastName} setter={actions.setProjectForm} />
-    <NiceInput label="Project URL" name="projectUrl" value={projectUrl} setter={actions.setProjectForm} />
-    <NiceInput label="Image" name="projectImg" value={projectImg} setter={actions.setProjectForm} />
+    <NiceInput label="Title" name="title" value={title} placeholder="My awesome project" setter={actions.setProjectForm} required />
+    <NiceInput type="url" label="Project URL" name="link" value={link} placeholder="https://" setter={actions.setProjectForm} required />
+    <NiceInput type="textarea" label="Description" name="description" value={description} placeholder="Short project description..." setter={actions.setProjectForm} required />
+    <NiceInput label="Author" name="author" value={author} placeholder="Who did this?" setter={actions.setProjectForm} />
+    <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={github} placeholder="Sharing is caring :)" setter={actions.setProjectForm} />
+    {/* <ImageInput label="Image" name="thumbnail" required /> */}
 
 
     <div class="actions">

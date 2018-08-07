@@ -33,11 +33,12 @@ export const actions = {
     alert('search!')
   },
 
-  setProjectForm: fragment => state => deepmerge(state, {projectForm: fragment}, {arrayMerge: replace}),
+  setProjectForm: fragment => state => deepmerge(state, {projectForm: fragment}),
 
-  handleProjectForm: ev => state => {
+  handleProjectForm: ev => (state, actions) => {
     ev.preventDefault()
 
     alert('Submitted!\nForm state: \n\n' + JSON.stringify(state.projectForm, null, 2))
+    // actions.setProjectForm(response)
   }
 }

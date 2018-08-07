@@ -3,9 +3,15 @@ import cc from 'classcat'
 
 import './nice-input.css'
 
-export const NiceInput = (props, children, {label = label || 'Label', name = name || 'name', type = type || 'text', placeholder = placeholder || ' ', setter} = props) => (
+
+
+export const NiceInput = (props, children, {label = label || 'Label', name = name || 'name', type = type || 'text', placeholder = placeholder || ' ', value, required, setter} = props) => (
   <div class={cc(['nice-input', name])} key={name}>
-    <input type={type} name={name} id={name} placeholder={placeholder} oninput={ev => setter({[name]: ev.target.value})} {...props} setter={null} />
+    {
+      type === 'textarea'
+      ? <textarea name={name} id={name} placeholder={placeholder} oninput={ev => {ev.target.style.height = (ev.target.scrollHeight + 2) + 'px'; setter({[name]: ev.target.value})}}  required={required}>{value}</textarea>
+      : <input type={type} name={name} id={name} placeholder={placeholder} value={value} oninput={ev => setter({[name]: ev.target.value})} {...props} setter={null} />
+    }
     <label for={name}>{label}</label>
     <div class="border"></div>
   </div>

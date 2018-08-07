@@ -9,14 +9,9 @@
     "timestamps": true
   },
   "attributes": {
-    "firstName": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email"
+    "author": {
+      "type": "string",
+      "required": true
     },
     "thumbnail": {
       "model": "file",
