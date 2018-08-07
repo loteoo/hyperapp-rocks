@@ -3,7 +3,7 @@
   flex-direction: column-reverse;
   position: relative;
   margin-top: 1.5rem;
-  label {
+  >label {
     pointer-events: none;
     position: absolute 0 auto auto 0;
     z-index: 1;
@@ -20,7 +20,7 @@
     display: block;
     position: absolute 0;
     background: transparent;
-    border-radius: 5px;
+    border-radius: 0.25rem;
     z-index: 0;
     box-sizing: content-box;
     padding: 1px;
@@ -28,7 +28,8 @@
     transition: transform 100ms;
     transform: scaleX(0);
   }
-  input, textarea {
+  >input,
+  >textarea {
     position: relative;
     z-index: 1;
     padding: 0.5rem 1rem;
@@ -91,7 +92,7 @@
       }
     }
   }
-  textarea {
+  >textarea {
     padding: 1rem;
   }
 }
