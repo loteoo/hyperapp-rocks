@@ -4,23 +4,28 @@ import './projects.css'
 
 import {Project} from '../Project/Project.js'
 import {Spinner} from '../Spinner/Spinner.js'
+import {PillButton} from '../PillButton/PillButton.js'
 
 
 export const Projects = ({projects}) => (state, actions) => {
   if (!projects) {
     actions.loadProjects()
     return (
-      <main>
+      <div class="projects" key="projects">
         <Spinner />
-      </main>
+      </div>
     )
   } else {
     return (
-      <main>
-        <div class="projects">
+      <div class="projects" key="projects">
+        <div class="grid">
           {projects.map(project => <Project {...project} />)}
         </div>
-      </main>
+        <PillButton>
+          Load more
+          {/* <Spinner /> */}
+        </PillButton>
+      </div>
     )
   }
 }

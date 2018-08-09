@@ -30,7 +30,7 @@ export const actions = {
   handleSearchForm: ev => state => {
     ev.preventDefault()
 
-    alert('search!')
+    alert('search: ' + state.search)
   },
 
   setProjectForm: fragment => state => deepmerge(state, {projectForm: fragment}),

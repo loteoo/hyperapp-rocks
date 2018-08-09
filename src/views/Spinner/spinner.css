@@ -1,17 +1,12 @@
 .spinner {
   animation: loading .5s infinite linear;
-  border: 0.25rem solid #8050E8;
+  border: 0.1em solid currentColor;
   border-radius: 50%;
   border-right-color: transparent;
   border-top-color: transparent;
   display: block;
-  height: 4rem;
-  left: 50%;
-  margin-left: -.4rem;
-  margin-top: -.4rem;
-  position: absolute;
-  top: 50%;
-  width: 4rem;
+  height: 1em;
+  width: 1em;
   z-index: 1;
 }
 @keyframes loading {

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "lodash": "4.x.x",
+    "normalize.css": "^8.0.0",
     "strapi": "3.0.0-alpha.13.0.1",
     "strapi-hook-mongoose": "3.0.0-alpha.13.0.1"
   },
@@ -31,7 +32,6 @@
     "postcss-modules": "^1.1.0",
     "postcss-nested": "^3.0.0",
     "rucksack-css": "^1.0.2",
-    "sanitize.css": "^6.0.0",
     "babel-eslint": "^7.1.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-react": "^6.8.0"

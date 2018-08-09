@@ -1,0 +1,27 @@
+.search {
+  position: relative;
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+  >input {
+    background-color: white;
+    color: var(--dark-text-color);
+    padding: 1.25rem 3rem;
+    border-radius: 9rem;
+    border: none;
+    box-shadow: 0 30px 40px 0 rgba(16,36,94,0.2), inset 0 -8px 0 0 rgba(103,117,161,0.06);
+    &::placeholder {
+      opacity: 0.5;
+      color: var(--text-color);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  >svg {
+    position: absolute 0.75em 1em auto auto;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+ 
