@@ -49,6 +49,10 @@ img {
   max-width: 100%;
 }
 
+svg {
+  fill: none;
+}
+
 ::selection {
 	background: var(--accent-color);
 	color: white;

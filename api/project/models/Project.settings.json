@@ -10,8 +10,7 @@
   },
   "attributes": {
     "author": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "thumbnail": {
       "model": "file",

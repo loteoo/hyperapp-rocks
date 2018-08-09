@@ -1,5 +1,5 @@
 // Bundle css for this view
-import 'normalize.css'
+import 'sanitize.css'
 import './global.css'
 
 // Import dependencies

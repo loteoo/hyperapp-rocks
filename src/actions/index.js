@@ -1,6 +1,6 @@
 import {location} from '@hyperapp/router'
 import deepmerge from 'deepmerge'
-import {replace, strapiUrl} from '../utils/'
+import {replace, strapiUrl, getData, postData, postImage} from '../utils/'
 
 // Global actions for the app
 export const actions = {
@@ -21,8 +21,7 @@ export const actions = {
   },
 
   loadProjects: () => (state, actions) => {
-    fetch(strapiUrl('/project'))
-      .then(res => res.json())
+    getData(strapiUrl('/project'))
       .then(projects => actions.set({projects}))
   },
 
@@ -38,7 +37,26 @@ export const actions = {
   handleProjectForm: ev => (state, actions) => {
     ev.preventDefault()
 
-    alert('Submitted!\nForm state: \n\n' + JSON.stringify(state.projectForm, null, 2))
-    // actions.setProjectForm(response)
+    
+    postData(strapiUrl('/project'), state.projectForm)
+      .then(project => {
+        alert('response 1: \n\n' + JSON.stringify(project, null, 2))
+
+        postImage(strapiUrl('/upload'), {
+          files: document.getElementById('thumbnail').files,
+          refId: project._id,
+          ref: 'project',
+          plugin: 'upload',
+          field: 'thumbnail'
+        })
+          .then(image => {
+
+
+            alert('response 2: \n\n' + JSON.stringify(image, null, 2))
+            // actions.setProjectForm(data)
+            // alert('Submitted!\nEntry: \n\n' + JSON.stringify(data, null, 2))
+          })
+      })
+      
   }
 }

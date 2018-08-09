@@ -11,3 +11,41 @@ export const generateUUID = () =>
 
 
 export const strapiUrl = (path) => `${location.protocol}//${location.hostname}:1337${path}`
+
+
+export const getData = (url) => {
+  return fetch(url)
+    .then(response => response.json())
+    .catch(error => console.error(`Fetch error:\n`, error));
+}
+
+
+export const postData = (url, data) => {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .catch(error => console.error(`Fetch error:\n`, error));
+}
+
+
+export const postImage = (url, data) => {
+
+  let formData  = new FormData();
+
+
+  for(let name in data) {
+    formData.append(name, data[name]);
+  }
+
+  return fetch(url, {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .catch(error => console.error(`Fetch error:\n`, error));
+}

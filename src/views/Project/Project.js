@@ -4,9 +4,9 @@ import {strapiUrl} from '../../utils/'
 
 import './project.css'
 
-export const Project = ({title, link, description, thumbnail}) => (
-  <div class="project" key="project">
-    <div class="img" style={{backgroundImage: `url(${strapiUrl(thumbnail.url)})`}}></div>
+export const Project = ({_id, title, link, description, thumbnail}) => (
+  <div class="project" key={_id}>
+    <div class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></div>
     <div class="info">
       <h4>{title}</h4>
       <p class="description">{description}</p>
