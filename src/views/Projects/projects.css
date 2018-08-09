@@ -26,7 +26,7 @@
     margin: 6rem auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3rem;
+    grid-gap: 4rem;
   }
   >.spinner {
     font-size: 3rem;
