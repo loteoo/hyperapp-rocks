@@ -21,7 +21,7 @@ export const actions = {
 
   // Loads projects
   loadProjects: () => (state, actions) => {
-    getData(strapiUrl('/project'))
+    getData(strapiUrl(`/project?_sort=createdAt:desc&_start=${state.projects.length}&_limit=12`))
       .then(projects => actions.addProjects(projects))
   },
 

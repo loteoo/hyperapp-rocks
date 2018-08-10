@@ -21,7 +21,7 @@ export const Projects = ({projects}) => (state, actions) => {
         <div class="grid">
           {projects.map(project => <Project {...project} />)}
         </div>
-        <PillButton>
+        <PillButton onclick={actions.loadProjects}>
           Load more
           {/* <Spinner /> */}
         </PillButton>
