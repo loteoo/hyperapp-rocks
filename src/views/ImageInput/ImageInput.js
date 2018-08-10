@@ -5,7 +5,7 @@ import './image-input.css'
 
 export const ImageInput = (props, children, {label = label || 'Label', name = name || 'name', setter} = props) => (
   <div class={cc(['image-input', name])} key={name}>
-    <input type="file" name={name} id={name} oninput={ev => setter({[name]: ev.target.files})} {...props} setter={null} />
+    <input type="file" name={name} id={name} onchange={ev => setter({[name]: ev.target.files[0]})} {...props} setter={null} />
     <div class="picker"></div>
     <label for={name}>{label}</label>
     <div class="border"></div>

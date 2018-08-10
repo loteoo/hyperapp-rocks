@@ -8,7 +8,7 @@ import {PillButton} from '../PillButton/PillButton.js'
 
 
 export const Projects = ({projects}) => (state, actions) => {
-  if (!projects) {
+  if (projects.length === 0) {
     actions.loadProjects()
     return (
       <div class="projects" key="projects">

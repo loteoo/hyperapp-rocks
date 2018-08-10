@@ -10,7 +10,10 @@ export const generateUUID = () =>
     })
 
 
-export const strapiUrl = (path) => `${location.protocol}//${location.hostname}:1337${path}`
+export const strapiUrl = (path, strapiOrigin = `${location.protocol}//${location.hostname}:1337`) => 
+  path.startsWith(strapiOrigin)
+    ? path
+    : strapiOrigin + path
 
 
 export const getData = (url) => {
