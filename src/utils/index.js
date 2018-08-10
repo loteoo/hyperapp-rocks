@@ -10,6 +10,7 @@ export const generateUUID = () =>
     })
 
 
+// Makes sur the URL is the STRAPI one (correct host & port)
 export const strapiUrl = (path, strapiOrigin = `${location.protocol}//${location.hostname}:1337`) => 
   path.startsWith(strapiOrigin)
     ? path
@@ -17,14 +18,14 @@ export const strapiUrl = (path, strapiOrigin = `${location.protocol}//${location
 
 
 export const getData = (url) => {
-  return fetch(url)
+  return fetch(strapiUrl(url))
     .then(response => response.json())
     .catch(error => console.error(`Fetch error:\n`, error));
 }
 
 
 export const postData = (url, data) => {
-  return fetch(url, {
+  return fetch(strapiUrl(url), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
@@ -45,7 +46,7 @@ export const postImage = (url, data) => {
     formData.append(name, data[name]);
   }
 
-  return fetch(url, {
+  return fetch(strapiUrl(url), {
     method: 'POST',
     body: formData
   })

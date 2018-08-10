@@ -1,13 +1,10 @@
 import {location} from '@hyperapp/router'
-import {replace, strapiUrl, getData, postData, postImage} from '../utils/'
+import {replace, strapi, getData, postData, postImage} from '../utils/'
 
 // Global actions for the app
 export const actions = {
   // Router actions
   location: location.actions,
-
-  // Set or replace first-level props
-  set: fragment => fragment,
 
   // Called at startup
   init: () => {
@@ -15,21 +12,36 @@ export const actions = {
     window.unsubscribeRouter = location.subscribe(window.main.location)
   },
 
+  // Set projects to the list
+  setSearch: search => ({search}),
+
+  // Set projects to the list
+  setProjects: projects => ({projects}),
+
   // Adds projects to the list
   addProjects: projects => state => ({projects: state.projects.concat(projects)}),
+
+  // Adds projects to the begining of the list
+  addProjectsStart: projects => state => ({projects: projects.concat(state.projects)}),
 
 
   // Loads projects
   loadProjects: () => (state, actions) => {
-    getData(strapiUrl(`/project?_sort=createdAt:desc&_start=${state.projects.length}&_limit=12`))
+    getData(`/project?_sort=createdAt:desc&_start=${state.projects.length}&_limit=12`)
       .then(projects => actions.addProjects(projects))
   },
 
 
+  // Handles searching
   handleSearchForm: ev => state => {
     ev.preventDefault()
-    alert('search: ' + state.search)
+    getData(`/project?title_contains=${state.search}&_limit=90`)
+      .then(projects => {
+        console.log(projects)
+        actions.setProjects(projects)
+      })
   },
+
 
   // Nested setter
   setProjectForm: fragment => state => ({
@@ -39,11 +51,13 @@ export const actions = {
     }
   }),
   
+
+  // Handles project submission
   handleProjectForm: ev => (state, actions) => {
     ev.preventDefault()
-    postData(strapiUrl('/project'), state.projectForm)
-      .then(project => {
-        postImage(strapiUrl('/upload'), {
+    postData('/project', state.projectForm)
+      .then(project =>
+        postImage('/upload', {
           files: state.projectForm.thumbnail,
           refId: project._id,
           ref: 'project',
@@ -52,12 +66,12 @@ export const actions = {
         })
           .then(files => {
             actions.setProjectForm({submitted: true})
-            actions.addProjects({
+            actions.addProjectsStart([{
               ...project,
               thumbnail: files[0]
-            })
+            }])
           })
-      })
+      )
       
   }
 }

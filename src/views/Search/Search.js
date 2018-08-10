@@ -11,7 +11,8 @@ export const Search = ({}) => (state, actions) => (
       type="text"
       name="search"
       placeholder="Search projects..."
-      oninput={ev => actions.set({search: ev.target.value})}
+      value={state.search}
+      oninput={ev => actions.setSearch(ev.target.value)}
     />
     <Icon />
   </form>
