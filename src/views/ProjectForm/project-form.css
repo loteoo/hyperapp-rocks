@@ -32,11 +32,25 @@
       grid-column: 1/-1;
       text-align: center;
     }
+    >* {
+      margin-top: 1em;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
     @media (max-width: 640px) {
+      padding: 3rem 1.5rem;
       >* {
         grid-column: 1/-1;
       }
     }
+  }
+  
+  @media (max-width: 640px) {
+    padding: 0 1.5rem;
+  }
+  >.thanks {
+    text-align: center;
   }
 }
  

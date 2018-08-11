@@ -14,7 +14,7 @@ export const Header = () => (state, actions) => (
     <Search />
 
     <div class="actions">
-      <PillButton big onclick={actions.scrollToProjects}>Check projects</PillButton>
+      <PillButton big onclick={actions.scrollToProjects}>See projects</PillButton>
       <PillButton big green onclick={actions.scrollToForm}>Share a project</PillButton>
     </div>
 

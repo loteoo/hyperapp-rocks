@@ -14,7 +14,7 @@ nested selectors and rucksack shortcuts */
 }
 
 html {
-	font-size: responsive;
+	font-size: responsive 14px 20px;
   font-family: 'Nunito', sans-serif;
 	color: var(--text-color);
 	background-color: var(--background-color);

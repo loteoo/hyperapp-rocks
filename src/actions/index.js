@@ -90,10 +90,11 @@ export const actions = {
         })
           .then(files => {
             actions.setProjectForm({submitted: true})
-            actions.addProjectsStart([{
-              ...project,
-              thumbnail: files[0]
-            }])
+            // TODO: preview?
+            // actions.addProjectsStart([{ 
+            //   ...project,
+            //   thumbnail: files[0]
+            // }])
             ga('send', 'event', 'Project', 'submit', project.title)
           })
       )

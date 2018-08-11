@@ -25,7 +25,16 @@ header {
     align-items: center;
     justify-content: space-around;
     >* {
-      margin: 0 1rem;
+      margin: 0 1em;
+      @media (max-width: 480px) {
+        margin: 0 0.5em;
+      }
     }
+  }
+  @media (max-width: 740px) {
+    padding: 6em 1.5em 12em 1.5em;
+  }
+  @media (max-width: 480px) {
+    padding: 6em 1em 12em 1em;
   }
 }
