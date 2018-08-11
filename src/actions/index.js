@@ -37,7 +37,7 @@ export const actions = {
   // Loads projects
   loadProjects: (shouldClearList) => (state, actions) => {
     actions.setIsFetching(true)
-    getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12`)
+    getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12&status=published`)
       .then(projects => {
         actions.setIsFetching(false)
         actions.addProjects(projects)
@@ -49,7 +49,8 @@ export const actions = {
   handleSearchForm: ev => (state, actions) => {
     ev.preventDefault()
     actions.scrollToProjects()
-    ga('send', 'event', 'Search', 'search', state.search, state.search)
+
+    ga('send', 'event', 'Project', 'search', state.search)
     
     actions.setCurrentSearch(state.search)
 
@@ -93,6 +94,7 @@ export const actions = {
               ...project,
               thumbnail: files[0]
             }])
+            ga('send', 'event', 'Project', 'submit', project.title)
           })
       )
       
