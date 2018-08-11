@@ -9,6 +9,8 @@
     "build": "parcel build ./public/index.html --no-source-maps --experimental-scope-hoisting --detailed-report --public-url ./"
   },
   "dependencies": {
+    "express": "^4.16.3",
+    "express-http-proxy": "^1.2.0",
     "inspector": "^0.5.0",
     "lodash": "4.x.x",
     "strapi": "3.0.0-alpha.13.0.1",
