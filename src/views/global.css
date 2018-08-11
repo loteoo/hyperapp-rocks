@@ -13,9 +13,9 @@ nested selectors and rucksack shortcuts */
 	--accent-color: #5755d9;
 }
 
-body {
-  font-family: 'Nunito', sans-serif;
+html {
 	font-size: responsive;
+  font-family: 'Nunito', sans-serif;
 	color: var(--text-color);
 	background-color: var(--background-color);
   width: 100%;

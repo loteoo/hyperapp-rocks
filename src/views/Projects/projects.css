@@ -6,8 +6,8 @@
   position: relative;
   z-index: 1;
   background: #f8faff;
-  padding: 0 3rem;
-  margin: 0 0 6rem 0;
+  padding: 0 3em;
+  margin: 0 0 6em 0;
   min-height: 36rem;
   
   &::before {
@@ -29,20 +29,19 @@
     >.grid {
       width: 100%;
       max-width: 1280px;
-      margin: 6rem auto;
+      margin: 6em auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 4rem;
-    }
-    @media (max-width: 1024px) {
-      >.grid {
+      grid-gap: 3em;
+      @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
       }
-    }
-    @media (max-width: 740px) {
-      >.grid {
+      @media (max-width: 740px) {
         grid-template-columns: 1fr;
-        max-width: 28rem;
+        max-width: 32em;
+      }
+      @media (max-width: 480px) {
+        grid-gap: 1.5em;
       }
     }
   }
@@ -51,6 +50,6 @@
     color: #8050E8;
   }
   @media (max-width: 480px) {
-    padding: 1.5rem;
+    padding: 1.5em;
   }
 }

@@ -2,7 +2,6 @@ footer {
   background: url(bg_pattern.png), linear-gradient(315deg,#10192a 0,#161d29 100%);
   background-size: contain;
   text-align: center;
-  padding: 6rem;
-  margin: 6rem 0 0 0;
-  font-size: 1.2rem;
+  padding: 6em;
+  margin: 6em 0 0 0;
 }

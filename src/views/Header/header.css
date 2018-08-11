@@ -5,18 +5,18 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 9rem 0 16rem 0;
+  padding: 9em 3em 12em 3em;
   background-color: white;
 
   background-image: linear-gradient(73deg, #3369E7, #00AEFF);
   
   >h1 {
-    font-size: 3.2rem;
+    font-size: 2.4em;
     color: white;
   }
   >h2 {
     color: var(--text-color);
-    font-size: 1.6rem;
+    font-size: 1.2em;
     font-weight: 400;
     color: white;
   }
