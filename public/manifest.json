@@ -1,7 +1,7 @@
 {
-  "short_name": "Hyperapp",
-  "name": "Hyperapp boilerplate",
-  "description": "A minimalist progressive web app compliant template for hyperapp projects",
+  "short_name": "HA examples",
+  "name": "Hyperapp examples",
+  "description": "A curated list of live hyperapp projects",
   "display": "fullscreen",
   "scope": "/",
   "start_url": "/",

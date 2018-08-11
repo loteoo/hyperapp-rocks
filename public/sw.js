@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('hyperapp-boilerplate')
+    caches.open('hyperapp-examples')
     .then(cache => cache.addAll(['/index.js']))
   )
 })

@@ -1,4 +1,4 @@
-# hyperapp-boilerplate
+# hyperapp-examples
 > Personal Hyperapp PWA boilerplate
 
 ```
