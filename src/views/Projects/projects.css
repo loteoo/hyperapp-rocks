@@ -42,6 +42,10 @@
       @media (max-width: 480px) {
         grid-gap: 1.5em;
       }
+      >.empty {
+        text-align: center;
+        grid-column: 1/-1;
+      }
     }
   }
   >.spinner {

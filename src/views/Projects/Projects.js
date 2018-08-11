@@ -23,14 +23,14 @@ const Listing = ({projects}) => (state, actions) => (
   <div class="listing" key="listing">
     {
       state.currentSearch
-        ? <h2>Search resulsts for: {state.currentSearch}</h2>
+        ? <h2>Search results for: <u>{state.currentSearch}</u></h2>
         : null
     }
     <div class="grid" key="grid">
       {
         projects.length !== 0
         ? projects.map(project => <Project {...project} />)
-        : <h2>0 results...</h2>
+        : <div class="empty"><h2>0 results</h2></div>
       }
     </div>
     {
