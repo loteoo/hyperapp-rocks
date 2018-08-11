@@ -19,6 +19,7 @@
     outline: none;
     transform: scale(0.95);
     transition-duration: 25ms;
+    -webkit-tap-highlight-color: transparent;
   }
   &:focus {
     outline: none;

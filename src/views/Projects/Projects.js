@@ -7,28 +7,39 @@ import {Spinner} from '../Spinner/Spinner.js'
 import {PillButton} from '../PillButton/PillButton.js'
 
 
-export const Projects = ({projects}) => (state, actions) => {
-  if (projects.length === 0) {
-    actions.loadProjects()
-    return (
-      <div class="projects" key="projects">
-        <Spinner />
-      </div>
-    )
-  } else {
-    return (
-      <div class="projects" key="projects">
-        <div class="grid">
-          {projects.map(project => <Project {...project} />)}
-        </div>
-        <PillButton onclick={actions.loadProjects}>
-          Load more
-          {/* <Spinner /> */}
-        </PillButton>
-      </div>
-    )
-  }
-}
+export const Projects = ({projects}) => (state, actions) => (
+  <div class="projects" key="projects">
+    {
+      projects
+        ? <Listing projects={projects} />
+        : <Spinner />
+    }
+  </div>
+)
+
+
+
+const Listing = ({projects}) => (state, actions) => (
+  <div class="listing" key="listing">
+    {
+      state.currentSearch
+        ? <h2>Search resulsts for: {state.currentSearch}</h2>
+        : null
+    }
+    <div class="grid" key="grid">
+      {
+        projects.length !== 0
+        ? projects.map(project => <Project {...project} />)
+        : <h2>0 results...</h2>
+      }
+    </div>
+    {
+      !state.currentSearch
+        ? <PillButton onclick={actions.loadProjects}>Load more{state.isFetching ? <Spinner /> : null}</PillButton>
+        : null
+    }
+  </div>
+)
 
 // import {Projects} from './Projects/Projects.js'
 // <Projects />

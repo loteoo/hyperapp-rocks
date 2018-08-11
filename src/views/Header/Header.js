@@ -5,7 +5,7 @@ import {Search} from '../Search/Search.js'
 import {PillButton} from '../PillButton/PillButton.js'
 
 
-export const Header = () => (
+export const Header = () => (state, actions) => (
   <header>
     
     <h1>Hyperapp real-world examples</h1>
@@ -14,8 +14,8 @@ export const Header = () => (
     <Search />
 
     <div class="actions">
-      <PillButton big>Check projects</PillButton>
-      <PillButton big green>Share a project</PillButton>
+      <PillButton big onclick={actions.scrollToProjects}>Check projects</PillButton>
+      <PillButton big green onclick={actions.scrollToForm}>Share a project</PillButton>
     </div>
 
   </header>

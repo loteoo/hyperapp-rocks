@@ -1,7 +1,7 @@
 .spinner {
   animation: loading .5s infinite linear;
   border: 0.1em solid currentColor;
-  border-radius: 50%;
+  border-radius: 1em;
   border-right-color: transparent;
   border-top-color: transparent;
   display: block;

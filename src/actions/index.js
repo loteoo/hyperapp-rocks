@@ -7,39 +7,62 @@ export const actions = {
   location: location.actions,
 
   // Called at startup
-  init: () => {
+  init: () => (state, actions) => {
     // Subscribe to the router
     window.unsubscribeRouter = location.subscribe(window.main.location)
+    
+    actions.loadProjects()
   },
 
-  // Set projects to the list
+  set: x => x,
+
+  
   setSearch: search => ({search}),
+
+  setCurrentSearch: currentSearch => ({currentSearch}),
+
+  
+  setIsFetching: isFetching => ({isFetching}),
 
   // Set projects to the list
   setProjects: projects => ({projects}),
 
   // Adds projects to the list
-  addProjects: projects => state => ({projects: state.projects.concat(projects)}),
+  addProjects: projects => state => ({projects: (state.projects || []).concat(projects)}),
 
   // Adds projects to the begining of the list
   addProjectsStart: projects => state => ({projects: projects.concat(state.projects)}),
 
 
   // Loads projects
-  loadProjects: () => (state, actions) => {
-    getData(`/project?_sort=createdAt:desc&_start=${state.projects.length}&_limit=12`)
-      .then(projects => actions.addProjects(projects))
+  loadProjects: (shouldClearList) => (state, actions) => {
+    actions.setIsFetching(true)
+    getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12`)
+      .then(projects => {
+        actions.setIsFetching(false)
+        actions.addProjects(projects)
+      })
   },
 
 
   // Handles searching
-  handleSearchForm: ev => state => {
+  handleSearchForm: ev => (state, actions) => {
     ev.preventDefault()
-    getData(`/project?title_contains=${state.search}&_limit=90`)
-      .then(projects => {
-        console.log(projects)
-        actions.setProjects(projects)
-      })
+    actions.scrollToProjects()
+    ga('send', 'event', 'Search', 'search', state.search, state.search)
+    
+    actions.setCurrentSearch(state.search)
+
+    if (state.search) {
+      getData(`/project?_q=${state.search}&_limit=120`)
+        .then(projects => {
+          actions.setProjects(projects)
+        })
+    } else {
+      actions.setProjects(false)
+      actions.loadProjects();
+    }
+
   },
 
 
@@ -73,5 +96,11 @@ export const actions = {
           })
       )
       
-  }
+  },
+
+
+  scrollToProjects: ev => document.querySelector('.projects').scrollIntoView({behavior: 'smooth', block: 'start'}),
+
+
+  scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'})
 }
