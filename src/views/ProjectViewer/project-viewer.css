@@ -57,8 +57,11 @@
 
 .project-content {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 45% 55%;
   grid-gap: 3em;
+
+
+  
   >.img {
     grid-column: 1;
     background-color: var(--background-color);
@@ -93,6 +96,21 @@
       width: 0.15rem;
       height: 100%;
       background: linear-gradient(315deg,#b06ab3 0,#4568dc 100%);
+    }
+  }
+
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+  }
+
+  @media (max-width: 740px) {
+    grid-template-columns: 1fr;
+    >.img,
+    >.info,
+    >.description, {
+      grid-column: 1/-1;
     }
   }
 }
