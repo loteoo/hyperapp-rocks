@@ -25,7 +25,7 @@
       "enum": [
         "pending",
         "published",
-        "trashed"
+        "notVisible"
       ]
     },
     "link": {
