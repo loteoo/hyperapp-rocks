@@ -1,5 +1,5 @@
 {
-  "host": "http://142.93.126.117",
+  "host": "142.93.126.117",
   "port": "${process.env.PORT || 1337}",
   "autoReload": {
     "enabled": false
