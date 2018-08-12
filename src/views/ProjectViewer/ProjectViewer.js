@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
 import {Link, Route, location} from "@hyperapp/router"
 
-import {strapiUrl, trackOutBoundLink, trackProjectView} from '../../utils/'
+import {strapiUrl, trackOutBoundLink, trackView} from '../../utils/'
 
 import {Spinner} from '../Spinner/Spinner.js'
 import {Github} from '../Icons/Github.js'
@@ -51,7 +51,12 @@ export const ProjectViewer = ({
 }
 
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
-  <div class="project-content" key={_id} oncreate={ev => ga('send', 'event', 'Project', 'view', title)}>
+  <div class="project-content" key={_id} oncreate={  ga('send', {
+    hitType: 'pageview',
+    title: title,
+    location: location.href,
+    page: location.pathname
+  })}>
     <a href={link} onclick={trackOutBoundLink} target="_blank" class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></a>
     <div class="info">
       <h2>{title}</h2>
