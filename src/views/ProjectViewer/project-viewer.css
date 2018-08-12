@@ -66,7 +66,7 @@
 
 .project-content {
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 3em;
 
 
@@ -110,7 +110,6 @@
 
   
   @media (max-width: 992px) {
-    grid-template-columns: 1fr 1fr;
     grid-gap: 1.5em;
   }
 
