@@ -7,6 +7,7 @@
   transform: translateY(0);
   transition: transform 200ms, box-shadow 200ms;
   will-change: transform, box-shadow;
+  cursor: pointer;
   &:hover {
     box-shadow: 0 16px 32px 0 rgba(62,57,107,0.28), 0 0 0 transparent;
     transform: translateY(-5px);
