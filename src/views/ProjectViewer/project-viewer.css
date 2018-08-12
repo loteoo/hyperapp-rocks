@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   opacity: 1;
-  transition: opacity 300ms ease-out-quart;
+  transition: opacity 200ms ease-out-quart;
 
   >.box {
     position: relative;
@@ -23,7 +23,7 @@
     border-radius: 0.33em;
     overflow: hidden;
     transform: translateY(0);
-    transition: transform 300ms ease-out-quart;
+    transition: transform 200ms ease-out-quart;
     &::before {
       content: '';
       position: absolute;
@@ -60,6 +60,10 @@
   grid-gap: 3em;
   >.img {
     grid-column: 1;
+    background-color: var(--background-color);
+    padding-top: 66.66%;
+    background-position: center;
+    background-size: cover;
   }
   >.info {
     grid-column: 2;

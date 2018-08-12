@@ -52,9 +52,7 @@ export const ProjectViewer = ({
 
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id} oncreate={ev => ga('send', 'event', 'Project', 'view', title)}>
-    <div class="img">
-      <img src={thumbnail ? strapiUrl(thumbnail.url) : ''} alt={title}/>
-    </div>
+    <div class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></div>
     <div class="info">
       <h2>{title}</h2>
       <p>Website: <a href={link} onclick={trackOutBoundLink} target="_blank">{link}</a></p>
