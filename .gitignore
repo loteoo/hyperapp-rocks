@@ -122,4 +122,7 @@ dist
 
 
 
-public
+public/*
+!public/uploads
+public/uploads/*
+!public/uploads/trackme.txt
