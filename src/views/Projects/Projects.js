@@ -12,7 +12,7 @@ export const Projects = ({projects}) => (state, actions) => (
     {
       projects
         ? <Listing projects={projects} />
-        : <Spinner />
+        : <Spinner large />
     }
   </div>
 )
@@ -29,8 +29,8 @@ const Listing = ({projects}) => (state, actions) => (
     <div class="grid" key="grid">
       {
         projects.length !== 0
-        ? projects.map(project => <Project {...project} />)
-        : <div class="empty"><h2>0 results</h2></div>
+          ? projects.map(project => <Project {...project} />)
+          : <div class="empty"><h2>0 results</h2></div>
       }
     </div>
     {

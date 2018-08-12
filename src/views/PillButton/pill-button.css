@@ -11,7 +11,7 @@
   border-radius: 4em;
   padding: 0.5em 1.5em;
   transform: scale(1);
-  transition: box-shadow 150ms ease-out-cubic, transform 150ms ease-out-cubic;
+  transition: box-shadow 150ms ease-out-quart, transform 150ms ease-out-quart;
   &:hover {
     transform: translateY(-0.1em) scale(1.04);
     box-shadow: 0 0.3em 1.15em 0 rgba(19, 38, 97, 0.4);

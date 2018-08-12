@@ -8,7 +8,8 @@
   background: #f8faff;
   padding: 0 3em;
   margin: 0 0 6em 0;
-  
+  cursor: pointer;
+
   &::before {
     content: '';
     display: block;
@@ -47,10 +48,6 @@
         grid-column: 1/-1;
       }
     }
-  }
-  >.spinner {
-    font-size: 3rem;
-    color: #8050E8;
   }
   @media (max-width: 480px) {
     padding: 1.5em;

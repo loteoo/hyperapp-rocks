@@ -20,7 +20,7 @@ export const strapiUrl = (path, strapiOrigin = `${location.protocol}//${location
 export const getData = (url) => {
   return fetch(strapiUrl(url))
     .then(response => response.json())
-    .catch(error => console.error(`Fetch error:\n`, error));
+    .catch(error => console.error(`Fetch error:\n`, error))
 }
 
 
@@ -33,7 +33,7 @@ export const postData = (url, data) => {
     body: JSON.stringify(data)
   })
     .then(response => response.json())
-    .catch(error => console.error(`Fetch error:\n`, error));
+    .catch(error => console.error(`Fetch error:\n`, error))
 }
 
 
@@ -51,5 +51,19 @@ export const postImage = (url, data) => {
     body: formData
   })
     .then(response => response.json())
-    .catch(error => console.error(`Fetch error:\n`, error));
+    .catch(error => console.error(`Fetch error:\n`, error))
 }
+
+
+
+
+export const trackOutBoundLink = ev => {
+  ga('send', 'event', {
+    eventCategory: 'Outbound Link',
+    eventAction: 'click',
+    eventLabel: ev.target.href,
+    transport: 'beacon'
+  })
+}
+
+

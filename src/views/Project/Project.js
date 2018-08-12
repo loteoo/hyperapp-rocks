@@ -4,8 +4,8 @@ import {strapiUrl} from '../../utils/'
 
 import './project.css'
 
-export const Project = ({_id, title, link, description, thumbnail}) => (
-  <div class="project" key={_id}>
+export const Project = ({_id, title, link, description, thumbnail}) => (state, actions) => (
+  <div class="project" key={_id}  onclick={ev => actions.location.go('/' + _id)}>
     <div class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></div>
     <div class="info">
       <h4>{title}</h4>
