@@ -60,7 +60,7 @@ export const actions = {
           actions.setProjects(projects)
         })
     } else {
-      actions.setProjects(false)
+      actions.setProjects(null)
       actions.loadProjects();
     }
 
