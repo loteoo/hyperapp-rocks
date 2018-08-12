@@ -30,7 +30,7 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
         </form>
         : 
         <div class="thanks">
-          <h2>Thank you for your submittion!</h2>
+          <h2>Thank you for your submission!</h2>
         </div>
     }
   </div>
