@@ -11,6 +11,8 @@
   opacity: 1;
   transition: opacity 200ms ease-out-quart;
 
+  
+
   >.box {
     position: relative;
     width: 100%;
@@ -42,6 +44,9 @@
       max-height: calc(100vh - 6rem);
       overflow-y: auto;
       width: 100%;
+      @media (max-width: 640px) {
+        padding: 3rem 1.5rem;
+      }
     }
   }
 
@@ -50,6 +55,10 @@
     >.box {
       transform: translateY(3em);
     }
+  }
+
+  @media (max-width: 640px) {
+    padding: 3rem 1.5rem;
   }
 }
 
@@ -113,4 +122,5 @@
       grid-column: 1/-1;
     }
   }
+  
 }
