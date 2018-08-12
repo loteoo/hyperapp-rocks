@@ -41,6 +41,7 @@
       padding: 3rem;
       max-height: calc(100vh - 6rem);
       overflow-y: auto;
+      width: 100%;
     }
   }
 
