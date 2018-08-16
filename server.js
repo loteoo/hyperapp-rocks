@@ -46,6 +46,8 @@ app.listen(6868);
 
 // AND STRAPI ON :1337 (disable strapi static files server)
 
+// (should work without JS (no interaction but ok visuals))
+
 
 
 // Front:
