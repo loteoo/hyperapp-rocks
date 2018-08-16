@@ -48,5 +48,15 @@ app.listen(6868);
 
 
 
+// Front:
+// preview hover links (svg icons)
+// conditionnal infos in popup
+// Requirements list for submission
+// max img size & img resolution?
+// next / prev arrows in popup
+// better animations (cubic beziers anims, xbox style)
+
+
+
 strapi.start();
 
