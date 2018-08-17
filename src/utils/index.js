@@ -41,7 +41,6 @@ export const postImage = (url, data) => {
 
   let formData  = new FormData();
 
-
   for(let name in data) {
     formData.append(name, data[name]);
   }
@@ -52,18 +51,6 @@ export const postImage = (url, data) => {
   })
     .then(response => response.json())
     .catch(error => console.error(`Fetch error:\n`, error))
-}
-
-
-
-
-export const trackOutBoundLink = ev => {
-  ga('send', 'event', {
-    eventCategory: 'Outbound Link',
-    eventAction: 'click',
-    eventLabel: ev.target.href,
-    transport: 'beacon'
-  })
 }
 
 

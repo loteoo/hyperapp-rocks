@@ -40,7 +40,6 @@ app.listen(6868);
 
 
 // TODO:
-// GOOGLE ANALYTICS PROXY ON :80/analytics
 // SETUP NGINX STATIC SERVER ON :80 /public
 // SSR CATCH ALL ROUTE ON :80/*
 

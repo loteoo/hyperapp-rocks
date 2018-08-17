@@ -49,8 +49,6 @@ export const actions = {
   handleSearchForm: ev => (state, actions) => {
     ev.preventDefault()
     actions.scrollToProjects()
-
-    ga('send', 'event', 'Project', 'search', state.search)
     
     actions.setCurrentSearch(state.search)
 
@@ -95,7 +93,6 @@ export const actions = {
             //   ...project,
             //   thumbnail: files[0]
             // }])
-            ga('send', 'event', 'Project', 'submit', project.title)
           })
       )
       
