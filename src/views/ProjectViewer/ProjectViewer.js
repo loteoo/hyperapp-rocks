@@ -1,8 +1,6 @@
 import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
-import {strapiUrl} from '../../utils/'
-
 import {Spinner} from '../Spinner/Spinner.js'
 import {Github} from '../Icons/Github.js'
 
@@ -53,7 +51,7 @@ export const ProjectViewer = ({
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
     <a href={link} target="_blank" class="img">
-      {thumbnail ? <img src={strapiUrl(thumbnail.url)} alt={title}/> : null}
+      {thumbnail ? <img src={`http://hyperapp.rocks${thumbnail.url}`} alt={title}/> : null}
     </a>
     <div class="info">
       <h2>{title}</h2>
