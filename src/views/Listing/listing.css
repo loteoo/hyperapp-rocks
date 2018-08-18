@@ -27,10 +27,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    z-index: 2;
+    padding: 3em 0;
     >.grid {
       width: 100%;
       max-width: 1280px;
-      margin: 6em auto;
+      margin: 3em auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 3em;
@@ -45,7 +47,7 @@
         grid-gap: 1.5em;
       }
       >.empty {
-        margin: 6em auto;
+        margin: 3em auto;
         text-align: center;
         grid-column: 1/-1;
       }
