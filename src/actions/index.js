@@ -99,11 +99,12 @@ export const actions = {
   },
 
 
-  scrollToProjects: ev => document.querySelector('.projects').scrollIntoView({behavior: 'smooth', block: 'start'}),
+
+  scrollToProjects: ev => document.querySelector('.listing').scrollIntoView({behavior: 'smooth', block: 'start'}),
+
 
 
   scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'}),
-
 
 
 
@@ -113,6 +114,8 @@ export const actions = {
       [id]: project
     }
   }),
+
+
 
   fetchProject: id => (state, actions) => {
     getData(`/project/${id}`)

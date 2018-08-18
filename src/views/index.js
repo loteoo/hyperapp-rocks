@@ -6,7 +6,7 @@ import './global.css'
 import {h} from 'hyperapp'
 import {Route} from "@hyperapp/router"
 import {Header} from './Header/Header.js'
-import {Projects} from './Projects/Projects.js'
+import {Listing} from './Listing/Listing.js'
 import {ProjectForm} from './ProjectForm/ProjectForm.js'
 import {ProjectViewer} from './ProjectViewer/ProjectViewer.js'
 import {Footer} from './Footer/Footer.js'
@@ -18,7 +18,7 @@ export const view = (state, actions) => {
   return (
     <div>
       <Header />
-      <Projects projects={state.projects} />
+      <Listing projects={state.projects} />
       <ProjectForm {...state.projectForm} />
       <Route path="/:id" render={ProjectViewer}/>
       <Footer />
