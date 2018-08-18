@@ -25,5 +25,14 @@
       transform: translateY(-0.15em) scale(1.02);
     }
   }
+  >button {
+    position: absolute 0 0 0 auto;
+    appearance: none;
+    background: none;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    width: 3rem;
+  }
 }
  

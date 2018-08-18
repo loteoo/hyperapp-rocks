@@ -2,6 +2,7 @@ import {h} from 'hyperapp'
 
 import './search.css'
 
+import {SearchIcon} from '../Icons/SearchIcon.js'
 
 export const Search = ({}) => (state, actions) => (
   <form class="search" onsubmit={actions.handleSearchForm} method="post">
@@ -13,5 +14,6 @@ export const Search = ({}) => (state, actions) => (
       value={state.search}
       oninput={ev => actions.setSearch(ev.target.value)}
     />
+    <button type="submit"></button>
   </form>
 )

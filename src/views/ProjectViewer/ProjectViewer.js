@@ -52,7 +52,9 @@ export const ProjectViewer = ({
 
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
-    <a href={link} target="_blank" class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></a>
+    <a href={link} target="_blank" class="img">
+      {thumbnail ? <img src={strapiUrl(thumbnail.url)} alt={title}/> : null}
+    </a>
     <div class="info">
       <h2>{title}</h2>
       <p>Website: <a href={link} target="_blank">{link}</a></p>
