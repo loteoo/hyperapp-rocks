@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Use `server.js` to run your application without `$ strapi start`.
  * To start the server, run: `$ npm start`.

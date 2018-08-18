@@ -11,7 +11,7 @@ export const generateUUID = () =>
 
 
 // Makes sur the URL is the STRAPI one (correct host & port)
-export const strapiUrl = (path, strapiOrigin = 'http://hyperapp.rocks') => 
+export const strapiUrl = (path, strapiOrigin = 'http://hyperapp.rocks:1337') => 
   path.startsWith(strapiOrigin)
     ? path
     : strapiOrigin + path
