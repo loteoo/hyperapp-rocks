@@ -44,6 +44,7 @@
         grid-gap: 1.5em;
       }
       >.empty {
+        margin: 6em auto;
         text-align: center;
         grid-column: 1/-1;
       }
