@@ -1,39 +1,44 @@
-'use strict';
+const Koa = require('koa')
+import {h, app} from 'hyperapp'
+import {withRender} from '@hyperapp/render'
+// import {view} from './src/views/Header/Header.js'
 
-/**
- * Use `server.js` to run your application without `$ strapi start`.
- * To start the server, run: `$ npm start`.
- *
- * This is handy in situations where the Strapi CLI is not relevant or useful.
- */
 
-process.chdir(__dirname);
+const server = new Koa();
 
-const express = require("express");
-const proxy = require("express-http-proxy");
-const strapi = require('strapi');
-let app = express();
+server.use(async ctx => {
+  ctx.body = 'Hello World';
+});
+
+server.listen(80);
 
 
 
 
-// ========================
-// Google analytics proxy
-// ========================
+// const strapi = require('strapi');
+// const ua = require('universal-analytics');
 
-function getIpFromReq (req) { // get the client's IP address
-    var bareIP = ":" + ((req.connection.socket && req.connection.socket.remoteAddress)
-        || req.headers["x-forwarded-for"] || req.connection.remoteAddress || "");
-    return (bareIP.match(/:([^:]+)$/) || [])[1] || "127.0.0.1";
-}
 
-app.use("/", proxy("www.google-analytics.com", {
-  proxyReqPathResolver: function (req) {
-      return req.url + (req.url.indexOf("?") === -1 ? "?" : "&")
-          + "uip=" + encodeURIComponent(getIpFromReq(req));
-  }
-}));
-app.listen(6868);
+
+
+// let server = express();
+
+// server.use('/', express.static('public'))
+
+// server.get('/', (req, res) => {
+
+//   // let visitor = ua('UA-73430538-4')
+//   // visitor.pageview("/").send()
+
+//   res.send('hello world')
+
+// })
+
+// server.listen(80)
+
+
+
+console.log('SSR on :80');
 
 
 
@@ -56,8 +61,4 @@ app.listen(6868);
 // max img size & img resolution?
 // next / prev arrows in popup
 // better animations (cubic beziers anims, xbox style)
-
-
-
-strapi.start();
 

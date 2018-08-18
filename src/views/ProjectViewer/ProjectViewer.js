@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
-import {Link, Route, location} from "@hyperapp/router"
+import {Link} from "@hyperapp/router"
 
-import {strapiUrl, trackOutBoundLink, trackProjectView} from '../../utils/'
+import {strapiUrl} from '../../utils/'
 
 import {Spinner} from '../Spinner/Spinner.js'
 import {Github} from '../Icons/Github.js'
@@ -52,12 +52,12 @@ export const ProjectViewer = ({
 
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
-    <a href={link} onclick={trackOutBoundLink} target="_blank" class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></a>
+    <a href={link} target="_blank" class="img" style={thumbnail ? {backgroundImage: `url(${strapiUrl(thumbnail.url)})`} : null}></a>
     <div class="info">
       <h2>{title}</h2>
-      <p>Website: <a href={link} onclick={trackOutBoundLink} target="_blank">{link}</a></p>
+      <p>Website: <a href={link} target="_blank">{link}</a></p>
       <p>Author: <b>{author}</b></p>
-      <p><a href={github} onclick={trackOutBoundLink} target="_blank"><Github />Github</a></p>
+      <p><a href={github} target="_blank"><Github />Github</a></p>
     </div>
     <div class="description">
       {description}

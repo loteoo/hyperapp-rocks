@@ -1,5 +1,5 @@
 import {location} from '@hyperapp/router'
-import {replace, strapi, getData, postData, postImage} from '../utils/'
+import {getData, postData, postImage} from '../utils/'
 
 // Global actions for the app
 export const actions = {
