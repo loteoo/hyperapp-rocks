@@ -5,6 +5,27 @@ nested selectors and rucksack shortcuts */
     Global
 \*------------------------------------*/
 
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito Light'), local('Nunito-Light'), url(../fonts/Nunito/Nunito-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito Regular'), local('Nunito-Regular'), url(../fonts/Nunito/Nunito-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito Bold'), local('Nunito-Bold'), url(../fonts/Nunito/Nunito-Bold.ttf) format('truetype');
+}
+
 :root {
 	--text-color: #8994c6;
 	--dark-text-color: #3e396b;

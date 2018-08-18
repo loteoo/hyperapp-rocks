@@ -19,6 +19,9 @@
     transform: skewY(-6deg) scaleX(1.2);
     box-shadow: 0 -16px 32px -12px rgba(62,57,107,0.33);
   }
+  >.spinner {
+    margin: 6em auto;
+  }
   >.results {
     display: flex;
     flex-direction: column;

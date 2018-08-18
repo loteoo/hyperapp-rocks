@@ -7,14 +7,9 @@ header {
   justify-content: center;
   padding: 9em 3em 12em 3em;
   background-color: white;
-
-  // background: linear-gradient(73deg, #3369E7, #00AEFF);
-
   background-position: center;
   background-size: cover;
-  // background-image: url('bg3.svg');
-  background-image: url('bg4.svg');
-  
+  background-image: url('bg4.svg'), linear-gradient(73deg, #3369E7, #00AEFF);
   >h1 {
     font-size: 2.4em;
     color: white;
