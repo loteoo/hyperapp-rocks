@@ -2,8 +2,6 @@ import {h} from 'hyperapp'
 
 import './search.css'
 
-import {SearchIcon} from '../Icons/SearchIcon.js'
-
 export const Search = ({}) => (state, actions) => (
   <form class="search" onsubmit={actions.handleSearchForm} method="post">
     <input 

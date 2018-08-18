@@ -33,12 +33,12 @@
       <stop stop-color="#913FE6" offset="100%"/>
     </linearGradient>
     <linearGradient id="h" x1="0%" y1="50%" y2="50%">
-      <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"/>
-      <stop stop-color="#FFFFFF" offset="100%"/>
+      <stop stop-color="transparent" stop-opacity="0" offset="0%"/>
+      <stop stop-color="transparent" offset="100%"/>
     </linearGradient>
     <linearGradient id="i" x1="14.764%" x2="94.5%" y1="50%" y2="50%">
-      <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"/>
-      <stop stop-color="#FFFFFF" offset="100%"/>
+      <stop stop-color="transparent" stop-opacity="0" offset="0%"/>
+      <stop stop-color="transparent" offset="100%"/>
     </linearGradient>
     <linearGradient id="j" x1="100%" x2="0%" y1="51.511%" y2="50%">
       <stop stop-color="#00AEFF" offset="0%"/>

@@ -8,7 +8,12 @@ header {
   padding: 9em 3em 12em 3em;
   background-color: white;
 
-  background-image: linear-gradient(73deg, #3369E7, #00AEFF);
+  // background: linear-gradient(73deg, #3369E7, #00AEFF);
+
+  background-position: center;
+  background-size: cover;
+  // background-image: url('bg3.svg');
+  background-image: url('bg4.svg');
   
   >h1 {
     font-size: 2.4em;
