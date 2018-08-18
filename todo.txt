@@ -1,5 +1,5 @@
-preview hover links (svg icons)
-conditionnal infos in popup
+
+
 Requirements list for submission
 max img size & img resolution?
 next / prev arrows in popup

@@ -56,8 +56,8 @@ const Project = ({_id, title, author, github, link, description, thumbnail}) => 
     <div class="info">
       <h2>{title}</h2>
       <p>Website: <a href={link} target="_blank">{link}</a></p>
-      <p>Author: <b>{author}</b></p>
-      <p><a href={github} target="_blank"><Github />Github</a></p>
+      {author ? <p>Author: <b>{author}</b></p> : null}
+      {github ? <p><a href={github} target="_blank"><Github />Github</a></p> : null}
     </div>
     <div class="description">
       {description}
