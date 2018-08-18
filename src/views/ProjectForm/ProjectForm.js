@@ -25,11 +25,11 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
     
     
           <div class="actions">
-            <PillButton type="button" white>View requirements</PillButton>
+            <PillButton type="button">View requirements</PillButton>
             <PillButton type="submit" long green>Submit</PillButton>
           </div>
         </form>
-        : 
+        :
         <div class="thanks">
           <h2>Thank you for your submission!</h2>
         </div>

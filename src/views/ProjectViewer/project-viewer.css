@@ -44,6 +44,10 @@
       max-height: calc(100vh - 6rem);
       overflow-y: auto;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       @media (max-width: 640px) {
         padding: 3rem 1.5rem;
       }

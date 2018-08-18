@@ -3,10 +3,7 @@
   margin: 3rem;
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 320px;
   >input {
-    width: 100%;
     background-color: white;
     border: none;
     background-image: url(search.svg);
