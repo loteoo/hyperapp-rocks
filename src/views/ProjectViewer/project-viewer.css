@@ -72,6 +72,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 3em;
+  width: 100%;
   >.img {
     grid-column: 1;
     background-color: var(--background-color);
