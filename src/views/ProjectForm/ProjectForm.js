@@ -25,7 +25,6 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
     
     
           <div class="actions">
-            <PillButton type="button">View requirements</PillButton>
             <PillButton type="submit" long green>Submit</PillButton>
           </div>
         </form>
