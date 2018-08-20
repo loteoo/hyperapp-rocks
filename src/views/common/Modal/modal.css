@@ -38,6 +38,7 @@
     }
     >.close {
       position: absolute 1em 1em auto auto;
+      cursor: pointer;
     }
     >.inner {
       padding: 3rem;
