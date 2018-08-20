@@ -10,6 +10,8 @@ import {Github} from '../icons/Github.js'
 import './project-viewer.css'
 
 
+// Loads projects specified in the URL
+// and displays them in a popup modal
 export const ProjectViewer = ({
   match,
   id = match.params.id
@@ -20,9 +22,11 @@ export const ProjectViewer = ({
 ) => {
 
   if (!project) {
+    // If the project doesn't exist in the state,
+    // trigger a fetch to load it
     actions.fetchProject(id)
   }
-  
+
 
   return (
     <Modal close={() => actions.location.go('/')}>
@@ -39,6 +43,10 @@ export const ProjectViewer = ({
   )
 }
 
+
+
+
+// Project full display
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
     <a href={link} target="_blank" class="img">
@@ -57,6 +65,7 @@ const Project = ({_id, title, author, github, link, description, thumbnail}) => 
 )
 
 
+// 404 message when project not found
 const FourOhFour = () => (
   <div class="four-of-four">
     <h2>404.</h2>
