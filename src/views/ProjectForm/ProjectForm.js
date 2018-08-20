@@ -24,7 +24,7 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
           <ImageInput label="Image" name="thumbnail" setter={actions.setProjectForm} required />
     
           <div class="actions">
-            <PillButton white>View requirements</PillButton>
+            <PillButton to="/requirements" white>View requirements</PillButton>
             <PillButton type="submit" long green>Submit</PillButton>
           </div>
         </form>

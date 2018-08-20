@@ -4,7 +4,7 @@ import './global.css'
 
 // Import dependencies
 import {h} from 'hyperapp'
-import {Route} from "@hyperapp/router"
+import {Route, Switch} from "@hyperapp/router"
 import {Header} from './Header/Header.js'
 import {Listing} from './Listing/Listing.js'
 import {ProjectForm} from './ProjectForm/ProjectForm.js'
@@ -21,8 +21,10 @@ export const view = (state, actions) => {
       <Header />
       <Listing projects={state.projects} />
       <ProjectForm {...state.projectForm} />
-      <Route path="/requirements" render={Requirements}/>
-      <Route path="/:id" render={ProjectViewer}/>
+      <Switch>
+        <Route path="/requirements" render={Requirements}/>
+        <Route path="/:id" render={ProjectViewer}/>
+      </Switch>
       <Footer />
     </div>
   )

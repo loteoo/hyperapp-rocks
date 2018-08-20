@@ -1,20 +1,14 @@
 import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
+
+import {Modal} from '../common/Modal/Modal.js'
+
 import {Spinner} from '../common/Spinner/Spinner.js'
 import {Github} from '../icons/Github.js'
 
 import './project-viewer.css'
 
-const slideIn = el => {
-  void el.clientHeight
-  el.classList.remove('closed')
-}
-
-const slideOut = (el, done) => {
-  el.classList.add('closed')
-  setTimeout(done, 300)
-}
 
 export const ProjectViewer = ({
   match,
@@ -31,20 +25,17 @@ export const ProjectViewer = ({
   
 
   return (
-    <div class="project-viewer closed" onclick={ev => actions.location.go('/')} oncreate={slideIn} onremove={slideOut}>
-      <div class="box" onclick={ev => ev.stopPropagation()}>
-        <Close />
-        <div class="box-content">
-          {
-            project
-              ? project._id
-                ? <Project {...project} />
-                : <FourOhFour />
-              : <Spinner large />
-          }
-        </div>
+    <Modal close={() => actions.location.go('/')}>
+      <div class="project-viewer">
+        {
+          project
+            ? project._id
+              ? <Project {...project} />
+              : <FourOhFour />
+            : <Spinner large />
+        }
       </div>
-    </div>
+    </Modal>
   )
 }
 
