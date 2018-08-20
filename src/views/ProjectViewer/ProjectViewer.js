@@ -42,7 +42,7 @@ export const ProjectViewer = ({
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
     <a href={link} target="_blank" class="img">
-      {thumbnail ? <img src={`http://hyperapp.rocks${thumbnail.url}`} alt={title}/> : null}
+      {thumbnail ? <img src={`https://hyperapp.rocks${thumbnail.url}`} alt={title}/> : null}
     </a>
     <div class="info">
       <h2>{title}</h2>
