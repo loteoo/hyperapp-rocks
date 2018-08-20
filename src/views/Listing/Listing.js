@@ -8,13 +8,13 @@ import {PillButton} from '../common/PillButton/PillButton.js'
 
 
 export const Listing = ({projects}) => (state, actions) => (
-  <div class="listing" key="listing">
+  <main class="listing" key="listing">
     {
       projects
         ? <Results projects={projects} />
         : <Spinner large />
     }
-  </div>
+  </main>
 )
 
 

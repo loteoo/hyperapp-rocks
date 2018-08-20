@@ -15,7 +15,7 @@ import {Footer} from './Footer/Footer.js'
 
 // Root view
 export const view = (state, actions) => (
-  <main>
+  <div>
     <Header />
     <Listing projects={state.projects} />
     <ProjectForm {...state.projectForm} />
@@ -24,7 +24,7 @@ export const view = (state, actions) => (
       <Route path="/:id" render={ProjectViewer}/>
     </Switch>
     <Footer />
-  </main>
+  </div>
 )
 
 
