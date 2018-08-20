@@ -3,14 +3,14 @@
 export const replace = (destination, source) => source
 
 export const getData = (url) => {
-  return fetch(`http://hyperapp.rocks:1337${url}`)
+  return fetch(`http://hyperapp.rocks/api${url}`)
     .then(response => response.json())
     .catch(error => console.error(`Fetch error:\n`, error))
 }
 
 
 export const postData = (url, data) => {
-  return fetch(`http://hyperapp.rocks:1337${url}`, {
+  return fetch(`http://hyperapp.rocks/api${url}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
@@ -30,7 +30,7 @@ export const postImage = (url, data) => {
     formData.append(name, data[name]);
   }
 
-  return fetch(`http://hyperapp.rocks:1337${url}`, {
+  return fetch(`http://hyperapp.rocks/api${url}`, {
     method: 'POST',
     body: formData
   })
