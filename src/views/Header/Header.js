@@ -2,7 +2,7 @@ import {h} from 'hyperapp'
 
 import './header.css'
 import {Search} from '../Search/Search.js'
-import {PillButton} from '../PillButton/PillButton.js'
+import {PillButton} from '../common/PillButton/PillButton.js'
 
 
 export const Header = () => (state, actions) => (

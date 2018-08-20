@@ -2,9 +2,9 @@ import {h} from 'hyperapp'
 
 import './project-form.css'
 
-import {NiceInput} from '../NiceInput/NiceInput.js'
-import {ImageInput} from '../ImageInput/ImageInput.js'
-import {PillButton} from '../PillButton/PillButton.js'
+import {NiceInput} from '../common/NiceInput/NiceInput.js'
+import {ImageInput} from '../common/ImageInput/ImageInput.js'
+import {PillButton} from '../common/PillButton/PillButton.js'
 
 
 export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted}) => (state, actions) => (

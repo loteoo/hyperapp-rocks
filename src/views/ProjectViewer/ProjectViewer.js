@@ -1,8 +1,8 @@
 import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
-import {Spinner} from '../Spinner/Spinner.js'
-import {Github} from '../Icons/Github.js'
+import {Spinner} from '../common/Spinner/Spinner.js'
+import {Github} from '../icons/Github.js'
 
 import './project-viewer.css'
 

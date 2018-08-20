@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
 
-import {Github} from '../Icons/Github.js'
-import {LinkIcon} from '../Icons/LinkIcon.js'
+import {Github} from '../icons/Github.js'
+import {LinkIcon} from '../icons/LinkIcon.js'
 
 import './project.css'
 

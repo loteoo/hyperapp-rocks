@@ -6,5 +6,5 @@ export const Spinner = (props, children) => (
   <div class="spinner" key="spinner" {...props}></div>
 )
 
-// import {Spinner} from './Spinner/Spinner.js'
+// import {Spinner} from './common/Spinner/Spinner.js'
 // <Spinner />

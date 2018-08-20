@@ -17,5 +17,5 @@ export const NiceInput = (props, children, {label = label || 'Label', name = nam
   </div>
 )
 
-// import {NiceInput} from './NiceInput/NiceInput.js'
+// import {NiceInput} from './common/NiceInput/NiceInput.js'
 // <NiceInput label="First name" name="firstName" value={firstName} setter={set} />

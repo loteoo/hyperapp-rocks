@@ -1,8 +1,5 @@
 footer {
   background: linear-gradient(315deg,#10192a 0,#161d29 100%);
-  background-image: 
-    url('funky-lines.png'),
-    linear-gradient(315deg,#10192a 0,#161d29 100%);
   background-position: center;
   background-size: contain;
   text-align: center;

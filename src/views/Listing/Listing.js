@@ -3,8 +3,8 @@ import {h} from 'hyperapp'
 import './listing.css'
 
 import {Project} from '../Project/Project.js'
-import {Spinner} from '../Spinner/Spinner.js'
-import {PillButton} from '../PillButton/PillButton.js'
+import {Spinner} from '../common/Spinner/Spinner.js'
+import {PillButton} from '../common/PillButton/PillButton.js'
 
 
 export const Listing = ({projects}) => (state, actions) => (
