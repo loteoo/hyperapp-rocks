@@ -34,18 +34,15 @@
       <header>
         <h1>Hyperapp real-world examples</h1>
         <h2>A curated list of live hyperapp projects</h2>
-        <form class="search" method="post">
-          <input id="search" type="text" name="search" placeholder="Search projects...">
-          <button type="submit"></button>
-        </form>
+        <form class="search" method="post"><input id="search" type="text" name="search" placeholder="Search projects..."><button type="submit"></button></form>
         <div class="actions">
-          <button class="pill-button" big="true">See projects</button>
-          <button class="pill-button" big="true" green="true">Share a project</button>
+          <button class="pill-button" type="button" big="true">See projects</button>
+          <button class="pill-button" type="button" big="true" green="true">Share a project</button>
         </div>
       </header>
-      <div class="listing">
-
-      </div>
+      <main class="listing">
+        <div class="spinner" key="spinner"></div>
+      </main>
       <div class="project-form">
         <form method="post">
           <h2>Submit your project!</h2>
@@ -70,8 +67,7 @@
             <div class="border"></div>
           </div>
           <div class="nice-input github">
-            <input type="text" name="github" id="github" placeholder="Sharing is caring :)" pattern="^https://github.com/(.*)"
-              label="Github">
+            <input type="text" name="github" id="github" placeholder="Sharing is caring :)" pattern="^https://github.com/(.*)" label="Github">
             <label for="github">Github</label>
             <div class="border"></div>
           </div>
@@ -82,15 +78,14 @@
             <div class="border"></div>
           </div>
           <div class="actions">
-            <button class="pill-button" type="button" white="true">View requirements</button>
+            <a class="pill-button" white="true" href="/requirements">View requirements</a>
             <button class="pill-button" type="submit" long="true" green="true">Submit</button>
           </div>
         </form>
       </div>
       <footer>
         <p>Made by Alexandre Lotte</p>
-        <p>Built with
-          <a href="https://hyperapp.js.org/" target="_blank">Hyperapp</a>.</p>
+        <p>Built with <a href="https://hyperapp.js.org/" target="_blank">Hyperapp</a>.</p>
         <p>All screenshots © of their respective owners.</p>
       </footer>
     </div>
