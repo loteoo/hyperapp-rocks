@@ -2,3 +2,4 @@
 max img size & img resolution?
 next / prev arrows in popup
 better animations (cubic beziers anims, xbox style)
+https
