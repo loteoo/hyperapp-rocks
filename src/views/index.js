@@ -8,6 +8,7 @@ import {Route} from "@hyperapp/router"
 import {Header} from './Header/Header.js'
 import {Listing} from './Listing/Listing.js'
 import {ProjectForm} from './ProjectForm/ProjectForm.js'
+import {Requirements} from './Requirements/Requirements.js'
 import {ProjectViewer} from './ProjectViewer/ProjectViewer.js'
 import {Footer} from './Footer/Footer.js'
 
@@ -20,6 +21,7 @@ export const view = (state, actions) => {
       <Header />
       <Listing projects={state.projects} />
       <ProjectForm {...state.projectForm} />
+      <Route path="/requirements" render={Requirements}/>
       <Route path="/:id" render={ProjectViewer}/>
       <Footer />
     </div>

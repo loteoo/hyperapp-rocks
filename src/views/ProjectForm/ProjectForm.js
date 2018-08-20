@@ -23,8 +23,8 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
           <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={github} placeholder="Sharing is caring :)" setter={actions.setProjectForm} />
           <ImageInput label="Image" name="thumbnail" setter={actions.setProjectForm} required />
     
-    
           <div class="actions">
+            <PillButton white>View requirements</PillButton>
             <PillButton type="submit" long green>Submit</PillButton>
           </div>
         </form>
