@@ -38,6 +38,9 @@
         padding: 0.5rem;
         border-radius: 0.15em;
         transition: color 200ms, background-color 200ms;
+        @media (hover: none) {
+          pointer-events: none;
+        }
         &:not(:last-child) {
           margin-right: 0.25rem;
         }
