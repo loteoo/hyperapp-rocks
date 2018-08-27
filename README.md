@@ -1,26 +1,6 @@
-# hyperapp-examples
-> Personal Hyperapp PWA boilerplate
+# Hyperapp real-world examples
+> A curated list of live Hyperapp projects
 
-```
-npm install   // Install dependencies
-npm start     // Serve
-```
+Built with Hyperapp, strapi, babel stage-3, PostCSS + rucksackcss
 
-In a nutshell:
-
-Parcel bundler
-
-
-PostCSS => nested, cssnext, autoprefixer, rucksack
-
-
-
-```
-npm run build   // Build for prod
-```
-
-
-Generate components like this:
-```
-.\node_modules\.bin\hygen component new --name 'my component'
-```
+[Boilerplate](https://github.com/loteoo/hyperapp-boilerplate)
