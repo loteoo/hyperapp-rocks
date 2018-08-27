@@ -40,8 +40,3 @@ const Results = ({projects}) => (state, actions) => (
     }
   </div>
 )
-
-
-
-// import {Projects} from './Projects/Projects.js'
-// <Projects />

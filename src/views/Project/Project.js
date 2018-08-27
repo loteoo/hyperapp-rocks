@@ -20,6 +20,3 @@ export const Project = ({_id, title, author, github, link, description, thumbnai
     </div>
   </div>
 )
-
-// import {Project} from './Project/Project.js'
-// <Project />

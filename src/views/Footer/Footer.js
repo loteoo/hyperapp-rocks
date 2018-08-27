@@ -9,6 +9,3 @@ export const Footer = () => (
     <p>All screenshots © of their respective owners.</p>
   </footer>
 )
-
-// import {Footer} from './Footer/Footer.js'
-// <Footer />

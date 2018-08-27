@@ -8,7 +8,6 @@ import {Github} from '../icons/Github.js'
 
 export const Header = () => (state, actions) => (
   <header>
-    
     <nav>
       <a href="https://github.com/loteoo/hyperapp-examples" target="_blank" title="Source code"><Github /></a>
     </nav>
@@ -22,9 +21,5 @@ export const Header = () => (state, actions) => (
       <PillButton big onclick={actions.scrollToProjects}>See projects</PillButton>
       <PillButton big green onclick={actions.scrollToForm}>Share a project</PillButton>
     </div>
-
   </header>
 )
-
-// import {Header} from './Header/Header.js'
-// <Header />

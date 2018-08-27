@@ -23,6 +23,3 @@ export const Requirements = ({match}) => (state, actions) => (
     </div>
   </Modal>
 )
-
-// import {Requirements} from './Requirements/Requirements.js'
-// <Requirements />

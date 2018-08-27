@@ -11,6 +11,3 @@ export const ImageInput = (props, children, {label = label || 'Label', name = na
     <div class="border"></div>
   </div>
 )
-
-// import {ImageInput} from './common/ImageInput/ImageInput.js'
-// <ImageInput label="First name" name="firstName" value={firstName} setter={set} />

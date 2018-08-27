@@ -1,15 +1,14 @@
 import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
-
 import {Modal} from '../common/Modal/Modal.js'
-
 import {Spinner} from '../common/Spinner/Spinner.js'
 import {Github} from '../icons/Github.js'
 
 import './project-viewer.css'
 
 
+// Main exported component:
 // Loads projects specified in the URL
 // and displays them in a popup modal
 export const ProjectViewer = ({
@@ -46,7 +45,7 @@ export const ProjectViewer = ({
 
 
 
-// Project full display
+// Project large display
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
     <a href={link} target="_blank" class="img">

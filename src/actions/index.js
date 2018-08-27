@@ -3,6 +3,7 @@ import {getData, postData, postImage} from '../utils/'
 
 // Global actions for the app
 export const actions = {
+
   // Router actions
   location: location.actions,
 
@@ -102,5 +103,5 @@ export const actions = {
   
   // Scroll to target via DOM
   scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'})
-  
+
 }

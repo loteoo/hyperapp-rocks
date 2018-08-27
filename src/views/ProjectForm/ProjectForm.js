@@ -35,6 +35,3 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
     }
   </div>
 )
-
-// import {ProjectForm} from './ProjectForm/ProjectForm.js'
-// <ProjectForm {...state.projectForm} />
