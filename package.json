@@ -42,6 +42,7 @@
     "hygen": "^1.6.2",
     "hyperapp": "^1.2.5",
     "parcel-bundler": "^1.9.7",
+    "parcel-plugin-sw-precache": "^1.0.1",
     "postcss-modules": "^1.1.0",
     "postcss-nested": "^3.0.0",
     "rucksack-css": "^1.0.2",
