@@ -46,9 +46,6 @@
       overflow-y: auto;
       width: 100%;
       justify-content: center;
-      @media (max-width: 640px) {
-        padding: 3rem 1.5rem;
-      }
     }
   }
 
@@ -59,7 +56,13 @@
     }
   }
 
-  @media (max-width: 640px) {
-    padding: 3rem 1.5rem;
+  @media (max-width: 1280px) {
+    padding: 1.5rem;
+    >.box {
+      >.inner {
+        max-height: calc(100vh - 3rem);
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+      }
+    }
   }
 }

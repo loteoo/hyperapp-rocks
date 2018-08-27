@@ -5,7 +5,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 9em 3em 12em 3em;
+  padding: 9rem 3rem 12rem 3rem;
   background-color: white;
   background-position: center;
   background-size: cover;
@@ -31,10 +31,13 @@ header {
       }
     }
   }
+  @media (max-width: 1280px) {
+    padding: 6rem 3rem 12rem 3rem;
+  }
   @media (max-width: 740px) {
-    padding: 6em 1.5em 12em 1.5em;
+    padding: 6rem 1.5em 12rem 1.5em;
   }
   @media (max-width: 480px) {
-    padding: 6em 1em 12em 1em;
+    padding: 6rem 1em 12rem 1em;
   }
 }

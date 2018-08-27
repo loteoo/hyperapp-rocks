@@ -22,7 +22,6 @@
     background: transparent;
     border-radius: 0.25em;
     z-index: 0;
-    box-sizing: content-box;
     padding: 1px;
     margin: -1px;
     transition: transform 100ms;

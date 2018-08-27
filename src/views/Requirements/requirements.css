@@ -1,6 +1,10 @@
 .requirements {
+  .box {
+    max-width: 700px;
+  }
   .actions {
+    margin-top: 2rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
   }
 }

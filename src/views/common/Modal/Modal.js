@@ -1,4 +1,5 @@
 import {h} from 'hyperapp'
+import cc from 'classcat'
 
 import './modal.css'
 
@@ -23,8 +24,8 @@ const Close = ({close}) => (
 )
 
 // Exported component
-export const Modal = (props, children, {close} = props) => (state, actions) => (
-  <div class="modal" key="modal" onclick={close} oncreate={slideIn} onremove={slideOut}>
+export const Modal = (props, children, {close, className} = props) => (state, actions) => (
+  <div className={cc(['modal', className])} key="modal" onclick={close} oncreate={slideIn} onremove={slideOut}>
     <div class="box" onclick={ev => ev.stopPropagation()}>
       <Close close={close} />
       <div class="inner">

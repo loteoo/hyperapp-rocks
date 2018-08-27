@@ -11,7 +11,7 @@ export const Header = () => (state, actions) => (
     <h1>Hyperapp real-world examples</h1>
     <h2>A curated list of live hyperapp projects</h2>
 
-    <Search />
+    <Search search={state.search} />
 
     <div class="actions">
       <PillButton big onclick={actions.scrollToProjects}>See projects</PillButton>
