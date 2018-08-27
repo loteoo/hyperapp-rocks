@@ -14,7 +14,10 @@ import {Footer} from './Footer/Footer.js'
 
 
 // Root view
-export const view = (state, actions) => (
+export const view = (state, actions) => {
+  console.log(state);
+  
+  return (
   <div>
     <Header />
     <Listing projects={state.projects} />
@@ -25,4 +28,4 @@ export const view = (state, actions) => (
     </Switch>
     <Footer />
   </div>
-)
+)}
