@@ -41,6 +41,9 @@
         @media (hover: none) {
           pointer-events: none;
         }
+        @media (max-width: 640px) {
+          pointer-events: none;
+        }
         &:not(:last-child) {
           margin-right: 0.25rem;
         }
