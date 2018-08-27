@@ -11,28 +11,24 @@ export const actions = {
     // Subscribe to the router
     window.unsubscribeRouter = location.subscribe(window.main.location)
     
+    // Load projects
     actions.loadProjects()
   },
 
-  set: x => x,
-
-  
+  // Current search input value
   setSearch: search => ({search}),
 
+  // Current displayed search results
   setCurrentSearch: currentSearch => ({currentSearch}),
 
-  
+  // Fetching status
   setIsFetching: isFetching => ({isFetching}),
 
-  // Set projects to the list
+  // Sets the project list (replaces)
   setProjects: projects => ({projects}),
 
   // Adds projects to the list
   addProjects: projects => state => ({projects: (state.projects || []).concat(projects)}),
-
-  // Adds projects to the begining of the list
-  addProjectsStart: projects => state => ({projects: projects.concat(state.projects)}),
-
 
   // Loads projects
   loadProjects: (shouldClearList) => (state, actions) => {
@@ -43,7 +39,6 @@ export const actions = {
         actions.addProjects(projects)
       })
   },
-
 
   // Handles searching
   handleSearchForm: ev => (state, actions) => {
@@ -64,15 +59,13 @@ export const actions = {
 
   },
 
-
-  // Nested setter
+  // Nested setter for the project form
   setProjectForm: fragment => state => ({
     projectForm: {
       ...state.projectForm,
       ...fragment
     }
   }),
-  
 
   // Handles project submission
   handleProjectForm: ev => (state, actions) => {
@@ -86,28 +79,11 @@ export const actions = {
           plugin: 'upload',
           field: 'thumbnail'
         })
-          .then(files => {
-            actions.setProjectForm({submitted: true})
-            // TODO: preview?
-            // actions.addProjectsStart([{ 
-            //   ...project,
-            //   thumbnail: files[0]
-            // }])
-          })
+          .then(files => actions.setProjectForm({submitted: true}))
       )
-      
   },
 
-
-
-  scrollToProjects: ev => document.querySelector('.listing').scrollIntoView({behavior: 'smooth', block: 'start'}),
-
-
-
-  scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'}),
-
-
-
+  // Indexed nested setter
   setProjectsData: ({id, project}) => state => ({
     projectsData: {
       ...state.projectsData,
@@ -115,10 +91,16 @@ export const actions = {
     }
   }),
 
-
-
+  // Fetch project by ID from api then update state
   fetchProject: id => (state, actions) => {
     getData(`/project/${id}`)
       .then(project => actions.setProjectsData({id, project}))
-  }
+  },
+  
+  // Scroll to target via DOM
+  scrollToProjects: ev => document.querySelector('.listing').scrollIntoView({behavior: 'smooth', block: 'start'}),
+  
+  // Scroll to target via DOM
+  scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'})
+  
 }
