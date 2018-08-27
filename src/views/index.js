@@ -26,5 +26,3 @@ export const view = (state, actions) => (
     <Footer />
   </div>
 )
-
-

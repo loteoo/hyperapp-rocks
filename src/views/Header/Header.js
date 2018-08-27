@@ -3,13 +3,18 @@ import {h} from 'hyperapp'
 import './header.css'
 import {Search} from '../Search/Search.js'
 import {PillButton} from '../common/PillButton/PillButton.js'
+import {Github} from '../icons/Github.js'
 
 
 export const Header = () => (state, actions) => (
   <header>
     
+    <nav>
+      <a href="https://github.com/loteoo/hyperapp-examples" target="_blank" title="Source code"><Github /></a>
+    </nav>
+
     <h1>Hyperapp real-world examples</h1>
-    <h2>A curated list of live hyperapp projects</h2>
+    <h2>A curated list of live Hyperapp projects</h2>
 
     <Search search={state.search} />
 
