@@ -1,7 +1,7 @@
 .modal {
   position: fixed 0;
   z-index: 10;
-  background-color: rgb(248, 250, 255, 0.9) ;
+  background-color: rgb(248, 250, 255, 0.9);
   height: 100vh;
   padding: 3rem;
   display: flex;
@@ -10,8 +10,6 @@
   justify-content: center;
   opacity: 1;
   transition: opacity 200ms ease-out-quart;
-
-  
 
   >.box {
     position: relative;
@@ -29,6 +27,7 @@
     &::before {
       content: '';
       position: absolute;
+      z-index: 1;
       top: 0;
       right: 0;
       bottom: auto;
@@ -38,6 +37,7 @@
     }
     >.close {
       position: absolute 1em 1em auto auto;
+      z-index: 1;
       cursor: pointer;
     }
     >.inner {
