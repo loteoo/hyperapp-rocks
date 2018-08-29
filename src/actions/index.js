@@ -19,7 +19,7 @@ export const actions = {
   // Current search input value
   setSearch: search => ({search}),
 
-  // Current displayed search results
+  // Current search results queried value
   setCurrentSearch: currentSearch => ({currentSearch}),
 
   // Fetching status
