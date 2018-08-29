@@ -49,7 +49,7 @@ export const actions = {
     actions.setCurrentSearch(state.search)
 
     if (state.search) {
-      getData(`/project?_q=${state.search}&_limit=120`)
+      getData(`/project?_q=${state.search}&_limit=120&status=published`)
         .then(projects => {
           actions.setProjects(projects)
         })
