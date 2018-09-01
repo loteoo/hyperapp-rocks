@@ -84,7 +84,7 @@ const NavBtns = ({currId}) => (
     {
       currIndex > 0 
         ? <Link to={'/' + state.projects[currIndex - 1]}>Previous</Link>
-        : null
+        : <Link to={'/' + state.projects[state.projects.length - 1]}>End</Link>
     }
     {
       currIndex < state.projects.length
