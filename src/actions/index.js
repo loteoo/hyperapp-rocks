@@ -30,10 +30,7 @@ export const actions = {
     projects
     ? {
       projects: projects.map(project => project.id),
-      projectCache: projects.reduce((cache, project) => {
-        cache[project._id] = project
-        return cache;
-      }, state.projectCache || {})
+      projectCache: projects.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
     }
     : null
   ),
@@ -41,10 +38,7 @@ export const actions = {
   // Adds projects to the list
   addProjects: projects => state => ({
     projects: (state.projects || []).concat(projects.map(project => project.id)),
-    projectCache: projects.reduce((cache, project) => {
-      cache[project._id] = project
-      return cache;
-    }, state.projectCache || {})
+    projectCache: projects.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
   }),
 
   // Loads projects
