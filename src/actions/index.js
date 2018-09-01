@@ -26,10 +26,26 @@ export const actions = {
   setIsFetching: isFetching => ({isFetching}),
 
   // Sets the project list (replaces)
-  setProjects: projects => ({projects}),
+  setProjects: projects => state => (
+    projects
+    ? {
+      projects: projects.map(project => project.id),
+      projectCache: projects.reduce((cache, project) => {
+        cache[project._id] = project
+        return cache;
+      }, state.projectCache || {})
+    }
+    : null
+  ),
 
   // Adds projects to the list
-  addProjects: projects => state => ({projects: (state.projects || []).concat(projects)}),
+  addProjects: projects => state => ({
+    projects: (state.projects || []).concat(projects.map(project => project.id)),
+    projectCache: projects.reduce((cache, project) => {
+      cache[project._id] = project
+      return cache;
+    }, state.projectCache || {})
+  }),
 
   // Loads projects
   loadProjects: () => (state, actions) => {
@@ -85,9 +101,9 @@ export const actions = {
   },
 
   // Indexed nested setter
-  setProjectsData: ({id, project}) => state => ({
-    projectsData: {
-      ...state.projectsData,
+  setProject: ({id, project}) => state => ({
+    projectCache: {
+      ...state.projectCache,
       [id]: project
     }
   }),
@@ -95,7 +111,7 @@ export const actions = {
   // Fetch project by ID from api then update state
   fetchProject: id => (state, actions) => {
     getData(`/project/${id}`)
-      .then(project => actions.setProjectsData({id, project}))
+      .then(project => actions.setProject({id, project}))
   },
   
   // Scroll to target via DOM

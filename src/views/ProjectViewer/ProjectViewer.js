@@ -18,7 +18,7 @@ export const ProjectViewer = ({
 }) => (
   state,
   actions,
-  project = state.projectsData && state.projectsData[id] ? state.projectsData[id] : null
+  project = state.projectCache && state.projectCache[id] ? state.projectCache[id] : null
 ) => {
 
   if (!project) {
@@ -78,19 +78,19 @@ const FourOhFour = () => (
 const NavBtns = ({currId}) => (
   state,
   actions,
-  currIndex = state.projects.map(project => project.id).indexOf(currId)
+  currIndex = state.projects.indexOf(currId)
 ) => (
   <div class="nav-btns">
     {
       currIndex > 0 
-        ? <Link to={'/' + state.projects[currIndex - 1]._id}>Previous</Link>
+        ? <Link to={'/' + state.projects[currIndex - 1]}>Previous</Link>
         : null
     }
     {
       currIndex < state.projects.length
         ? 
           state.projects[currIndex + 1]
-            ? <Link to={'/' + state.projects[currIndex + 1]._id}>Next</Link>
+            ? <Link to={'/' + state.projects[currIndex + 1]}>Next</Link>
             : <span onclick={actions.loadProjects}>Load more</span>
         : null
     }

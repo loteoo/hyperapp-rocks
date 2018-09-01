@@ -29,7 +29,7 @@ const Results = ({projects}) => (state, actions) => (
     <div class="grid" key="grid">
       {
         projects.length !== 0
-          ? projects.map(project => <Project {...project} />)
+          ? projects.map(_id => <Project {...state.projectCache[_id]} />)
           : <div class="empty"><h2>0 results</h2></div>
       }
     </div>
