@@ -2,6 +2,7 @@ import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
 import {Modal} from '../common/Modal/Modal.js'
+import {PillButton} from '../common/PillButton/PillButton.js'
 import {Spinner} from '../common/Spinner/Spinner.js'
 import {Github} from '../icons/Github.js'
 
@@ -56,6 +57,7 @@ const Project = ({_id, title, author, github, link, description, thumbnail}) => 
       <p>Website: <a href={link} target="_blank">{link}</a></p>
       {author ? <p>Author: <b>{author}</b></p> : null}
       {github ? <p><a href={github} target="_blank"><Github />Github</a></p> : null}
+      <NavBtns currId={_id} />
     </div>
     <div class="description">
       {description}
@@ -68,5 +70,29 @@ const Project = ({_id, title, author, github, link, description, thumbnail}) => 
 const FourOhFour = () => (
   <div class="four-of-four">
     <h2>404.</h2>
+  </div>
+)
+
+
+// Previous and Next buttons.
+const NavBtns = ({currId}) => (
+  state,
+  actions,
+  currIndex = state.projects.map(project => project.id).indexOf(currId)
+) => (
+  <div class="nav-btns">
+    {
+      currIndex > 0 
+        ? <Link to={'/' + state.projects[currIndex - 1]._id}>Previous</Link>
+        : null
+    }
+    {
+      currIndex < state.projects.length
+        ? 
+          state.projects[currIndex + 1]
+            ? <Link to={'/' + state.projects[currIndex + 1]._id}>Next</Link>
+            : <span onclick={actions.loadProjects}>Load more</span>
+        : null
+    }
   </div>
 )

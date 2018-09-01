@@ -32,7 +32,7 @@ export const actions = {
   addProjects: projects => state => ({projects: (state.projects || []).concat(projects)}),
 
   // Loads projects
-  loadProjects: (shouldClearList) => (state, actions) => {
+  loadProjects: () => (state, actions) => {
     actions.setIsFetching(true)
     getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12&status=published`)
       .then(projects => {

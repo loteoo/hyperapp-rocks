@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   .project-content {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 3em;
@@ -25,11 +26,20 @@
     }
     >.info {
       grid-column: 2;
+      display: flex;
+      flex-direction: column;
       >h2 {
         margin-top: 1rem;
       }
       a>svg {
         margin-right: 0.5em;
+      }
+      >.nav-btns {
+        padding: 1em 0;
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
       }
     }
     >.description {

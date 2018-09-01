@@ -1,15 +1,16 @@
 import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
+import cc from 'classcat'
 
 import './pill-button.css'
 
-export const PillButton = (props, children, {to, type = type || 'button'} = props) => 
+export const PillButton = ({to, className, type = type || 'button', ...rest}, children) => 
   to ? (
-    <Link class="pill-button" to={to} {...props}>
+    <Link className={cc(['pill-button', className])} to={to} {...rest}>
       {children}
     </Link>
   ) : (
-    <button class="pill-button" type={type} {...props}>
+    <button className={cc(['pill-button', className])} type={type} {...rest}>
       {children}
     </button>
   )
