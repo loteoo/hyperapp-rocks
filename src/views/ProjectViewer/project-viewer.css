@@ -35,11 +35,24 @@
         margin-right: 0.5em;
       }
       >.nav-btns {
-        padding: 1em 0;
+        padding: 1em;
         margin-top: auto;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+        >.left,
+        >.right {
+          cursor: pointer;
+          >svg {
+            margin: 0;
+          }
+        }
+        >.left {
+          margin-right: auto;
+        }
+        >.right {
+          margin-left: auto;
+        }
       }
     }
     >.description {

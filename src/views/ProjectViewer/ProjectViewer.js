@@ -2,9 +2,11 @@ import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
 import {Modal} from '../common/Modal/Modal.js'
-import {PillButton} from '../common/PillButton/PillButton.js'
 import {Spinner} from '../common/Spinner/Spinner.js'
 import {Github} from '../icons/Github.js'
+import {ArrowLeft} from '../icons/ArrowLeft.js'
+import {ArrowRight} from '../icons/ArrowRight.js'
+import {PlusCircle} from '../icons/PlusCircle.js'
 
 import './project-viewer.css'
 
@@ -75,7 +77,7 @@ const FourOhFour = () => (
 
 
 // Previous and Next buttons.
-const NavBtns = ({currId}) => (
+const NavBtns = ({currId}) => (state, actions) => (
   state,
   actions,
   currIndex = state.projects.indexOf(currId)
@@ -83,15 +85,15 @@ const NavBtns = ({currId}) => (
   <div class="nav-btns">
     {
       currIndex > 0 
-        ? <Link to={'/' + state.projects[currIndex - 1]}>Previous</Link>
-        : <Link to={'/' + state.projects[state.projects.length - 1]}>End</Link>
+        ? <Link to={'/' + state.projects[currIndex - 1]} title="Previous" class="left"><ArrowLeft /></Link>
+        : null
     }
     {
       currIndex < state.projects.length
         ? 
           state.projects[currIndex + 1]
-            ? <Link to={'/' + state.projects[currIndex + 1]}>Next</Link>
-            : <span onclick={actions.loadProjects}>Load more</span>
+            ? <Link to={'/' + state.projects[currIndex + 1]} title="Next" class="right"><ArrowRight /></Link>
+            : <span onclick={actions.loadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
         : null
     }
   </div>
