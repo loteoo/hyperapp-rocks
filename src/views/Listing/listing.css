@@ -21,6 +21,7 @@
     @media (max-width: 480px) {
       position: absolute -50px 0 auto 0;
       height: 8rem;
+      transform: skewY(-6deg);
     }
   }
   >.spinner {
