@@ -16,7 +16,7 @@
     height: 16rem;
     width: 100%;
     background: #f8faff;
-    transform: skewY(-6deg);
+    transform: skewY(-4deg);
     box-shadow: 0 -16px 32px -12px rgba(62,57,107,0.33);
     @media (max-width: 480px) {
       position: absolute -50px 0 auto 0;
