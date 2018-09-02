@@ -4,13 +4,13 @@ import './global.css'
 
 // Import dependencies
 import {h} from 'hyperapp'
-import {Route, Switch} from "@hyperapp/router"
-import {Header} from './Header/Header.js'
-import {Listing} from './Listing/Listing.js'
-import {ProjectForm} from './ProjectForm/ProjectForm.js'
-import {Requirements} from './Requirements/Requirements.js'
-import {ProjectViewer} from './ProjectViewer/ProjectViewer.js'
-import {Footer} from './Footer/Footer.js'
+import {Route, Switch} from '@hyperapp/router'
+import {Header} from '../components/Header/Header.js'
+import {Listing} from '../components/Listing/Listing.js'
+import {ProjectForm} from '../components/ProjectForm/ProjectForm.js'
+import {Requirements} from '../components/Requirements/Requirements.js'
+import {ProjectViewer} from '../components/ProjectViewer/ProjectViewer.js'
+import {Footer} from '../components/Footer/Footer.js'
 
 
 // Root view
