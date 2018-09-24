@@ -85,6 +85,21 @@
       >.description, {
         grid-column: 1/-1;
       }
+      
+      
+      >.info{
+        >.nav-btns {
+          padding: 1em 1em 0 1em;
+          >.left,
+          >.right {
+            >svg {
+              width: 2rem;
+              height: 2rem;
+            }
+          }
+        }
+      }
+
     }
   }
 }
