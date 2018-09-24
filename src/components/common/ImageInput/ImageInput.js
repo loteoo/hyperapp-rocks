@@ -19,11 +19,12 @@ const validate = (ev, name, setter, file = ev.target.files[0]) => {
 }
 
 
-export const ImageInput = (props, children, {label = label || 'Label', name = name || 'name', setter} = props) => (
+export const ImageInput = ({label = label || 'Label', name = name || 'name', setter, hint, ...rest}) => (
   <div class={cc(['image-input', name])} key={name}>
-    <input type="file" name={name} id={name} onchange={ev => validate(ev, name, setter)} {...props} setter={null} />
+    <input type="file" name={name} id={name} onchange={ev => validate(ev, name, setter)} {...rest} />
     <div class="picker"></div>
     <label for={name}>{label}</label>
     <div class="border"></div>
+    {hint ? <p class="hint">{hint}</p> : null}
   </div>
 )

@@ -21,7 +21,7 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
           <NiceInput type="textarea" label="Description" name="description" value={description} placeholder="Short project description..." setter={actions.setProjectForm} required />
           <NiceInput label="Author" name="author" value={author} placeholder="Who did this?" setter={actions.setProjectForm} />
           <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={github} placeholder="Sharing is caring :)" setter={actions.setProjectForm} />
-          <ImageInput label="Image" name="thumbnail" setter={actions.setProjectForm} required />
+          <ImageInput label="Image" hint="Recommended size: 640x427" name="thumbnail" setter={actions.setProjectForm} required />
     
           <div class="actions">
             <PillButton to="/requirements" white>View requirements</PillButton>

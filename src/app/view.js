@@ -14,18 +14,16 @@ import {Footer} from '../components/Footer/Footer.js'
 
 
 // Root view
-export const view = (state, actions) => {
-  console.log(state)
-  return (
-    <div>
-      <Header />
-      <Listing projects={state.projects} />
-      <ProjectForm {...state.projectForm} />
-      <Switch>
-        <Route path="/requirements" render={Requirements}/>
-        <Route path="/:id" render={ProjectViewer}/>
-      </Switch>
-      <Footer />
-    </div>
-  )
-}
+export const view = (state, actions) => (
+  <div>
+    <Header />
+    <Listing projects={state.projects} />
+    <ProjectForm {...state.projectForm} />
+    <Switch>
+      <Route path="/requirements" render={Requirements}/>
+      <Route path="/:id" render={ProjectViewer}/>
+    </Switch>
+    <Footer />
+  </div>
+)
+
