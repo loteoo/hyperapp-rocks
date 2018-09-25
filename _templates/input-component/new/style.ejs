@@ -1,5 +1,5 @@
 ---
-to: src/views/<%= h.inflection.camelize(name.replace(/\s/g, '_')) %>/<%= h.inflection.dasherize(name.toLowerCase()) %>.css
+to: src/components/common/<%= h.inflection.camelize(name.replace(/\s/g, '_')) %>/style.css
 ---
 .<%= h.inflection.dasherize(name.toLowerCase()) %> {
   display: flex;
@@ -45,5 +45,10 @@ to: src/views/<%= h.inflection.camelize(name.replace(/\s/g, '_')) %>/<%= h.infle
       }
     }
   }
+  &>.hint {
+    position: absolute 100% 0 0 0;
+    margin: 0.25em;
+    font-size: 0.8em;
+    opacity: 0.5;
+  }
 }
- 

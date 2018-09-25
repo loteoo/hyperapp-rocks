@@ -1,9 +1,9 @@
 ---
-to: src/views/Modal/Modal.js
+to: src/components/common/Modal
 ---
 import {h} from 'hyperapp'
 
-import './modal.css'
+import './style.css'
 
 // Trigger css slidein transition
 const slideIn = el => {
@@ -26,8 +26,8 @@ const Close = ({close}) => (
 )
 
 // Exported component
-export const Modal = ({close} = props, children) => (state, actions) => (
-  <div class="modal" key="modal" onclick={close} oncreate={slideIn} onremove={slideOut}>
+export const Modal = ({close, ...rest}, children) => (state, actions) => (
+  <div class="modal" key="modal" onclick={close} oncreate={slideIn} onremove={slideOut} {...rest}>
     <div class="box" onclick={ev => ev.stopPropagation()}>
       <Close close={close} />
       <div class="inner">
@@ -38,16 +38,39 @@ export const Modal = ({close} = props, children) => (state, actions) => (
 )
 
 
-// Import:
-// import {Modal} from './Modal/Modal.js'
+/*
 
-// JSX:
-// {
-//   state.exampleModalIsOpened
-//     ? (
-//       <Modal close={ev => actions.set({'exampleModalIsOpened': false})}>
-//         <p>Modal content</p>
-//       </Modal>
-//     )
-//     : null
-// }
+// Import
+import {Modal} from '../components/common/Modal'
+
+
+// Usage:
+
+// Toggle via state:
+
+{
+  state.exampleModalIsOpened
+    ? (
+      <Modal close={ev => actions.set({exampleModalIsOpened: false})}>
+        <p>Modal content</p>
+      </Modal>
+    )
+    : null
+}
+<button onclick={ev => actions.set({exampleModalIsOpened: true})}>Open modal</button>
+
+
+
+// Toggle via Router:
+<Route 
+  path='/path-to-modal'
+  render={
+    <Modal close={ev => actions.location.go('/')}>
+      <p>Modal content</p>
+    </Modal>
+  }
+/>
+<Link to='path-to-modal'>Open modal</Link>
+
+
+*/

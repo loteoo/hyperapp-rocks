@@ -1,0 +1,19 @@
+---
+to: src/components/<%= h.inflection.camelize(name.replace(/\s/g, '_')) %>/actions.js
+---
+
+export const <%= h.inflection.camelize(name.replace(/\s/g, '_'), true) %> = {
+
+  // Nested shallow merge action
+  set: fragment => state => ({
+    ...fragment
+  }),
+
+  
+  // Handle form submittion
+  handleSubmit: ev => state => {
+    ev.preventDefault();
+
+    alert('Submitted!\nForm state: \n\n' + JSON.stringify(state, null, 2));
+  }
+}
