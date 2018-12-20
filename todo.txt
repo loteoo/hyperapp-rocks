@@ -1,0 +1,8 @@
+update strapi
+
+cleanup package json deps
+
+Fix service worker
+
+setup SSR
+
