@@ -3,7 +3,7 @@ import {h} from 'hyperapp'
 import {Modal} from '../common/Modal/Modal.js'
 import {PillButton} from '../common/PillButton/PillButton.js'
 
-import './requirements.css'
+import './style.css'
 
 export const Requirements = ({match}) => (state, actions) => (
   <Modal className="requirements" close={ev => actions.location.go('/')}>

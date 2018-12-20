@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-import './spinner.css'
+import './style.css'
 
 export const Spinner = (props, children) => (
   <div class="spinner" key="spinner" {...props}></div>

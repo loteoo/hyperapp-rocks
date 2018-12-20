@@ -8,7 +8,7 @@ import {ArrowLeftCircle} from '../icons/ArrowLeftCircle.js'
 import {ArrowRightCircle} from '../icons/ArrowRightCircle.js'
 import {PlusCircle} from '../icons/PlusCircle.js'
 
-import './project-viewer.css'
+import './style.css'
 
 
 // Main exported component:

@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
 import cc from 'classcat'
 
-import './image-input.css'
+import './style.css'
 
 const acceptedMimes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
 

@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-import './listing.css'
+import './style.css'
 
 import {Project} from '../Project/Project.js'
 import {Spinner} from '../common/Spinner/Spinner.js'

@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-import './project-form.css'
+import './style.css'
 
 import {NiceInput} from '../common/NiceInput/NiceInput.js'
 import {ImageInput} from '../common/ImageInput/ImageInput.js'

@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-import './header.css'
+import './style.css'
 import {Search} from '../Search/Search.js'
 import {PillButton} from '../common/PillButton/PillButton.js'
 import {Github} from '../icons/Github.js'

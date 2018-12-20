@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-import './footer.css'
+import './style.css'
 
 export const Footer = () => (
   <footer>

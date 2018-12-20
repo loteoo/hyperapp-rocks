@@ -2,7 +2,7 @@ import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 import cc from 'classcat'
 
-import './pill-button.css'
+import './style.css'
 
 export const PillButton = ({to, className, type = type || 'button', ...rest}, children) => 
   to ? (

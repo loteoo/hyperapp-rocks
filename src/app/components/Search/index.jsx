@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-import './search.css'
+import './style.css'
 
 export const Search = ({search}) => (state, actions) => (
   <form class="search" onsubmit={actions.handleSearchForm} method="post">

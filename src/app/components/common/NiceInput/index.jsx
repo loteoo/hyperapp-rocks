@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
 import cc from 'classcat'
 
-import './nice-input.css'
+import './style.css'
 
 
 

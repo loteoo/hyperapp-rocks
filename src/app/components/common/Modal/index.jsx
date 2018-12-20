@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
 import cc from 'classcat'
 
-import './modal.css'
+import './style.css'
 
 // Trigger css slidein transition
 const slideIn = el => {
