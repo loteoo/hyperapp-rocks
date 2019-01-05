@@ -1,7 +1,7 @@
 import {h} from 'hyperapp'
 
-import {Modal} from '../common/Modal/Modal.js'
-import {PillButton} from '../common/PillButton/PillButton.js'
+import {Modal} from '../../theme/Modal/Modal.js'
+import {PillButton} from '../../theme/PillButton/PillButton.js'
 
 import './style.css'
 

@@ -115,3 +115,55 @@ export const actions = {
   scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'})
 
 }
+
+
+// Handles searching
+export const handleSearchForm = (state, ev) => {
+  ev.preventDefault()
+  // actions.scrollToProjects()
+  
+  // actions.setCurrentSearch(state.search)
+
+  // if (state.search) {
+  //   getData(`/project?_q=${state.search}&_limit=120&status=published`)
+  //     .then(projects => {
+  //       actions.setProjects(projects)
+  //     })
+  // } else {
+  //   actions.setProjects(null)
+  //   actions.loadProjects();
+  // }
+
+}
+
+
+export const setSearch = (state, ev) => ({
+  ...state,
+  search: ev.target.value
+})
+
+export const loadProjects = (state, ev) => [
+  {
+    ...state,
+    isFetching: true
+  }
+]
+
+
+
+
+  // Handles project submission
+export const handleProjectForm = (state, ev) => {
+  ev.preventDefault()
+  // postData('/project', state.projectForm)
+  //   .then(project =>
+  //     postImage('/upload', {
+  //       files: state.projectForm.thumbnail,
+  //       refId: project._id,
+  //       ref: 'project',
+  //       plugin: 'upload',
+  //       field: 'thumbnail'
+  //     })
+  //       .then(files => actions.setProjectForm({submitted: true}))
+  //   )
+}

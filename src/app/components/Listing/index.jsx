@@ -3,15 +3,17 @@ import {h} from 'hyperapp'
 import './style.css'
 
 import {Project} from '../Project/Project.js'
-import {Spinner} from '../common/Spinner/Spinner.js'
-import {PillButton} from '../common/PillButton/PillButton.js'
+import {Spinner} from '../../theme/Spinner/Spinner.js'
+import {PillButton} from '../../theme/PillButton/PillButton.js'
+
+import {loadProjects} from '../../actions'
 
 
-export const Listing = ({projects}) => (state, actions) => (
-  <main class="listing" key="listing">
+export const Listing = ({state}) => (
+  <main class="listing" key="listing" id="projects">
     {
-      projects
-        ? <Results projects={projects} />
+      state.projects
+        ? <Results state={state} />
         : <Spinner large />
     }
   </main>
@@ -19,7 +21,7 @@ export const Listing = ({projects}) => (state, actions) => (
 
 
 
-const Results = ({projects}) => (state, actions) => (
+const Results = ({state}) => (
   <div class="results" key="results">
     {
       state.currentSearch
@@ -28,14 +30,14 @@ const Results = ({projects}) => (state, actions) => (
     }
     <div class="grid" key="grid">
       {
-        projects.length !== 0
-          ? projects.map(_id => <Project {...state.projectCache[_id]} />)
+        state.projects.length !== 0
+          ? state.projects.map(_id => <Project {...state.projectCache[_id]} />)
           : <div class="empty"><h2>0 results</h2></div>
       }
     </div>
     {
       !state.currentSearch
-        ? <PillButton onclick={actions.loadProjects}>Load more{state.isFetching ? <Spinner /> : null}</PillButton>
+        ? <PillButton onclick={loadProjects}>Load more{state.isFetching ? <Spinner /> : null}</PillButton>
         : null
     }
   </div>

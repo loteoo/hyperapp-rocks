@@ -1,12 +1,12 @@
 import {h} from 'hyperapp'
 
 import './style.css'
-import {Search} from '../Search/Search.js'
-import {PillButton} from '../common/PillButton/PillButton.js'
+import {Search} from '../Search'
+import {PillButton} from '../../theme/PillButton'
 import {Github} from '../icons/Github.js'
 
 
-export const Header = () => (state, actions) => (
+export const Header = ({state}) => (
   <header>
     <nav>
       <a href="https://github.com/loteoo/hyperapp-examples" target="_blank" title="Source code"><Github /></a>
@@ -18,8 +18,8 @@ export const Header = () => (state, actions) => (
     <Search search={state.search} />
 
     <div class="actions">
-      <PillButton big onclick={actions.scrollToProjects}>See projects</PillButton>
-      <PillButton big green onclick={actions.scrollToForm}>Share a project</PillButton>
+      <PillButton href="#projects" big>See projects</PillButton>
+      <PillButton href="#submit" big green>Share a project</PillButton>
     </div>
   </header>
 )

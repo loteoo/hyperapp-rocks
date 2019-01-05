@@ -2,15 +2,17 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
+import {handleSearchForm, setSearch} from '../../actions'
+
 export const Search = ({search}) => (state, actions) => (
-  <form class="search" onsubmit={actions.handleSearchForm} method="post">
+  <form class="search" onsubmit={handleSearchForm} method="post">
     <input 
       id="search"
       type="text"
       name="search"
       placeholder="Search projects..."
       value={search}
-      oninput={ev => actions.setSearch(ev.target.value)}
+      oninput={setSearch}
     />
     <button type="submit"></button>
   </form>

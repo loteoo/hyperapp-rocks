@@ -1,8 +1,8 @@
 import {h} from 'hyperapp'
 import {Link} from "@hyperapp/router"
 
-import {Modal} from '../common/Modal/Modal.js'
-import {Spinner} from '../common/Spinner/Spinner.js'
+import {Modal} from '../../theme/Modal/Modal.js'
+import {Spinner} from '../../theme/Spinner/Spinner.js'
 import {Github} from '../icons/Github.js'
 import {ArrowLeftCircle} from '../icons/ArrowLeftCircle.js'
 import {ArrowRightCircle} from '../icons/ArrowRightCircle.js'

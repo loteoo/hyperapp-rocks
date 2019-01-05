@@ -2,26 +2,27 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
-import {NiceInput} from '../common/NiceInput/NiceInput.js'
-import {ImageInput} from '../common/ImageInput/ImageInput.js'
-import {PillButton} from '../common/PillButton/PillButton.js'
+import {NiceInput} from '../../theme/NiceInput/NiceInput.js'
+import {ImageInput} from '../../theme/ImageInput/ImageInput.js'
+import {PillButton} from '../../theme/PillButton/PillButton.js'
 
+import {handleProjectForm, setProjectForm} from '../../actions'
 
-export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted}) => (state, actions) => (
-  <div class="project-form" key="project-form">
+export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted}) => (
+  <div class="project-form" key="project-form" id="submit">
     {
       !submitted
         ?
-        <form method="post" onsubmit={actions.handleProjectForm}>
+        <form method="post" onsubmit={handleProjectForm}>
           <h2>Submit your project!</h2>
           {/* <p>Full name: <b>{author} {description}</b></p> */}
     
-          <NiceInput label="Title" name="title" value={title} placeholder="My awesome project" setter={actions.setProjectForm} required />
-          <NiceInput type="url" label="Project URL" name="link" value={link} placeholder="https://" setter={actions.setProjectForm} required />
-          <NiceInput type="textarea" label="Description" name="description" value={description} placeholder="Short project description..." setter={actions.setProjectForm} required />
-          <NiceInput label="Author" name="author" value={author} placeholder="Who did this?" setter={actions.setProjectForm} />
-          <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={github} placeholder="Sharing is caring :)" setter={actions.setProjectForm} />
-          <ImageInput label="Image" hint="Recommended size: 640x427" name="thumbnail" setter={actions.setProjectForm} required />
+          <NiceInput label="Title" name="title" value={title} placeholder="My awesome project" setter={setProjectForm} required />
+          <NiceInput type="url" label="Project URL" name="link" value={link} placeholder="https://" setter={setProjectForm} required />
+          <NiceInput type="textarea" label="Description" name="description" value={description} placeholder="Short project description..." setter={setProjectForm} required />
+          <NiceInput label="Author" name="author" value={author} placeholder="Who did this?" setter={setProjectForm} />
+          <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={github} placeholder="Sharing is caring :)" setter={setProjectForm} />
+          <ImageInput label="Image" hint="Recommended size: 640x427" name="thumbnail" setter={setProjectForm} required />
     
           <div class="actions">
             <PillButton to="/requirements" white>View requirements</PillButton>
