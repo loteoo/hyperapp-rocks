@@ -6,7 +6,7 @@ import {Project} from '../Project'
 import {Spinner} from '../../theme/Spinner'
 import {PillButton} from '../../theme/PillButton'
 
-import {loadProjects} from '../../actions'
+import {LoadProjects} from '../../actions'
 
 
 export const Listing = ({state}) => (
@@ -32,7 +32,7 @@ const Results = ({state}) => (
       }
     </div>
     {!state.currentSearch && (
-      <PillButton onclick={loadProjects}>Load more{state.isFetching && <Spinner />}</PillButton>
+      <PillButton onclick={LoadProjects}>Load more{state.isFetching && <Spinner />}</PillButton>
     )}
   </div>
 )

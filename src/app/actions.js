@@ -9,11 +9,9 @@ export const actions = {
     window.unsubscribeRouter = location.subscribe(window.main.location)
     
     // Load projects
-    actions.loadProjects()
+    actions.LoadProjects()
   },
-
-  // Current search input value
-  setSearch: search => ({search}),
+  
 
   // Current search results queried value
   setCurrentSearch: currentSearch => ({currentSearch}),
@@ -36,35 +34,8 @@ export const actions = {
     projects: (state.projects || []).concat(projects.map(project => project.id)),
     projectCache: projects.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
   }),
-
-  // Loads projects
-  loadProjects: () => (state, actions) => {
-    actions.setIsFetching(true)
-    getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12&status=published`)
-      .then(projects => {
-        actions.setIsFetching(false)
-        actions.addProjects(projects)
-      })
-  },
-
-  // Handles searching
-  handleSearchForm: ev => (state, actions) => {
-    ev.preventDefault()
-    actions.scrollToProjects()
-    
-    actions.setCurrentSearch(state.search)
-
-    if (state.search) {
-      getData(`/project?_q=${state.search}&_limit=120&status=published`)
-        .then(projects => {
-          actions.setProjects(projects)
-        })
-    } else {
-      actions.setProjects(null)
-      actions.loadProjects();
-    }
-
-  },
+  
+  
 
   // Nested setter for the project form
   setProjectForm: fragment => state => ({
@@ -74,22 +45,7 @@ export const actions = {
     }
   }),
 
-  // Handles project submission
-  handleProjectForm: ev => (state, actions) => {
-    ev.preventDefault()
-    postData('/project', state.projectForm)
-      .then(project =>
-        postImage('/upload', {
-          files: state.projectForm.thumbnail,
-          refId: project._id,
-          ref: 'project',
-          plugin: 'upload',
-          field: 'thumbnail'
-        })
-          .then(files => actions.setProjectForm({submitted: true}))
-      )
-  },
-
+  
   // Indexed nested setter
   setProject: ({id, project}) => state => ({
     projectCache: {
@@ -104,17 +60,11 @@ export const actions = {
       .then(project => actions.setProject({id, project}))
   },
   
-  // Scroll to target via DOM
-  scrollToProjects: ev => document.querySelector('.listing').scrollIntoView({behavior: 'smooth', block: 'start'}),
-  
-  // Scroll to target via DOM
-  scrollToForm: ev => document.querySelector('.project-form').scrollIntoView({behavior: 'smooth', block: 'start'})
-
 }
 
 
 // Handles searching
-export const handleSearchForm = (state, ev) => {
+export const HandleSearchForm = (state, ev) => {
   ev.preventDefault()
   // actions.scrollToProjects()
   
@@ -127,29 +77,37 @@ export const handleSearchForm = (state, ev) => {
   //     })
   // } else {
   //   actions.setProjects(null)
-  //   actions.loadProjects();
+  //   actions.LoadProjects();
   // }
 
 }
 
 
-export const setSearch = (state, ev) => ({
+// Current search input value
+export const SetSearch = (state, ev) => ({
   ...state,
   search: ev.target.value
 })
 
-export const loadProjects = (state, ev) => [
+
+// Loads projects
+export const LoadProjects = (state, ev) => [
   {
     ...state,
     isFetching: true
-  }
+  },
+  getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12&status=published`)
+    .then(projects => {
+      actions.setIsFetching(false)
+      actions.addProjects(projects)
+    })
 ]
 
 
 
 
-  // Handles project submission
-export const handleProjectForm = (state, ev) => {
+// Handles project submission
+export const HandleProjectForm = (state, ev) => {
   ev.preventDefault()
   // postData('/project', state.projectForm)
   //   .then(project =>

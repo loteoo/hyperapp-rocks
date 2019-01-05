@@ -6,14 +6,14 @@ import {NiceInput} from '../../theme/NiceInput'
 import {ImageInput} from '../../theme/ImageInput'
 import {PillButton} from '../../theme/PillButton'
 
-import {handleProjectForm, setProjectForm} from '../../actions'
+import {HandleProjectForm, setProjectForm} from '../../actions'
 
 export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted}) => (
   <div class="project-form" key="project-form" id="submit">
     {
       !submitted
         ?
-        <form method="post" onsubmit={handleProjectForm}>
+        <form method="post" onsubmit={HandleProjectForm}>
           <h2>Submit your project!</h2>
           {/* <p>Full name: <b>{author} {description}</b></p> */}
     

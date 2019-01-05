@@ -86,7 +86,7 @@ const NavBtns = ({currId, state}) => (
         ? 
           state.projects[currIndex + 1]
             ? <a to={'/' + state.projects[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></a>
-            : <span onclick={actions.loadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
+            : <span onclick={actions.LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
         : null
     }
   </div>
