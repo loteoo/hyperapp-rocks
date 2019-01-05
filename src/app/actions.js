@@ -1,66 +1,6 @@
 import {getData, postData, postImage} from './utils'
 
 // Global actions for the app
-export const actions = {
-
-  // Called at startup
-  init: () => (state, actions) => {
-    // Subscribe to the router
-    window.unsubscribeRouter = location.subscribe(window.main.location)
-    
-    // Load projects
-    actions.LoadProjects()
-  },
-  
-
-  // Current search results queried value
-  setCurrentSearch: currentSearch => ({currentSearch}),
-
-  // Fetching status
-  setIsFetching: isFetching => ({isFetching}),
-
-  // Sets the project list (replaces)
-  setProjects: projects => state => (
-    projects
-    ? {
-      projects: projects.map(project => project.id),
-      projectCache: projects.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
-    }
-    : null
-  ),
-
-  // Adds projects to the list
-  addProjects: projects => state => ({
-    projects: (state.projects || []).concat(projects.map(project => project.id)),
-    projectCache: projects.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
-  }),
-  
-  
-
-  // Nested setter for the project form
-  setProjectForm: fragment => state => ({
-    projectForm: {
-      ...state.projectForm,
-      ...fragment
-    }
-  }),
-
-  
-  // Indexed nested setter
-  setProject: ({id, project}) => state => ({
-    projectCache: {
-      ...state.projectCache,
-      [id]: project
-    }
-  }),
-
-  // Fetch project by ID from api then update state
-  fetchProject: id => (state, actions) => {
-    getData(`/project/${id}`)
-      .then(project => actions.setProject({id, project}))
-  },
-  
-}
 
 
 // Handles searching
@@ -68,15 +8,15 @@ export const HandleSearchForm = (state, ev) => {
   ev.preventDefault()
   // actions.scrollToProjects()
   
-  // actions.setCurrentSearch(state.search)
+  // actions.SetLastSearch(state.search)
 
   // if (state.search) {
   //   getData(`/project?_q=${state.search}&_limit=120&status=published`)
   //     .then(projects => {
-  //       actions.setProjects(projects)
+  //       actions.SetProjects(projects)
   //     })
   // } else {
-  //   actions.setProjects(null)
+  //   actions.SetProjects(null)
   //   actions.LoadProjects();
   // }
 
@@ -90,6 +30,15 @@ export const SetSearch = (state, ev) => ({
 })
 
 
+// Search used for currently displayed projects
+export const SetLastSearch = (state, ev) => ({
+  ...state,
+  lastSearch: ev.target.value
+})
+
+
+
+
 // Loads projects
 export const LoadProjects = (state, ev) => [
   {
@@ -99,7 +48,7 @@ export const LoadProjects = (state, ev) => [
   getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12&status=published`)
     .then(projects => {
       actions.setIsFetching(false)
-      actions.addProjects(projects)
+      actions.AddProjects(projects)
     })
 ]
 
@@ -118,6 +67,56 @@ export const HandleProjectForm = (state, ev) => {
   //       plugin: 'upload',
   //       field: 'thumbnail'
   //     })
-  //       .then(files => actions.setProjectForm({submitted: true}))
+  //       .then(files => actions.SetProjectForm({submitted: true}))
   //   )
+}
+
+
+
+// Sets the project list (replaces)
+export const SetProjects = (state, data) => (
+  data ? {
+    ...state,
+    projects: data.map(project => project.id),
+    projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
+  }
+  : state
+)
+
+
+// Adds projects to the list
+export const AddProjects = (state, data) => ({
+  ...state,
+  projects: (state.projects || []).concat(data.map(project => project.id)),
+  projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
+})
+
+
+
+// Nested setter for the project form
+export const SetProjectForm = (state, key, ev) => ({
+  ...state,
+  projectForm: {
+    ...state.projectForm,
+    [key]: ev.target.value
+  }
+})
+
+
+  
+// Indexed nested setter
+export const SetProject = (state, {id, project}) => ({
+  ...state,
+  projectCache: {
+    ...state.projectCache,
+    [id]: project
+  }
+})
+
+
+
+// Fetch project by ID from api then update state
+export const FetchProject = (state, id) => {
+  getData(`/project/${id}`)
+    .then(project => actions.SetProject({id, project}))
 }

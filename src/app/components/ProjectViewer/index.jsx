@@ -19,7 +19,7 @@ export const ProjectViewer = ({state}) => {
   // if (!project) {
   //   // If the project doesn't exist in the state,
   //   // trigger a fetch to load it
-  //   actions.fetchProject(id)
+  //   actions.FetchProject(id)
   // }
 
 

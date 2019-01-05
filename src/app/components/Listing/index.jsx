@@ -23,7 +23,7 @@ export const Listing = ({state}) => (
 
 const Results = ({state}) => (
   <div class="results" key="results">
-    {state.currentSearch && <h2>Search results for: <u>{state.currentSearch}</u></h2>}
+    {state.lastSearch && <h2>Search results for: <u>{state.lastSearch}</u></h2>}
     <div class="grid" key="grid">
       {
         state.projects.length !== 0
@@ -31,7 +31,7 @@ const Results = ({state}) => (
           : <div class="empty"><h2>0 results</h2></div>
       }
     </div>
-    {!state.currentSearch && (
+    {!state.lastSearch && (
       <PillButton onclick={LoadProjects}>Load more{state.isFetching && <Spinner />}</PillButton>
     )}
   </div>
