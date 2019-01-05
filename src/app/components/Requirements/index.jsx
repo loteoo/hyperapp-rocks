@@ -7,11 +7,11 @@ import {Modal} from '../../theme/Modal'
 import {PillButton} from '../../theme/PillButton'
 
 // Actions
-import {Navigate} from '../../actions'
+import {SetPath} from '../../actions'
 
 // View
 export const Requirements = () => (
-  <Modal className="requirements" close={[Navigate, '/']}>
+  <Modal className="requirements" close={[SetPath, '/']}>
     <h4>To be considered a 'real world' example, your project must...</h4>
     <ul>
       <li>Be live, with a public URL. (preferably with it's own domain name)</li>

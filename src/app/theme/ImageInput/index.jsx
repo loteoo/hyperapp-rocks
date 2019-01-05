@@ -21,10 +21,10 @@ const validate = (ev, name, setter, file = ev.target.files[0]) => {
 // View
 export const ImageInput = ({label = label || 'Label', name = name || 'name', setter, hint, ...rest}) => (
   <div class={cc(['image-input', name])} key={name}>
-    <input type="file" name={name} id={name} onchange={ev => validate(ev, name, setter)} {...rest} />
+    <input type="file" name={name} id={name} onchange={[setter, name]} {...rest} />
     <div class="picker"></div>
     <label for={name}>{label}</label>
     <div class="border"></div>
-    {hint ? <p class="hint">{hint}</p> : null}
+    {hint && <p class="hint">{hint}</p>}
   </div>
 )

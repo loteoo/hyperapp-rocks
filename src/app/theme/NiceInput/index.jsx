@@ -12,6 +12,6 @@ export const NiceInput = ({label = label || 'Label', name = name || 'name', type
     }
     <label for={name}>{label}</label>
     <div class="border"></div>
-    {hint ? <p class="hint">{hint}</p> : null}
+    {hint && <p class="hint">{hint}</p>}
   </div>
 )

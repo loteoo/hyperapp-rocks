@@ -17,11 +17,9 @@ export const view = (state) => (
     <Listing state={state} />
     <ProjectForm {...state.projectForm} />
     {
-      state.path === '/requirements' 
-      ? <Requirements />
-      : state.path.length > 2 && <ProjectViewer state={state} />
+      state.path === '/requirements' ? <Requirements /> :
+      state.path.length > 1 && <ProjectViewer state={state} />
     }
     <Footer state={state} />
   </Html>
 )
-

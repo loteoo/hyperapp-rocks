@@ -53,11 +53,11 @@ export const Html = ({state}, children) => (
 
       {
         // This will only appear in the Server-side rendered views
-        typeof window === 'undefined' ? (
+        typeof window === 'undefined' && (
           <script>
             window.initialState = [INJECT_INIT_STATE]
           </script>
-        ) : null
+        )
       }
 
       {/* Parcel bundles */}

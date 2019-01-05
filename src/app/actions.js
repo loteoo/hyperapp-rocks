@@ -3,6 +3,15 @@ import {getData, postData, postImage} from './utils'
 // Global actions for the app
 
 
+
+// Sets the navigation path
+export const SetPath = (state, path) => ({
+  ...state,
+  path
+})
+
+
+
 // Handles searching
 export const HandleSearchForm = (state, ev) => {
   ev.preventDefault()
@@ -19,7 +28,6 @@ export const HandleSearchForm = (state, ev) => {
   //   actions.SetProjects(null)
   //   actions.LoadProjects();
   // }
-
 }
 
 

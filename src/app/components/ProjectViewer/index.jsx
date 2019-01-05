@@ -8,12 +8,12 @@ import {Spinner} from '../../theme/Spinner'
 import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../icons'
 
 // Actions
-import {Navigate} from '../../actions'
+import {SetPath, LoadProjects} from '../../actions'
 
 // View
 export const ProjectViewer = ({state}) => {
 
-  const project = state.projectCache && state.projectCache[id] ? state.projectCache[id] : null
+  const project = state.projectCache && state.projectCache[id] && state.projectCache[id]
 
   // if (!project) {
   //   // If the project doesn't exist in the state,
@@ -23,7 +23,7 @@ export const ProjectViewer = ({state}) => {
 
 
   return (
-    <Modal close={[Navigate, '/']}>
+    <Modal close={[SetPath, '/']}>
       <div class="project-viewer">
         {
           project
@@ -44,13 +44,13 @@ export const ProjectViewer = ({state}) => {
 const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project-content" key={_id}>
     <a href={link} target="_blank" class="img">
-      {thumbnail ? <img src={`https://hyperapp.rocks${thumbnail.url}`} alt={title}/> : null}
+      {thumbnail && <img src={`https://hyperapp.rocks${thumbnail.url}`} alt={title}/>}
     </a>
     <div class="info">
       <h2>{title}</h2>
       <p>Website: <a href={link} target="_blank">{link}</a></p>
-      {author ? <p>Author: <b>{author}</b></p> : null}
-      {github ? <p><a href={github} target="_blank"><Github />Github</a></p> : null}
+      {author && <p>Author: <b>{author}</b></p>}
+      {github && <p><a href={github} target="_blank"><Github />Github</a></p>}
       <NavBtns currId={_id} />
     </div>
     <div class="description">
@@ -69,24 +69,19 @@ const FourOhFour = () => (
 
 
 // Previous and Next buttons.
-const NavBtns = ({currId, state}) => (
-  state,
-  actions,
-  currIndex = state.projects.indexOf(currId)
-) => (
-  <div class="nav-btns">
-    {
-      currIndex > 0 
-        ? <a to={'/' + state.projects[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></a>
-        : null
-    }
-    {
-      currIndex < state.projects.length
-        ? 
+const NavBtns = ({currId, state}) => {
+  const currIndex = state.projects.indexOf(currId)
+  return (
+    <div class="nav-btns">
+      {
+        currIndex > 0 && <a to={'/' + state.projects[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></a>
+      }
+      {
+        currIndex < state.projects.length &&
           state.projects[currIndex + 1]
             ? <a to={'/' + state.projects[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></a>
-            : <span onclick={actions.LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
-        : null
-    }
-  </div>
-)
+            : <span onclick={LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
+      }
+    </div>
+  )
+}
