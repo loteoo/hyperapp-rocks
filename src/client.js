@@ -1,12 +1,15 @@
 // App dependencies
 import {app} from 'hyperapp'
-import {state} from './state'
-import {actions} from './actions'
-import {view} from './view'
+import {init} from './app/init'
+import {view} from './app/view'
 
-window.main = app(state, actions, view, document.body)
-window.main.init()
-
+// Initialize the app on the document
+app({
+  init: {...init, ...window.initialState},
+  view,
+  subscriptions: console.log,
+  container: document
+})
 
 // Activate the service worker
 // if ('serviceWorker' in navigator) {
