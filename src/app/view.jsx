@@ -13,7 +13,7 @@ import {Footer} from './components/Footer/'
 
 
 // Root view
-export const view = (state, actions) => (
+export const view = (state) => (
   <Html state={state}>
     <Header state={state} />
     {/* <Listing state={state} /> */}

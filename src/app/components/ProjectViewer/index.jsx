@@ -73,7 +73,7 @@ const FourOhFour = () => (
 
 
 // Previous and Next buttons.
-const NavBtns = ({currId}) => (state, actions) => (
+const NavBtns = ({currId}) => (
   state,
   actions,
   currIndex = state.projects.indexOf(currId)

@@ -4,7 +4,7 @@ import {Github, LinkIcon} from '../icons'
 
 import './style.css'
 
-export const Project = ({_id, title, author, github, link, description, thumbnail}) => (state, actions) => (
+export const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project" key={_id}  onclick={ev => actions.location.go('/' + _id)}>
     <div class="img">
       {thumbnail ? <img src={`https://hyperapp.rocks${thumbnail.url}`} alt={title}/> : null}

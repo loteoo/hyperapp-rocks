@@ -5,7 +5,7 @@ import {PillButton} from '../../theme/PillButton'
 
 import './style.css'
 
-export const Requirements = ({match}) => (state, actions) => (
+export const Requirements = ({match}) => (
   <Modal className="requirements" close={ev => actions.location.go('/')}>
     <h4>To be considered a 'real world' example, your project must...</h4>
     <ul>
