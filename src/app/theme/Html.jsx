@@ -2,7 +2,7 @@ import {h} from 'hyperapp'
 
 // Bundle css for this view
 import 'sanitize.css'
-import './global.css'
+import './style.css'
 
 // Root container component
 export const Html = ({state}, children) => (
