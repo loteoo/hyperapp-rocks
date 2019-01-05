@@ -4,30 +4,27 @@ import {Modal} from '../../theme/Modal'
 import {Spinner} from '../../theme/Spinner'
 import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../icons'
 
+import {Navigate} from '../../actions'
+
 // import './style.css'
 
 
 // Main exported component:
 // Loads projects specified in the URL
 // and displays them in a popup modal
-export const ProjectViewer = ({
-  match,
-  id = match.params.id
-}) => (
-  state,
-  actions,
-  project = state.projectCache && state.projectCache[id] ? state.projectCache[id] : null
-) => {
+export const ProjectViewer = ({state}) => {
 
-  if (!project) {
-    // If the project doesn't exist in the state,
-    // trigger a fetch to load it
-    actions.fetchProject(id)
-  }
+  const project = state.projectCache && state.projectCache[id] ? state.projectCache[id] : null
+
+  // if (!project) {
+  //   // If the project doesn't exist in the state,
+  //   // trigger a fetch to load it
+  //   actions.fetchProject(id)
+  // }
 
 
   return (
-    <Modal close={() => actions.location.go('/')}>
+    <Modal close={[Navigate, '/']}>
       <div class="project-viewer">
         {
           project
@@ -73,7 +70,7 @@ const FourOhFour = () => (
 
 
 // Previous and Next buttons.
-const NavBtns = ({currId}) => (
+const NavBtns = ({currId, state}) => (
   state,
   actions,
   currIndex = state.projects.indexOf(currId)

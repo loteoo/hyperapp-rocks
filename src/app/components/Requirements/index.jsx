@@ -1,12 +1,15 @@
 import {h} from 'hyperapp'
 
+import './style.css'
+
 import {Modal} from '../../theme/Modal'
 import {PillButton} from '../../theme/PillButton'
 
-import './style.css'
+import {Navigate} from '../../actions'
 
-export const Requirements = ({match}) => (
-  <Modal className="requirements" close={ev => actions.location.go('/')}>
+
+export const Requirements = () => (
+  <Modal className="requirements" close={[Navigate, '/']}>
     <h4>To be considered a 'real world' example, your project must...</h4>
     <ul>
       <li>Be live, with a public URL. (preferably with it's own domain name)</li>

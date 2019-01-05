@@ -6,7 +6,7 @@ header {
   align-items: center;
   justify-content: center;
   padding: 9rem 3rem 12rem 3rem;
-  background-image: url('bg4.svg'), linear-gradient(73deg, #3369E7, #00AEFF);
+  background-image: url('bg.svg'), linear-gradient(73deg, #3369E7, #00AEFF);
   background-position: center;
   background-size: cover;
   color: white;

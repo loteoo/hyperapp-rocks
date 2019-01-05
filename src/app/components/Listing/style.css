@@ -41,20 +41,20 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 3em;
-      @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      @media (max-width: 740px) {
-        grid-template-columns: 1fr;
-        max-width: 32em;
-      }
-      @media (max-width: 480px) {
-        grid-gap: 1.5em;
-      }
       >.empty {
         margin: 3em auto;
         text-align: center;
         grid-column: 1/-1;
+      }
+      @media (max-width: 1024px) {
+        // grid-template-columns: repeat(2, 1fr); // TODO: ENABLE THIS LINE WITHOUT POSTCSS CRASHING
+      }
+      @media (max-width: 740px) {
+        max-width: 32em;
+        // grid-template-columns: 1fr; // TODO: ENABLE THIS LINE WITHOUT POSTCSS CRASHING
+      }
+      @media (max-width: 480px) {
+        grid-gap: 1.5em;
       }
     }
     

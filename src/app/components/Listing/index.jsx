@@ -1,6 +1,6 @@
 import {h} from 'hyperapp'
 
-// import './style.css'
+import './style.css'
 
 import {Project} from '../Project'
 import {Spinner} from '../../theme/Spinner'
@@ -23,11 +23,7 @@ export const Listing = ({state}) => (
 
 const Results = ({state}) => (
   <div class="results" key="results">
-    {
-      state.currentSearch
-        ? <h2>Search results for: <u>{state.currentSearch}</u></h2>
-        : null
-    }
+    {state.currentSearch && <h2>Search results for: <u>{state.currentSearch}</u></h2>}
     <div class="grid" key="grid">
       {
         state.projects.length !== 0
@@ -35,10 +31,8 @@ const Results = ({state}) => (
           : <div class="empty"><h2>0 results</h2></div>
       }
     </div>
-    {
-      !state.currentSearch
-        ? <PillButton onclick={loadProjects}>Load more{state.isFetching ? <Spinner /> : null}</PillButton>
-        : null
-    }
+    {!state.currentSearch && (
+      <PillButton onclick={loadProjects}>Load more{state.isFetching && <Spinner />}</PillButton>
+    )}
   </div>
 )
