@@ -2,10 +2,12 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
+// Components
 import {NiceInput} from '../../theme/NiceInput'
 import {ImageInput} from '../../theme/ImageInput'
 import {PillButton} from '../../theme/PillButton'
 
+// Actions
 import {HandleProjectForm, SetProjectForm} from '../../actions'
 
 export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted}) => (

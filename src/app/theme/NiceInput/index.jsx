@@ -3,8 +3,6 @@ import cc from 'classcat'
 
 import './style.css'
 
-
-
 export const NiceInput = ({label = label || 'Label', name = name || 'name', type = type || 'text', placeholder = placeholder || ' ', value, required, hint, setter, ...rest}) => (
   <div class={cc(['nice-input', name])} key={name}>
     {

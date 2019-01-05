@@ -1,8 +1,8 @@
 import {h} from 'hyperapp'
 
-import {Github, LinkIcon} from '../icons'
-
 import './style.css'
+
+import {Github, LinkIcon} from '../icons'
 
 export const Project = ({_id, title, author, github, link, description, thumbnail}) => (
   <div class="project" key={_id}  onclick={ev => actions.location.go('/' + _id)}>

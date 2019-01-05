@@ -2,13 +2,15 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
+// Components
 import {Project} from '../Project'
 import {Spinner} from '../../theme/Spinner'
 import {PillButton} from '../../theme/PillButton'
 
+// Actions
 import {LoadProjects} from '../../actions'
 
-
+// View
 export const Listing = ({state}) => (
   <main class="listing" key="listing" id="projects">
     {
@@ -19,8 +21,7 @@ export const Listing = ({state}) => (
   </main>
 )
 
-
-
+// Sub-component
 const Results = ({state}) => (
   <div class="results" key="results">
     {state.lastSearch && <h2>Search results for: <u>{state.lastSearch}</u></h2>}

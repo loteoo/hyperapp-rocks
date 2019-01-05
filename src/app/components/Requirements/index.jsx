@@ -2,12 +2,14 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
+// Components
 import {Modal} from '../../theme/Modal'
 import {PillButton} from '../../theme/PillButton'
 
+// Actions
 import {Navigate} from '../../actions'
 
-
+// View
 export const Requirements = () => (
   <Modal className="requirements" close={[Navigate, '/']}>
     <h4>To be considered a 'real world' example, your project must...</h4>

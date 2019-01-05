@@ -79,14 +79,11 @@
       grid-gap: 1.5em;
     }
     @media (max-width: 740px) {
-      grid-template-columns: 1fr;
       >.img,
       >.info,
       >.description, {
         grid-column: 1/-1;
       }
-      
-      
       >.info{
         >.nav-btns {
           padding: 1em 1em 0 1em;
@@ -99,7 +96,7 @@
           }
         }
       }
-
+      // grid-template-columns: 1fr; // TODO: ENABLE THIS WITHOUT POSTCSS CRASHING
     }
   }
 }

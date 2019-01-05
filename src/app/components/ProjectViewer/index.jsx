@@ -1,17 +1,16 @@
 import {h} from 'hyperapp'
 
+import './style.css'
+
+// Components
 import {Modal} from '../../theme/Modal'
 import {Spinner} from '../../theme/Spinner'
 import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../icons'
 
+// Actions
 import {Navigate} from '../../actions'
 
-// import './style.css'
-
-
-// Main exported component:
-// Loads projects specified in the URL
-// and displays them in a popup modal
+// View
 export const ProjectViewer = ({state}) => {
 
   const project = state.projectCache && state.projectCache[id] ? state.projectCache[id] : null

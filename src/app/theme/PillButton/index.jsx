@@ -4,7 +4,7 @@ import cc from 'classcat'
 import './style.css'
 
 export const PillButton = ({href, className, type = type || 'button', ...rest}, children) => (
-href ? (
+  href ? (
     <a className={cc(['pill-button', className])} href={href} {...rest}>
       {children}
     </a>
