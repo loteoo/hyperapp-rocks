@@ -1,10 +1,10 @@
 import {h} from 'hyperapp'
 
-import './style.css'
+// import './style.css'
 
-import {Project} from '../Project/Project.js'
-import {Spinner} from '../../theme/Spinner/Spinner.js'
-import {PillButton} from '../../theme/PillButton/PillButton.js'
+import {Project} from '../Project'
+import {Spinner} from '../../theme/Spinner'
+import {PillButton} from '../../theme/PillButton'
 
 import {loadProjects} from '../../actions'
 

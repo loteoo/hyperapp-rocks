@@ -1,14 +1,10 @@
 import {h} from 'hyperapp'
-import {Link} from "@hyperapp/router"
 
-import {Modal} from '../../theme/Modal/Modal.js'
-import {Spinner} from '../../theme/Spinner/Spinner.js'
-import {Github} from '../icons/Github.js'
-import {ArrowLeftCircle} from '../icons/ArrowLeftCircle.js'
-import {ArrowRightCircle} from '../icons/ArrowRightCircle.js'
-import {PlusCircle} from '../icons/PlusCircle.js'
+import {Modal} from '../../theme/Modal'
+import {Spinner} from '../../theme/Spinner'
+import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../icons'
 
-import './style.css'
+// import './style.css'
 
 
 // Main exported component:
@@ -85,14 +81,14 @@ const NavBtns = ({currId}) => (state, actions) => (
   <div class="nav-btns">
     {
       currIndex > 0 
-        ? <Link to={'/' + state.projects[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></Link>
+        ? <a to={'/' + state.projects[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></a>
         : null
     }
     {
       currIndex < state.projects.length
         ? 
           state.projects[currIndex + 1]
-            ? <Link to={'/' + state.projects[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></Link>
+            ? <a to={'/' + state.projects[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></a>
             : <span onclick={actions.loadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
         : null
     }

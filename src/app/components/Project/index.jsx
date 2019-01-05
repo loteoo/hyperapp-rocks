@@ -1,7 +1,6 @@
 import {h} from 'hyperapp'
 
-import {Github} from '../icons/Github.js'
-import {LinkIcon} from '../icons/LinkIcon.js'
+import {Github, LinkIcon} from '../icons'
 
 import './style.css'
 

@@ -2,9 +2,9 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
-import {NiceInput} from '../../theme/NiceInput/NiceInput.js'
-import {ImageInput} from '../../theme/ImageInput/ImageInput.js'
-import {PillButton} from '../../theme/PillButton/PillButton.js'
+import {NiceInput} from '../../theme/NiceInput'
+import {ImageInput} from '../../theme/ImageInput'
+import {PillButton} from '../../theme/PillButton'
 
 import {handleProjectForm, setProjectForm} from '../../actions'
 

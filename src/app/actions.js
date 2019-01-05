@@ -1,11 +1,7 @@
-import {location} from '@hyperapp/router'
 import {getData, postData, postImage} from './utils'
 
 // Global actions for the app
 export const actions = {
-
-  // Router actions
-  location: location.actions,
 
   // Called at startup
   init: () => (state, actions) => {

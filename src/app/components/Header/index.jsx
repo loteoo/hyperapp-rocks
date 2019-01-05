@@ -3,7 +3,7 @@ import {h} from 'hyperapp'
 import './style.css'
 import {Search} from '../Search'
 import {PillButton} from '../../theme/PillButton'
-import {Github} from '../icons/Github.js'
+import {Github} from '../icons'
 
 
 export const Header = ({state}) => (

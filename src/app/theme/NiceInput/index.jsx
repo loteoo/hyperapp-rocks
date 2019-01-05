@@ -17,6 +17,3 @@ export const NiceInput = ({label = label || 'Label', name = name || 'name', type
     {hint ? <p class="hint">{hint}</p> : null}
   </div>
 )
-
-// import {NiceInput} from './common/NiceInput/NiceInput.js'
-// <NiceInput label="First name" name="firstName" value={firstName} setter={set} />
