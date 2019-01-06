@@ -45,7 +45,7 @@ export const Http = {
 export const LocationChanged = props => ({
   effect: (props, dispatch) => {
     const eventListener = event => {
-      dispatch(props.action, window.location.hash.substring(1))
+      dispatch(props.action, window.location.pathname)
     }
     addEventListener("hashchange", eventListener)
     return () => removeEventListener("hashchange", eventListener)

@@ -11,7 +11,7 @@ import {PillButton} from '../../theme/PillButton'
 import {HandleProjectForm, SetProjectForm} from './actions'
 
 export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted, success}) => (
-  <div class="project-form" key="project-form" id="submit">
+  <div class="project-form" id="submit">
     {
       !submitted
         ? (

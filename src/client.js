@@ -3,7 +3,7 @@ import {app} from 'hyperapp'
 import {init} from './app/init'
 import {view} from './app/view'
 
-import {Navigate} from './app/actions'
+import {SetPath} from './app/actions'
 import {enableOnMountDomEvent, LocationChanged} from './app/utils'
 enableOnMountDomEvent()
 
@@ -14,7 +14,7 @@ app({
   subscriptions: state => {
     console.log(state)
     return [
-      LocationChanged({action: Navigate})
+      LocationChanged({action: SetPath})
     ]
   },
   container: document

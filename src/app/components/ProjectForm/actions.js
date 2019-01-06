@@ -16,10 +16,6 @@ export const SetProjectForm = (state, key, ev) => ({
 // Handles project submission
 export const HandleProjectForm = (state, ev) => {
   ev.preventDefault()
-
-  // Grab only what we need from the form's state
-  const submission = {title, link, description, author, github, thumbnail} = state.projectForm
-
   return [
     {
       ...state,
@@ -30,33 +26,41 @@ export const HandleProjectForm = (state, ev) => {
     },
     Http.post({
       url: `/hyperapp-projects`,
-      data: submission,
+      data: {
+        title: state.projectForm.title,
+        link: state.projectForm.link,
+        title: state.projectForm.title,
+        description: state.projectForm.description,
+        author: state.projectForm.author,
+        github: state.projectForm.github,
+        thumbnail: state.projectForm.thumbnail
+      },
       action: HandleSubmissionResponse,
       error: HandleSubmissionError
     })
-  ];
+  ]
 }
 
 
 
 export const HandleSubmissionResponse = (state, data) => {
   console.log(data);
-  return ({
+  return {
     ...state,
     projectForm: {
       ...state.projectForm,
       success: true
     }
-  })
+  }
 }
 
 export const HandleSubmissionError = (state, err) => {
   console.log(err);
-  return ({
+  return {
     ...state,
     projectForm: {
       ...state.projectForm,
       error: true
     }
-  })
+  }
 }

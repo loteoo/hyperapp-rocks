@@ -52,7 +52,6 @@ export const Html = ({state}, children) => (
       <meta name="msapplication-TileColor" content="#3369e7"/>
 
       {/* Parcel bundles */}
-      <script defer src="/client.62456f60.js"></script>
       <link rel="stylesheet" href="/client.62456f60.css"/>
 
     </head>
@@ -60,11 +59,10 @@ export const Html = ({state}, children) => (
       {children}
       {
         // This will only appear in the Server-side rendered views
-        typeof window === 'undefined' && (
-          <script>
-            window.initialState = [INJECT_INIT_STATE]
-          </script>
-        )
+        typeof window === 'undefined' && [
+          <script>window.initialState = [INJECT_INIT_STATE]</script>,
+          <script src="/client.62456f60.js"></script>
+        ]
       }
     </body>
   </html>

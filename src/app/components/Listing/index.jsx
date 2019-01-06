@@ -12,7 +12,7 @@ import {LoadProjects} from './actions'
 
 // View
 export const Listing = ({state}) => (
-  <main class="listing" key="listing" id="projects" onmount={LoadProjects}>
+  <main class="listing" id="projects" onmount={LoadProjects}>
     {
       state.listing
         ? <Results state={state} />
@@ -23,9 +23,9 @@ export const Listing = ({state}) => (
 
 // Sub-component
 const Results = ({state}) => (
-  <div class="results" key="results">
+  <div class="results">
     {state.lastSearch && <h2>Search results for: <u>{state.lastSearch}</u></h2>}
-    <div class="grid" key="grid">
+    <div class="grid">
       {
         state.listing.length > 0
         ? state.listing.map(id => <Project {...state.projects[id]} />)

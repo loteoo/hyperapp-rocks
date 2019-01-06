@@ -13,7 +13,7 @@ import {SetPath, LoadProjects} from '../../actions'
 // View
 export const ProjectViewer = ({state}) => {
 
-  const project = state.projectCache && state.projectCache[id] && state.projectCache[id]
+  const project = state.projects && state.projects[id] && state.projects[id]
 
   // if (!project) {
   //   // If the project doesn't exist in the state,
@@ -70,16 +70,16 @@ const FourOhFour = () => (
 
 // Previous and Next buttons.
 const NavBtns = ({currId, state}) => {
-  const currIndex = state.projects.indexOf(currId)
+  const currIndex = state.listing.indexOf(currId)
   return (
     <div class="nav-btns">
       {
-        currIndex > 0 && <a to={'/' + state.projects[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></a>
+        currIndex > 0 && <a to={'/' + state.listing[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></a>
       }
       {
-        currIndex < state.projects.length &&
-          state.projects[currIndex + 1]
-            ? <a to={'/' + state.projects[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></a>
+        currIndex < state.listing.length &&
+          state.listing[currIndex + 1]
+            ? <a to={'/' + state.listing[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></a>
             : <span onclick={LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
       }
     </div>
