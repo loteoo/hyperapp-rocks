@@ -51,6 +51,13 @@ export const Html = ({state}, children) => (
       <meta name="msapplication-TileImage" content="../assets/icon-512x512.png"/>
       <meta name="msapplication-TileColor" content="#3369e7"/>
 
+      {/* Parcel bundles */}
+      <script defer src="/client.62456f60.js"></script>
+      <link rel="stylesheet" href="/client.62456f60.css"/>
+
+    </head>
+    <body>
+      {children}
       {
         // This will only appear in the Server-side rendered views
         typeof window === 'undefined' && (
@@ -59,14 +66,6 @@ export const Html = ({state}, children) => (
           </script>
         )
       }
-
-      {/* Parcel bundles */}
-      <script defer src="/client.62456f60.js"></script>
-      <link rel="stylesheet" href="/client.62456f60.css"/>
-
-    </head>
-    <body>
-      {children}
     </body>
   </html>
 )

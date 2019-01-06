@@ -75,30 +75,6 @@ export const enableOnMountDomEvent = () => {
 
 
 
-// Fetch wrapper set to the live Strapi
-export const getData = (url) =>
-  fetch(`https://hyperapp.rocks/api${url}`)
-    .then(response => response.json())
-    .catch(error => console.error(`Fetch error:\n`, error))
-
-
-
-
-// Fetch wrapper  for POST requests,
-// set to the live Strapi
-export const postData = (url, data) =>
-  fetch(`https://hyperapp.rocks/api${url}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(response => response.json())
-    .catch(error => console.error(`Fetch error:\n`, error))
-
-
-
 
 // Fetch wrapper for uploading files to Strapi
 export const postImage = (url, data) => {
@@ -123,3 +99,6 @@ export const postImage = (url, data) => {
 }
 
 
+
+
+export const stopPropagation = (state, ev) => ev.stopPropagation()

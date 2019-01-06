@@ -8,13 +8,13 @@ import {Spinner} from '../../theme/Spinner'
 import {PillButton} from '../../theme/PillButton'
 
 // Actions
-import {LoadProjects} from '../../actions'
+import {LoadProjects} from './actions'
 
 // View
 export const Listing = ({state}) => (
-  <main class="listing" key="listing" id="projects">
+  <main class="listing" key="listing" id="projects" onmount={LoadProjects}>
     {
-      state.projects
+      state.listing
         ? <Results state={state} />
         : <Spinner large />
     }
@@ -27,13 +27,17 @@ const Results = ({state}) => (
     {state.lastSearch && <h2>Search results for: <u>{state.lastSearch}</u></h2>}
     <div class="grid" key="grid">
       {
-        state.projects.length !== 0
-          ? state.projects.map(_id => <Project {...state.projectCache[_id]} />)
-          : <div class="empty"><h2>0 results</h2></div>
+        state.listing.length > 0
+        ? state.listing.map(id => <Project {...state.projects[id]} />)
+        : (
+          <div class="empty">
+            <h2>0 results</h2>
+          </div>
+        )
       }
     </div>
     {!state.lastSearch && (
-      <PillButton onclick={LoadProjects}>Load more{state.isFetching && <Spinner />}</PillButton>
+      <PillButton onclick={LoadProjects}>Load more {state.isFetching && <Spinner />} </PillButton>
     )}
   </div>
 )

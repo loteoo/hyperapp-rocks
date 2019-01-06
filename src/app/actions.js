@@ -31,6 +31,18 @@ export const HandleSearchForm = (state, ev) => {
 }
 
 
+
+
+// Sets the project list (replaces)
+export const SetProjects = (state, data) => (
+  data ? {
+    ...state,
+    projects: data.map(project => project.id),
+    projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
+  }
+  : state
+)
+
 // Current search input value
 export const SetSearch = (state, ev) => ({
   ...state,
@@ -47,40 +59,8 @@ export const SetLastSearch = (state, ev) => ({
 
 
 
-// Loads projects
-export const LoadProjects = (state, ev) => [
-  {
-    ...state,
-    isFetching: true
-  },
-  getData(`/project?_sort=createdAt:desc&_start=${state.projects ? state.projects.length : 0}&_limit=12&status=published`)
-    .then(projects => {
-      actions.setIsFetching(false)
-      actions.AddProjects(projects)
-    })
-]
 
 
-
-
-
-// Sets the project list (replaces)
-export const SetProjects = (state, data) => (
-  data ? {
-    ...state,
-    projects: data.map(project => project.id),
-    projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
-  }
-  : state
-)
-
-
-// Adds projects to the list
-export const AddProjects = (state, data) => ({
-  ...state,
-  projects: (state.projects || []).concat(data.map(project => project.id)),
-  projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
-})
 
 
   
