@@ -11,7 +11,7 @@ export const Http = {
         .then(data => dispatch(props.action, data))
         .catch(err => console.log('Fetch error: ', err))
     },
-    url: `//${window.location.hostname}:5984/hyperapp-projects${props.url}`,
+    url: `//${window.location.hostname}:5984${props.url}`,
     action: props.action
   }),
 
@@ -27,11 +27,12 @@ export const Http = {
       })
         .then(response => response.json())
         .then(data => dispatch(props.action, data))
-        .catch(err => console.log('Fetch error: ', err))
+        .catch(err => dispatch(props.error, err))
     },
-    url: `//${window.location.hostname}:5984/hyperapp-projects${props.url}`,
+    url: `//${window.location.hostname}:5984${props.url}`,
     data: props.data,
-    action: props.action
+    action: props.action,
+    error: props.error,
   })
 };
 

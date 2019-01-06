@@ -63,23 +63,6 @@ export const LoadProjects = (state, ev) => [
 
 
 
-// Handles project submission
-export const HandleProjectForm = (state, ev) => {
-  ev.preventDefault()
-  // postData('/project', state.projectForm)
-  //   .then(project =>
-  //     postImage('/upload', {
-  //       files: state.projectForm.thumbnail,
-  //       refId: project._id,
-  //       ref: 'project',
-  //       plugin: 'upload',
-  //       field: 'thumbnail'
-  //     })
-  //       .then(files => actions.SetProjectForm({submitted: true}))
-  //   )
-}
-
-
 
 // Sets the project list (replaces)
 export const SetProjects = (state, data) => (
@@ -97,17 +80,6 @@ export const AddProjects = (state, data) => ({
   ...state,
   projects: (state.projects || []).concat(data.map(project => project.id)),
   projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
-})
-
-
-
-// Nested setter for the project form
-export const SetProjectForm = (state, key, ev) => ({
-  ...state,
-  projectForm: {
-    ...state.projectForm,
-    [key]: ev.target.value
-  }
 })
 
 

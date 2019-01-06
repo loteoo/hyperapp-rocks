@@ -4,5 +4,6 @@ export const init = {
   title: 'Hyperapp real-world examples',
   description: 'A curated list of live Hyperapp projects',
   search: '',
-  isFetching: false
+  isFetching: false,
+  projectForm: {}
 }

@@ -7,8 +7,8 @@ export const NiceInput = ({label = label || 'Label', name = name || 'name', type
   <div class={cc(['nice-input', name])} key={name}>
     {
       type === 'textarea'
-      ? <textarea name={name} id={name} placeholder={placeholder} oninput={ev => setter({[name]: ev.target.value})} required={required} {...rest}>{value}</textarea>
-      : <input type={type} name={name} id={name} placeholder={placeholder} value={value} oninput={ev => setter({[name]: ev.target.value})} required={required} {...rest} />
+      ? <textarea name={name} id={name} placeholder={placeholder} oninput={(state, ev) => setter(state, name, ev)} required={required} {...rest}>{value}</textarea>
+      : <input type={type} name={name} id={name} placeholder={placeholder} value={value} oninput={(state, ev) => setter(state, name, ev)} required={required} {...rest} />
     }
     <label for={name}>{label}</label>
     <div class="border"></div>
