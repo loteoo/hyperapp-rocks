@@ -7,7 +7,7 @@
   "scripts": {
     "start": "parcel src/index.html --out-dir public --open",
     "build": "parcel build ./src/index.html --no-source-maps --out-dir public --detailed-report",
-    "server": "parcel build ./src/server.js --target node  --no-source-maps --detailed-report --no-content-hash && node ./dist/server.js"
+    "server": "parcel build ./src/server.js --target node --no-minify --out-dir public --no-source-maps --detailed-report --no-content-hash && node ./public/server.js"
   },
   "dependencies": {
     "hyperapp": "github:jorgebucaran/hyperapp#V2",
