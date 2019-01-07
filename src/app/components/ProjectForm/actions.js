@@ -12,6 +12,30 @@ export const SetProjectForm = (state, key, ev) => ({
 })
 
 
+const acceptedMimes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
+
+// Nested setter for the project form
+export const SetProjectFormImage = (state, key, ev) => {
+  const file = ev.target.files[0]
+  if (!acceptedMimes.includes(file.type) || file.size > 1048576) {
+    return {
+      ...state,
+      projectForm: {
+        ...state.projectForm,
+        error: 'Invalid file type'
+      }
+    }
+  }
+  return {
+    ...state,
+    projectForm: {
+      ...state.projectForm,
+      [key]: file
+    }
+  }
+}
+
+
 
 // Handles project submission
 export const HandleProjectForm = (state, ev) => {
@@ -24,6 +48,28 @@ export const HandleProjectForm = (state, ev) => {
         submitted: true
       }
     },
+    Http.upload({
+      url: `//${window.location.hostname}:8080/upload`,
+      data: state.projectForm.image,
+      action: HandleUploadResponse,
+      error: HandleUploadError
+    })
+  ]
+}
+
+
+
+export const HandleUploadResponse = (state, data) => {
+  console.log(data);
+  return [
+    {
+      ...state,
+      projectForm: {
+        ...state.projectForm,
+        imageUploaded: true,
+        imagePath: data.imagePath
+      }
+    },
     Http.post({
       url: `/hyperapp-projects`,
       data: {
@@ -33,12 +79,24 @@ export const HandleProjectForm = (state, ev) => {
         description: state.projectForm.description,
         author: state.projectForm.author,
         github: state.projectForm.github,
-        thumbnail: state.projectForm.thumbnail
+        thumbnail: state.projectForm.imagePath
       },
       action: HandleSubmissionResponse,
       error: HandleSubmissionError
     })
   ]
+}
+
+
+export const HandleUploadError = (state, err) => {
+  console.log(err);
+  return {
+    ...state,
+    projectForm: {
+      ...state.projectForm,
+      error: 'Image upload failed'
+    }
+  }
 }
 
 
@@ -60,7 +118,7 @@ export const HandleSubmissionError = (state, err) => {
     ...state,
     projectForm: {
       ...state.projectForm,
-      error: true
+      error: 'Submission failed'
     }
   }
 }

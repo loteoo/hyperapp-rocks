@@ -1,6 +1,9 @@
 
 import http from 'http'
+import fs from 'fs'
+
 import {renderToString} from 'hyperapp-render'
+import formidable  from 'formidable'
 
 import {init} from './app/init' // Default initial state
 import {view} from './app/view' // App view
@@ -46,9 +49,7 @@ const renderWithState = (view, state) => {
 
 
 
-// HTTP server
-http.createServer((req, res) => {
-
+const render = (req, res) => {
   // Set headers
   res.writeHead(200, {'Content-Type': 'text/html'})
 
@@ -57,8 +58,42 @@ http.createServer((req, res) => {
   
   // Render the app with our populated state
   res.end(renderWithState(view, state))
+}
+
+
+
+
+const handleFileUploads = (req, res) => {
+  const form = new formidable.IncomingForm()
+  form.parse(req, (err, fields, files) => {
+    const oldpath = files.file.path
+    const newpath = __dirname + '/../public/uploads/' + files.file.name
+    fs.rename(oldpath, newpath, (err) => {
+      if (err) throw err;
+      res.write(JSON.stringify({
+        success: true,
+        imagePath: '/' + files.file.name
+      }))
+      res.end()
+    })
+  })
+}
+
+
+
+
+// HTTP server
+http.createServer((req, res) => {
+
+  // Bare bones router
+  if (req.url === '/upload') {
+    handleFileUploads(req, res)
+  } else {
+    render(req, res)
+  }
 
 }).listen(port);
+
 console.log(`SSR and file server listening on port ${port}`)
 
 

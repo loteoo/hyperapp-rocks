@@ -9,10 +9,11 @@ export const Http = {
       fetch(props.url)
         .then(response => response.json())
         .then(data => dispatch(props.action, data))
-        .catch(err => console.log('Fetch error: ', err))
+        .catch(err => dispatch(props.error, err))
     },
-    url: `//${window.location.hostname}:5984${props.url}`,
-    action: props.action
+    url: props.url,
+    action: props.action,
+    error: props.error
   }),
 
   post: (props) => ({
@@ -29,10 +30,37 @@ export const Http = {
         .then(data => dispatch(props.action, data))
         .catch(err => dispatch(props.error, err))
     },
-    url: `//${window.location.hostname}:5984${props.url}`,
+    url: props.url,
     data: props.data,
     action: props.action,
-    error: props.error,
+    error: props.error
+  }),
+
+  upload: (props) => ({
+    effect: (props, dispatch) => {
+
+      
+
+      // Convert a data object to a 'FormData' object.
+      // This allows the fetch API to set the proper
+      // headers for file uploading, which depends 
+      // on the uploaded file by the user
+      let formData = new FormData();
+
+      formData.append('file', props.data);
+      
+      fetch(props.url, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => dispatch(props.action, data))
+        .catch(err => dispatch(props.error, err))
+    },
+    url: props.url,
+    data: props.data,
+    action: props.action,
+    error: props.error
   })
 };
 
@@ -69,34 +97,6 @@ export const enableOnMountDomEvent = () => {
   }
 }
 
-
-
-
-
-
-
-
-// Fetch wrapper for uploading files to Strapi
-export const postImage = (url, data) => {
-
-  // Convert a data object to a 'FormData' object.
-  // This allows the fetch API to set the proper
-  // headers for file uploading, which depends 
-  // on the uploaded file by the user
-  let formData = new FormData();
-
-  for(let name in data) {
-    formData.append(name, data[name]);
-  }
-
-  // POST to Strapi
-  return fetch(`https://hyperapp.rocks/api${url}`, {
-    method: 'POST',
-    body: formData
-  })
-    .then(response => response.json())
-    .catch(error => console.error(`Fetch error:\n`, error))
-}
 
 
 
