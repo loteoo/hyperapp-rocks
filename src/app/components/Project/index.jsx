@@ -2,12 +2,14 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
+import {SetPath} from '../../actions'
+
 import {Github, LinkIcon} from '../icons'
 
 import {stopPropagation} from '../../utils'
 
 export const Project = ({_id, title, author, github, link, description, thumbnail}) => (
-  <div class="project" key={_id}>
+  <div class="project" key={_id} onclick={[SetPath, `/${_id}`]}>
     <div class="img">
       {thumbnail && <img src={`https://hyperapp.rocks${thumbnail}`} alt={title}/>}
       <div class="overlay">

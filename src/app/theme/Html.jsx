@@ -1,7 +1,6 @@
 import {h} from 'hyperapp'
 
 // Bundle css for this view
-import 'sanitize.css'
 import './style.css'
 
 // Root container component
@@ -58,7 +57,7 @@ export const Html = ({state}, children) => (
     <body>
       {children}
       {
-        // This will only appear in the Server-side rendered views
+        // This will only appear in the server-side rendered views
         typeof window === 'undefined' && [
           <script>window.initialState = [INJECT_INIT_STATE]</script>,
           <script src="/client.62456f60.js"></script>

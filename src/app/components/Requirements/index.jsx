@@ -24,7 +24,7 @@ export const Requirements = () => (
       Projects considered <b>awesome</b> will be added to the list!
     </p>
     <div class="actions">
-      <PillButton to="/">Submit away!</PillButton>
+      <PillButton onclick={[SetPath, '/']}>Submit away!</PillButton>
     </div>
   </Modal>
 )

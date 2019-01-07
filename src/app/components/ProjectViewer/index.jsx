@@ -13,6 +13,8 @@ import {SetPath, LoadProjects} from '../../actions'
 // View
 export const ProjectViewer = ({state}) => {
 
+  const id = state.path.substring(1)
+
   const project = state.projects && state.projects[id] && state.projects[id]
 
   // if (!project) {
@@ -28,7 +30,7 @@ export const ProjectViewer = ({state}) => {
         {
           project
             ? project._id
-              ? <Project {...project} />
+              ? <Project project={project} state={state} />
               : <FourOhFour />
             : <Spinner large />
         }
@@ -41,20 +43,20 @@ export const ProjectViewer = ({state}) => {
 
 
 // Project large display
-const Project = ({_id, title, author, github, link, description, thumbnail}) => (
-  <div class="project-content" key={_id}>
-    <a href={link} target="_blank" class="img">
-      {thumbnail && <img src={`https://hyperapp.rocks${thumbnail.url}`} alt={title}/>}
+const Project = ({project, state}) => (
+  <div class="project-content" key={project._id}>
+    <a href={project.link} target="_blank" class="img">
+      {project.thumbnail && <img src={`https://hyperapp.rocks${project.thumbnail}`} alt={project.title}/>}
     </a>
     <div class="info">
-      <h2>{title}</h2>
-      <p>Website: <a href={link} target="_blank">{link}</a></p>
-      {author && <p>Author: <b>{author}</b></p>}
-      {github && <p><a href={github} target="_blank"><Github />Github</a></p>}
-      <NavBtns currId={_id} />
+      <h2>{project.title}</h2>
+      <p>Website: <a href={project.link} target="_blank">{project.link}</a></p>
+      {project.author && <p>Author: <b>{project.author}</b></p>}
+      {project.github && <p><a href={project.github} target="_blank"><Github />Github</a></p>}
+      <NavBtns currId={project._id} state={state} />
     </div>
     <div class="description">
-      {description}
+      {project.description}
     </div>
   </div>
 )
@@ -73,14 +75,12 @@ const NavBtns = ({currId, state}) => {
   const currIndex = state.listing.indexOf(currId)
   return (
     <div class="nav-btns">
-      {
-        currIndex > 0 && <a to={'/' + state.listing[currIndex - 1]} title="Previous" class="left"><ArrowLeftCircle /></a>
-      }
+      {currIndex > 0 && <a onclick={[SetPath, '/' + state.listing[currIndex - 1]]} title="Previous" class="left"><ArrowLeftCircle /></a>}
       {
         currIndex < state.listing.length &&
           state.listing[currIndex + 1]
-            ? <a to={'/' + state.listing[currIndex + 1]} title="Next" class="right"><ArrowRightCircle /></a>
-            : <span onclick={LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
+          ? <a onclick={[SetPath, '/' + state.listing[currIndex + 1]]} title="Next" class="right"><ArrowRightCircle /></a>
+          : <span onclick={LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
       }
     </div>
   )

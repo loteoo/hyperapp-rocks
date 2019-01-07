@@ -23,6 +23,14 @@
   src: local('Nunito Bold'), local('Nunito-Bold'), url(../../assets/Nunito/Nunito-Bold.ttf) format('truetype');
 }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
 	--text-color: #8994c6;
 	--dark-text-color: #3e396b;

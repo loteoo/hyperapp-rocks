@@ -3,6 +3,8 @@ import cc from 'classcat'
 
 import './style.css'
 
+import {stopPropagation} from '../../utils'
+
 // Trigger css slidein transition
 const slideIn = el => {
   el.classList.add('closed')
@@ -26,7 +28,7 @@ const Close = ({close}) => (
 // View
 export const Modal = (props, children, {close, className} = props) => (
   <div className={cc(['modal', className])} key="modal" onclick={close} oncreate={slideIn} onremove={slideOut}>
-    <div class="box" onclick={ev => ev.stopPropagation()}>
+    <div class="box" onclick={stopPropagation}>
       <Close close={close} />
       <div class="inner">
         {children}

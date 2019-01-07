@@ -9,6 +9,7 @@ import {PillButton} from '../../theme/PillButton'
 
 // Actions
 import {HandleProjectForm, SetProjectForm} from './actions'
+import {SetPath} from '../../actions'
 
 export const ProjectForm = ({title, author, description, link, thumbnail, github, submitted, success}) => (
   <div class="project-form" id="submit">
@@ -27,7 +28,7 @@ export const ProjectForm = ({title, author, description, link, thumbnail, github
             <ImageInput label="Image" hint="Recommended size: 640x427" name="thumbnail" setter={SetProjectForm} required />
       
             <div class="actions">
-              <PillButton to="/requirements" white>View requirements</PillButton>
+              <PillButton onclick={[SetPath, '/requirements']} white>View requirements</PillButton>
               <PillButton type="submit" long green>Submit</PillButton>
             </div>
           </form>
