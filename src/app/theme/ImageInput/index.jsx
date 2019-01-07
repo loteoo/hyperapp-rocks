@@ -1,5 +1,4 @@
 import {h} from 'hyperapp'
-import cc from 'classcat'
 
 import './style.css'
 
@@ -20,7 +19,7 @@ const validate = (ev, name, setter, file = ev.target.files[0]) => {
 
 // View
 export const ImageInput = ({label = label || 'Label', name = name || 'name', setter, hint, ...rest}) => (
-  <div class={cc(['image-input', name])} key={name}>
+  <div class={`image-input${name ? ' ' + name : ''}`} key={name}>
     <input type="file" name={name} id={name} onchange={[setter, name]} {...rest} />
     <div class="picker"></div>
     <label for={name}>{label}</label>

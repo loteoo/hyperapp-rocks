@@ -1,10 +1,9 @@
 import {h} from 'hyperapp'
-import cc from 'classcat'
 
 import './style.css'
 
 export const NiceInput = ({label = label || 'Label', name = name || 'name', type = type || 'text', placeholder = placeholder || ' ', value, required, hint, setter, ...rest}) => (
-  <div class={cc(['nice-input', name])} key={name}>
+  <div class={`nice-input${name ? ' ' + name : ''}`} key={name}>
     {
       type === 'textarea'
       ? <textarea name={name} id={name} placeholder={placeholder} oninput={(state, ev) => setter(state, name, ev)} required={required} {...rest}>{value}</textarea>
