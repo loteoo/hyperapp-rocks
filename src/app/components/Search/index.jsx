@@ -3,7 +3,7 @@ import {h} from 'hyperapp'
 import './style.css'
 
 // Actions
-import {HandleSearchForm, SetSearch} from '../../actions'
+import {HandleSearchForm, SetSearch} from './actions'
 
 // View
 export const Search = ({search}) => (

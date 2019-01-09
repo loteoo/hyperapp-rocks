@@ -11,20 +11,20 @@ import {PillButton} from '../../theme/PillButton'
 import {HandleProjectForm, SetProjectForm, SetProjectFormImage} from './actions'
 import {SetPath} from '../../actions'
 
-export const ProjectForm = ({title, author, description, link, image, github, submitted, success}) => (
+export const ProjectForm = ({projectForm}) => (
   <div class="project-form" id="submit">
     {
-      !submitted
+      !projectForm.submitted
         ? (
           <form method="post" onsubmit={HandleProjectForm}>
             <h2>Submit your project!</h2>
             {/* <p>Full name: <b>{author} {description}</b></p> */}
       
-            <NiceInput label="Title" name="title" value={title} placeholder="My awesome project" setter={SetProjectForm} required />
-            <NiceInput type="url" label="Project URL" name="link" value={link} placeholder="https://" setter={SetProjectForm} required />
-            <NiceInput type="textarea" label="Description" name="description" value={description} placeholder="Short project description..." setter={SetProjectForm} required />
-            <NiceInput label="Author" name="author" value={author} placeholder="Who did this?" setter={SetProjectForm} />
-            <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={github} placeholder="Sharing is caring :)" setter={SetProjectForm} />
+            <NiceInput label="Title" name="title" value={projectForm.title} placeholder="My awesome project" setter={SetProjectForm} required />
+            <NiceInput type="url" label="Project URL" name="link" value={projectForm.link} placeholder="https://" setter={SetProjectForm} required />
+            <NiceInput type="textarea" label="Description" name="description" value={projectForm.description} placeholder="Short project description..." setter={SetProjectForm} required />
+            <NiceInput label="Author" name="author" value={projectForm.author} placeholder="Who did this?" setter={SetProjectForm} />
+            <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={projectForm.github} placeholder="Sharing is caring :)" setter={SetProjectForm} />
             <ImageInput label="Image" hint="Recommended size: 640x427" name="image" setter={SetProjectFormImage} required />
       
             <div class="actions">
@@ -32,7 +32,7 @@ export const ProjectForm = ({title, author, description, link, image, github, su
               <PillButton type="submit" long green>Submit</PillButton>
             </div>
           </form>
-        ) : success
+        ) : projectForm.success
           ? (
             <div class="thanks">
               <h2>Loading...</h2>

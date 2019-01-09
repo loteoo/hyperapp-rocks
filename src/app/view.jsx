@@ -15,7 +15,7 @@ export const view = (state) => (
   <Html state={state}>
     <Header state={state} />
     <Listing state={state} />
-    <ProjectForm {...state.projectForm} />
+    <ProjectForm projectForm={state.projectForm} />
     {
       state.path === '/requirements' ? <Requirements /> :
       state.path.length > 1 && <ProjectViewer state={state} />

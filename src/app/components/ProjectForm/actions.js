@@ -71,7 +71,7 @@ export const HandleUploadResponse = (state, data) => {
       }
     },
     Http.post({
-      url: `/hyperapp-projects`,
+      url: `//${window.location.hostname}:5984/hyperapp-projects`,
       data: {
         title: state.projectForm.title,
         link: state.projectForm.link,

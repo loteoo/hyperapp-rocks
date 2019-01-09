@@ -6,6 +6,7 @@
   >input {
     background-color: white;
     border: none;
+    background-repeat: no-repeat;
     background-image: url(search.svg);
     background-position: 92% 45%;
     background-size: 1.5em;

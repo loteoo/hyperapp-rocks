@@ -1,6 +1,8 @@
 
 import http from 'http'
+import url from 'url'
 import fs from 'fs'
+import path from 'path'
 
 import {renderToString} from 'hyperapp-render'
 import formidable  from 'formidable'
@@ -83,17 +85,83 @@ const handleFileUploads = (req, res) => {
 
 
 // HTTP server
+// http.createServer((req, res) => {
+
+//   // Bare bones router
+//   if (req.url === '/upload') {
+//     handleFileUploads(req, res)
+//   } else {
+//     render(req, res)
+//   }
+
+// }).listen(port);
+
+
+
+
+
+
+
+
+// With file server
 http.createServer((req, res) => {
 
-  // Bare bones router
-  if (req.url === '/upload') {
-    handleFileUploads(req, res)
-  } else {
-    render(req, res)
+  // parse URL
+  const parsedUrl = url.parse(req.url)
+  
+  // extract URL path
+  let pathname = path.join(__dirname, parsedUrl.pathname)
+
+  // based on the URL path, extract the file extention. e.g. .js, .doc, ...
+  const ext = path.parse(parsedUrl.pathname).ext
+
+  // maps file extention to MIME typere
+  const map = {
+    '.ico': 'image/x-icon',
+    '.html': 'text/html',
+    '.js': 'text/javascript',
+    '.json': 'application/json',
+    '.css': 'text/css',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.wav': 'audio/wav',
+    '.mp3': 'audio/mpeg',
+    '.svg': 'image/svg+xml',
+    '.pdf': 'application/pdf',
+    '.doc': 'application/msword'
   }
 
-}).listen(port);
+  fs.exists(pathname, (exist) => {
+
+    if (exist && !fs.statSync(pathname).isDirectory()) {
+
+      // read file from file system
+      fs.readFile(pathname, (err, data) => {
+        if (err) {
+          res.statusCode = 500
+          res.end(`Error getting the file: ${err}.`)
+        } else {
+          // if the file is found, set Content-type and send data
+          res.setHeader('Content-type', map[ext] || 'text/plain' )
+          res.end(data)
+        }
+      })
+    } else {
+      
+      // Bare bones router
+      if (req.url === '/upload') {
+        handleFileUploads(req, res)
+      } else {
+        render(req, res)
+      }
+
+    }
+  })
+
+}).listen(parseInt(port))
+
+
+
+
 
 console.log(`SSR and file server listening on port ${port}`)
-
-

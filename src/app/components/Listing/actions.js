@@ -23,7 +23,7 @@ const HandleFetchResponse = (state, data) => ({
   projects: data.rows.reduce((projects, project) => ({...projects, [project.id]: project.doc}), state.projects)
 })
 
-// Adds projects to the list
+// Error handling
 const HandleFetchError = (state, data) => ({
   ...state,
   isFetching: false,
