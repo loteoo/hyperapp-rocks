@@ -68,7 +68,7 @@ const handleFileUploads = (req, res) => {
     const oldpath = files.file.path
     const timestamp = Math.round((new Date()).getTime() / 1000)
     const newpath = `${timestamp}-${files.file.name}`
-    const diskPath = `${__dirname}/../public/${newpath}`
+    const diskPath = `${__dirname}/../public/uploads/${newpath}`
     fs.rename(oldpath, diskPath, (err) => {
       if (err) throw err;
       res.write(JSON.stringify({

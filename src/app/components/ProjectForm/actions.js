@@ -79,7 +79,7 @@ export const HandleUploadResponse = (state, data) => {
         description: state.projectForm.description,
         author: state.projectForm.author,
         github: state.projectForm.github,
-        thumbnail: state.projectForm.imagePath
+        thumbnail: data.imagePath
       },
       action: HandleSubmissionResponse,
       error: HandleSubmissionError
