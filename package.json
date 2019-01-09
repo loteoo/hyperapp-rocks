@@ -12,7 +12,8 @@
   "dependencies": {
     "formidable": "^1.2.1",
     "hyperapp": "github:jorgebucaran/hyperapp#V2",
-    "hyperapp-render": "^3.0.0"
+    "hyperapp-render": "^3.0.0",
+    "nano": "^7.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.3",

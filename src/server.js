@@ -10,21 +10,13 @@ import formidable  from 'formidable'
 import {init} from './app/init' // Default initial state
 import {view} from './app/view' // App view
 
+import {HandleFetchResponse} from './app/components/Listing/actions'
+
 const port = 8080;
 
+const nano = require('nano')('http://localhost:5984')
 
-
-
-// Pre-fetch data into the app's state for the render
-const populateState = state => {
-  
-  // Return the populated state
-  return {
-    ...state,
-    extraData: 'This came from the server!'
-  }
-}
-
+const projects = nano.use('hyperapp-projects')
 
 
 
@@ -52,14 +44,19 @@ const renderWithState = (view, state) => {
 
 
 const render = (req, res) => {
-  // Set headers
-  res.writeHead(200, {'Content-Type': 'text/html'})
 
-  // Pre-load data into the state so the first render isn't an empty app
-  const state = populateState(init)
-  
-  // Render the app with our populated state
-  res.end(renderWithState(view, state))
+  projects.list({include_docs: true, skip: 0, limit: 6}).then((body) => {
+
+    // Pre-load data into the state so the first render isn't an empty app
+    const state = HandleFetchResponse(init, body)
+
+    // Set headers
+    res.writeHead(200, {'Content-Type': 'text/html'})
+
+    // Render the app with our populated state
+    res.end(renderWithState(view, state))
+
+  });
 }
 
 
@@ -69,12 +66,14 @@ const handleFileUploads = (req, res) => {
   const form = new formidable.IncomingForm()
   form.parse(req, (err, fields, files) => {
     const oldpath = files.file.path
-    const newpath = __dirname + '/../public/uploads/' + files.file.name
-    fs.rename(oldpath, newpath, (err) => {
+    const timestamp = Math.round((new Date()).getTime() / 1000)
+    const newpath = `${timestamp}-${files.file.name}`
+    const diskPath = `${__dirname}/../public/${newpath}`
+    fs.rename(oldpath, diskPath, (err) => {
       if (err) throw err;
       res.write(JSON.stringify({
         success: true,
-        imagePath: '/' + files.file.name
+        imagePath: newpath
       }))
       res.end()
     })
@@ -109,8 +108,7 @@ http.createServer((req, res) => {
   // parse URL
   const parsedUrl = url.parse(req.url)
   
-  // extract URL path
-  let pathname = path.join(__dirname, parsedUrl.pathname)
+  const diskPath = `${__dirname}/../public/${parsedUrl.pathname}`
 
   // based on the URL path, extract the file extention. e.g. .js, .doc, ...
   const ext = path.parse(parsedUrl.pathname).ext
@@ -131,12 +129,12 @@ http.createServer((req, res) => {
     '.doc': 'application/msword'
   }
 
-  fs.exists(pathname, (exist) => {
+  fs.exists(diskPath, (exist) => {
 
-    if (exist && !fs.statSync(pathname).isDirectory()) {
+    if (exist && !fs.statSync(diskPath).isDirectory()) {
 
       // read file from file system
-      fs.readFile(pathname, (err, data) => {
+      fs.readFile(diskPath, (err, data) => {
         if (err) {
           res.statusCode = 500
           res.end(`Error getting the file: ${err}.`)

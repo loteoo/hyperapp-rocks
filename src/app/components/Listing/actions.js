@@ -9,14 +9,14 @@ export const LoadProjects = (state, ev) => ([
     isFetching: true
   },
   Http.fetch({
-    url: `//${window.location.hostname}:5984/hyperapp-projects/_all_docs?include_docs=true&skip=${state.listing.length}&_limit=12`,
+    url: `//${window.location.hostname}:5984/hyperapp-projects/_all_docs?include_docs=true&skip=${state.listing.length}&limit=12`,
     action: HandleFetchResponse,
     error: HandleFetchError
   })
 ])
 
 // Adds projects to the list
-const HandleFetchResponse = (state, data) => ({
+export const HandleFetchResponse = (state, data) => ({
   ...state,
   isFetching: false,
   listing: state.listing.concat(data.rows.map(project => project.id)),
