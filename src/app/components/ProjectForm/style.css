@@ -24,7 +24,7 @@
     }
   
     >.description,
-    >.thumbnail {
+    >.image {
       grid-column: 1/-1;
     }
   
