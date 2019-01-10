@@ -69,6 +69,9 @@ export const HandleFileReadError = (state, err) => {
 // Handles project submission
 export const HandleProjectForm = (state, ev) => {
   ev.preventDefault()
+  
+  const fileName = slugify(state.projectForm.image.name.split('.')[0]) + '.' + state.projectForm.image.name.split('.')[1]
+
   return [
     {
       ...state,
@@ -85,7 +88,13 @@ export const HandleProjectForm = (state, ev) => {
         title: state.projectForm.title,
         description: state.projectForm.description,
         author: state.projectForm.author,
-        github: state.projectForm.github
+        github: state.projectForm.github,
+        _attachments: {
+          [fileName]: {
+            content_type: state.projectForm.image.type,
+            data: state.projectForm.imageBlob.replace("data:", "").replace(/^.*;base64,/, "")
+          }
+        }
       },
       action: HandleSubmissionResponse,
       error: HandleSubmissionError
@@ -93,29 +102,16 @@ export const HandleProjectForm = (state, ev) => {
   ]
 }
 
-
-
-
-
-
 export const HandleSubmissionResponse = (state, res) => {
   console.log(res);
-  const fileName = slugify(state.projectForm.image.name.split('.')[0]) + state.projectForm.image.name.split('.')[1]
-  return [
-    {
-      ...state,
-      projectForm: {
+
+  return {
+    ...state,
+    projectForm: {
         ...state.projectForm,
       success: true
-      }
-    },
-    Http.put({
-      url: `//${window.location.hostname}:5984/hyperapp-projects/${res.id}/${fileName}?rev=${res.rev}`,
-      data: state.projectForm.imageBlob,
-      action: console.log,
-      error: console.error
-    })
-  ]
+    }
+  }
 }
 
 export const HandleSubmissionError = (state, err) => {

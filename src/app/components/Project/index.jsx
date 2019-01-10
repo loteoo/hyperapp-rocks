@@ -8,18 +8,18 @@ import {Github, LinkIcon} from '../icons'
 
 import {stopPropagation} from '../../utils'
 
-export const Project = ({_id, title, author, github, link, description, thumbnail}) => (
-  <div class="project" key={_id} onclick={[SetPath, `/${_id}`]}>
+export const Project = ({project}) => (
+  <div class="project" key={project._id} onclick={[SetPath, `/${project._id}`]}>
     <div class="img">
-      {thumbnail && <img src={`/uploads/${thumbnail}`} alt={title}/>}
+      {project._attachments && <img src={`//${window.location.hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
       <div class="overlay">
-        {github && <a href={github} onclick={stopPropagation} target="_blank"><Github /></a>}
-        {link && <a href={link} onclick={stopPropagation} target="_blank"><LinkIcon /></a>}
+        {project.github && <a href={project.github} onclick={stopPropagation} target="_blank"><Github /></a>}
+        {project.link && <a href={project.link} onclick={stopPropagation} target="_blank"><LinkIcon /></a>}
       </div>
     </div>
     <div class="info">
-      <h4>{title}</h4>
-      <p class="description">{description}</p>
+      <h4>{project.title}</h4>
+      <p class="description">{project.description}</p>
     </div>
   </div>
 )

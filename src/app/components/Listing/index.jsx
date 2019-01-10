@@ -28,7 +28,7 @@ const Results = ({state}) => (
     <div class="grid">
       {
         state.listing.length > 0
-        ? state.listing.map(id => <Project {...state.projects[id]} />)
+        ? state.listing.map(id => <Project project={state.projects[id]} />)
         : (
           <div class="empty">
             <h2>0 results</h2>

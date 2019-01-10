@@ -46,7 +46,7 @@ export const ProjectViewer = ({state}) => {
 const Project = ({project, state}) => (
   <div class="project-content" key={project._id}>
     <a href={project.link} target="_blank" class="img">
-      {project.thumbnail && <img src={`https://hyperapp.rocks${project.thumbnail}`} alt={project.title}/>}
+      {project._attachments && <img src={`//${window.location.hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
     </a>
     <div class="info">
       <h2>{project.title}</h2>
