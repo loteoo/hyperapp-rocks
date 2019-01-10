@@ -18,8 +18,17 @@ export const HandleSearchForm = (state, ev) => {
       ...state,
       isFetching: true
     },
-    Http.fetch({
-      url: `//${window.location.hostname}:5984/hyperapp-projects/_all_docs?include_docs=true&skip=${state.listing.length}&limit=12`,
+    Http.post({
+      url: `//${window.location.hostname}:5984/hyperapp-projects/_find`,
+      data: {
+        selector: {
+          title: {
+            $regex: state.search
+          },
+          skip: state.listing.length,
+          limit: 12
+        }
+      },
       action: HandleSearchResponse,
       error: HandleSearchError
     })
