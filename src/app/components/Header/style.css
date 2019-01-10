@@ -14,7 +14,7 @@ header {
     position: absolute 0 0 auto auto;
     padding: 1rem;
     a {
-      opacity: 0.5;
+      opacity: 0.75;
       color: inherit;
       transition: opacity 200ms;
       &:hover {
