@@ -8,7 +8,8 @@ import {Spinner} from '../../theme/Spinner'
 import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../icons'
 
 // Actions
-import {SetPath, LoadProjects} from '../../actions'
+import {SetPath} from '../../actions'
+import {LoadProjects} from '../Listing/actions'
 
 // View
 export const ProjectViewer = ({state}) => {

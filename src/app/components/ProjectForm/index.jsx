@@ -8,7 +8,7 @@ import {ImageInput} from '../../theme/ImageInput'
 import {PillButton} from '../../theme/PillButton'
 
 // Actions
-import {HandleProjectForm, SetProjectForm, SetProjectFormImage} from './actions'
+import {HandleProjectForm, SetProjectForm, SetProjectFormImage, ResetProjectFormImage} from './actions'
 import {SetPath} from '../../actions'
 
 export const ProjectForm = ({projectForm}) => (
@@ -25,9 +25,13 @@ export const ProjectForm = ({projectForm}) => (
             <NiceInput type="textarea" label="Description" name="description" value={projectForm.description} placeholder="Short project description..." setter={SetProjectForm} required />
             <NiceInput label="Author" name="author" value={projectForm.author} placeholder="Who did this?" setter={SetProjectForm} />
             <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={projectForm.github} placeholder="Sharing is caring :)" setter={SetProjectForm} />
-            <ImageInput label="Image" hint="Recommended size: 640x427" name="image" setter={SetProjectFormImage} required />
+            
 
-            {projectForm.imageBlob && <img src={projectForm.imageBlob} />}
+            {
+              !projectForm.imageBlob
+              ? <ImageInput label="Image" hint="Recommended size: 640x427" name="image" setter={SetProjectFormImage} required />
+              : <a class="thumbnail" onclick={ResetProjectFormImage}><img src={projectForm.imageBlob} /></a>
+            }
 
             <div class="actions">
               <PillButton onclick={[SetPath, '/requirements']} white>View requirements</PillButton>

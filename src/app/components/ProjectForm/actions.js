@@ -62,6 +62,17 @@ export const HandleFileReadError = (state, err) => {
 }
 
 
+export const ResetProjectFormImage = (state, blob) => ({
+  ...state,
+  projectForm: {
+    ...state.projectForm,
+    imageBlob: null,
+    image: null
+  }
+})
+
+
+
 
 
 

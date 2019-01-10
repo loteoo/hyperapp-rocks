@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.4.3",
+    "node-fetch": "^2.3.0",
     "parcel-bundler": "^1.11.0",
     "postcss-nested": "^4.1.1",
     "rucksack-css": "^1.0.2"
