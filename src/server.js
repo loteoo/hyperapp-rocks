@@ -62,37 +62,9 @@ const render = (req, res) => {
 
 
 
-const handleFileUploads = (req, res) => {
-  const form = new formidable.IncomingForm()
-  form.parse(req, (err, fields, files) => {
-    const oldpath = files.file.path
-    const timestamp = Math.round((new Date()).getTime() / 1000)
-    const newpath = `${timestamp}-${files.file.name}`
-    const diskPath = `${__dirname}/../public/uploads/${newpath}`
-    fs.rename(oldpath, diskPath, (err) => {
-      if (err) throw err;
-      res.write(JSON.stringify({
-        success: true,
-        imagePath: newpath
-      }))
-      res.end()
-    })
-  })
-}
-
-
-
-
 // HTTP server
 // http.createServer((req, res) => {
-
-//   // Bare bones router
-//   if (req.url === '/upload') {
-//     handleFileUploads(req, res)
-//   } else {
-//     render(req, res)
-//   }
-
+//   render(req, res)
 // }).listen(port);
 
 
@@ -146,12 +118,7 @@ http.createServer((req, res) => {
       })
     } else {
       
-      // Bare bones router
-      if (req.url === '/upload') {
-        handleFileUploads(req, res)
-      } else {
-        render(req, res)
-      }
+      render(req, res)
 
     }
   })
