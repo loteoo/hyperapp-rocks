@@ -26,7 +26,9 @@ export const ProjectForm = ({projectForm}) => (
             <NiceInput label="Author" name="author" value={projectForm.author} placeholder="Who did this?" setter={SetProjectForm} />
             <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={projectForm.github} placeholder="Sharing is caring :)" setter={SetProjectForm} />
             <ImageInput label="Image" hint="Recommended size: 640x427" name="image" setter={SetProjectFormImage} required />
-      
+
+            {projectForm.imageBlob && <img src={projectForm.imageBlob} />}
+
             <div class="actions">
               <PillButton onclick={[SetPath, '/requirements']} white>View requirements</PillButton>
               <PillButton type="submit" long green>Submit</PillButton>

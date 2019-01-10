@@ -36,6 +36,22 @@ export const Http = {
     error: props.error
   }),
 
+  put: (props) => ({
+    effect: (props, dispatch) => {
+      fetch(props.url, {
+        method: 'PUT',
+        body: props.data
+      })
+        .then(response => response.json())
+        .then(data => dispatch(props.action, data))
+        .catch(err => dispatch(props.error, err))
+    },
+    url: props.url,
+    data: props.data,
+    action: props.action,
+    error: props.error
+  }),
+
   upload: (props) => ({
     effect: (props, dispatch) => {
 
@@ -61,6 +77,24 @@ export const Http = {
     data: props.data,
     action: props.action,
     error: props.error
+  })
+};
+
+
+
+
+
+export const File = {
+  read: (props) => ({
+    effect: (props, dispatch) => {
+      let reader = new FileReader();
+      reader.addEventListener("load", () => {
+        dispatch(props.action, reader.result)
+      }, false);
+      reader.readAsDataURL(props.file);
+    },
+    file: props.file,
+    action: props.action
   })
 };
 
@@ -102,3 +136,13 @@ export const enableOnMountDomEvent = () => {
 
 
 export const stopPropagation = (state, ev) => ev.stopPropagation()
+
+
+export const slugify = (text) => 
+  text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+

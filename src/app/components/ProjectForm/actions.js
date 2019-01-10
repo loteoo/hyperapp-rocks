@@ -1,6 +1,6 @@
 
 
-import {Http} from '../../utils'
+import {Http, File, slugify} from '../../utils'
 
 // Nested setter for the project form
 export const SetProjectForm = (state, key, ev) => ({
@@ -26,14 +26,43 @@ export const SetProjectFormImage = (state, key, ev) => {
       }
     }
   }
+  return [
+    {
+      ...state,
+      projectForm: {
+        ...state.projectForm,
+        [key]: file
+      }
+    },
+    File.read({
+      file: file,
+      action: HandleFileReadOutput,
+      error: HandleFileReadError
+    })
+  ]
+}
+
+export const HandleFileReadOutput = (state, blob) => ({
+  ...state,
+  projectForm: {
+    ...state.projectForm,
+    imageBlob: blob
+  }
+})
+
+export const HandleFileReadError = (state, err) => {
+  console.log(err);
   return {
     ...state,
     projectForm: {
       ...state.projectForm,
-      [key]: file
+      error: 'Image read failed'
     }
   }
 }
+
+
+
 
 
 
@@ -48,28 +77,6 @@ export const HandleProjectForm = (state, ev) => {
         submitted: true
       }
     },
-    Http.upload({
-      url: `//${window.location.hostname}:8080/upload`,
-      data: state.projectForm.image,
-      action: HandleUploadResponse,
-      error: HandleUploadError
-    })
-  ]
-}
-
-
-
-export const HandleUploadResponse = (state, data) => {
-  console.log(data);
-  return [
-    {
-      ...state,
-      projectForm: {
-        ...state.projectForm,
-        imageUploaded: true,
-        imagePath: data.imagePath
-      }
-    },
     Http.post({
       url: `//${window.location.hostname}:5984/hyperapp-projects`,
       data: {
@@ -78,8 +85,7 @@ export const HandleUploadResponse = (state, data) => {
         title: state.projectForm.title,
         description: state.projectForm.description,
         author: state.projectForm.author,
-        github: state.projectForm.github,
-        thumbnail: data.imagePath
+        github: state.projectForm.github
       },
       action: HandleSubmissionResponse,
       error: HandleSubmissionError
@@ -88,28 +94,28 @@ export const HandleUploadResponse = (state, data) => {
 }
 
 
-export const HandleUploadError = (state, err) => {
-  console.log(err);
-  return {
-    ...state,
-    projectForm: {
-      ...state.projectForm,
-      error: 'Image upload failed'
-    }
-  }
-}
 
 
 
-export const HandleSubmissionResponse = (state, data) => {
-  console.log(data);
-  return {
-    ...state,
-    projectForm: {
-      ...state.projectForm,
+
+export const HandleSubmissionResponse = (state, res) => {
+  console.log(res);
+  const fileName = slugify(state.projectForm.image.name.split('.')[0]) + state.projectForm.image.name.split('.')[1]
+  return [
+    {
+      ...state,
+      projectForm: {
+        ...state.projectForm,
       success: true
-    }
-  }
+      }
+    },
+    Http.put({
+      url: `//${window.location.hostname}:5984/hyperapp-projects/${res.id}/${fileName}?rev=${res.rev}`,
+      data: state.projectForm.imageBlob,
+      action: console.log,
+      error: console.error
+    })
+  ]
 }
 
 export const HandleSubmissionError = (state, err) => {
@@ -122,3 +128,4 @@ export const HandleSubmissionError = (state, err) => {
     }
   }
 }
+   
