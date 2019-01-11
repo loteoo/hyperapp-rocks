@@ -48,15 +48,15 @@ export const HandleSearchForm = (state, ev) => {
 // Sets the project list (replaces)
 export const HandleSearchResponse = (state, data) => {
   console.log(data);
-  
   return ({
-  ...state,
-  lastSearch: state.search,
-  search: '',
-  listing: data.docs.map(project => project._id),
-  projects: data.docs.reduce((projects, project) => ({...projects, [project._id]: project}), state.projects)
-})
+    ...state,
+    lastSearch: state.search,
+    search: '',
+    listing: data.docs.map(project => project._id),
+    projects: data.docs.reduce((projects, project) => ({...projects, [project._id]: project}), state.projects)
+  })
 }
+
 // Error handling
 const HandleSearchError = (state, data) => {
   console.log(data);
