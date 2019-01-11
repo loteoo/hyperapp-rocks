@@ -1,5 +1,5 @@
 
-
+import {Http} from '../../utils'
 
 
 // Current search input value
@@ -22,11 +22,18 @@ export const HandleSearchForm = (state, ev) => {
       url: `//${window.location.hostname}:5984/hyperapp-projects/_find`,
       data: {
         selector: {
-          title: {
-            $regex: state.search
-          },
-          skip: state.listing.length,
-          limit: 12
+          $or: [
+            {
+              title: {
+                $regex: state.search
+              }
+            },
+            {
+              description: {
+                $regex: state.search
+              }
+            }
+          ]
         }
       },
       action: HandleSearchResponse,
@@ -39,20 +46,28 @@ export const HandleSearchForm = (state, ev) => {
 
 
 // Sets the project list (replaces)
-export const HandleSearchResponse = (state, data) => ({
+export const HandleSearchResponse = (state, data) => {
+  console.log(data);
+  
+  return ({
   ...state,
   lastSearch: state.search,
   search: '',
-  projects: data.map(project => project.id),
-  projectCache: data.reduce((cache, project) => ({...cache, [project._id]: project}), state.projectCache || {})
+  listing: data.docs.map(project => project._id),
+  projects: data.docs.reduce((projects, project) => ({...projects, [project._id]: project}), state.projects)
 })
-
+}
 // Error handling
-const HandleSearchError = (state, data) => ({
+const HandleSearchError = (state, data) => {
+  console.log(data);
+  
+  return ({
   ...state,
   isFetching: false,
   error: true
 })
+
+}
 
 
 
