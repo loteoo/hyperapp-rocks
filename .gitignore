@@ -120,9 +120,3 @@ dist
 .env
 
 
-
-
-public/*
-!public/uploads
-public/uploads/*
-!public/uploads/trackme.txt
