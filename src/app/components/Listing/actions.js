@@ -3,7 +3,7 @@ import {Http} from '../../utils'
 
 
 // Loads projects
-export const LoadProjects = (state, ev) => ([
+export const LoadProjects = (state) => ([
   {
     ...state,
     isFetching: true

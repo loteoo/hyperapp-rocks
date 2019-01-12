@@ -1,6 +1,7 @@
 
 import {Http} from '../../utils'
 
+import {LoadProjects} from '../Listing/actions'
 
 // Current search input value
 export const SetSearch = (state, ev) => ({
@@ -13,11 +14,17 @@ export const SetSearch = (state, ev) => ({
 // Handles searching
 export const HandleSearchForm = (state, ev) => {
   ev.preventDefault()
-  return [
-    {
-      ...state,
-      isFetching: true
-    },
+
+  const next = {
+    ...state,
+    lastSearch: state.search,
+    search: '',
+    isFetching: true,
+    listing: []
+  }
+
+  return state.search ? [
+    next,
     Http.post({
       url: `//${window.location.hostname}:5984/hyperapp-projects/_find`,
       data: {
@@ -25,12 +32,12 @@ export const HandleSearchForm = (state, ev) => {
           $or: [
             {
               title: {
-                $regex: state.search
+                $regex: `(?i)${state.search}`
               }
             },
             {
               description: {
-                $regex: state.search
+                $regex: `(?i)${state.search}`
               }
             }
           ]
@@ -40,6 +47,7 @@ export const HandleSearchForm = (state, ev) => {
       error: HandleSearchError
     })
   ]
+  : LoadProjects(next)
 }
 
 
@@ -50,8 +58,6 @@ export const HandleSearchResponse = (state, data) => {
   console.log(data);
   return ({
     ...state,
-    lastSearch: state.search,
-    search: '',
     listing: data.docs.map(project => project._id),
     projects: data.docs.reduce((projects, project) => ({...projects, [project._id]: project}), state.projects)
   })
@@ -60,13 +66,11 @@ export const HandleSearchResponse = (state, data) => {
 // Error handling
 const HandleSearchError = (state, data) => {
   console.log(data);
-  
   return ({
-  ...state,
-  isFetching: false,
-  error: true
-})
-
+    ...state,
+    isFetching: false,
+    error: true
+  })
 }
 
 

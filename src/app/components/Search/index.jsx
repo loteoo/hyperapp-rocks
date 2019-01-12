@@ -15,7 +15,6 @@ export const Search = ({search}) => (
       placeholder="Search projects..."
       value={search}
       oninput={SetSearch}
-      required
     />
     <button type="submit"></button>
   </form>
