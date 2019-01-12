@@ -5,7 +5,7 @@ import './style.css'
 // Components
 import {Modal} from '../../theme/Modal'
 import {Spinner} from '../../theme/Spinner'
-import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../icons'
+import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../../theme/Icons'
 
 // Actions
 import {SetPath} from '../../actions'

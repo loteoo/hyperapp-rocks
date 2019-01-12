@@ -34,6 +34,14 @@
     width: 100%;
     z-index: 2;
     padding: 0;
+    >.search-results {
+      display: flex;
+      align-items: center;
+      >a {
+        color: var(--dark-text-color);
+        margin-left: 0.5rem;
+      }
+    }
     >.grid {
       width: 100%;
       max-width: 1280px;

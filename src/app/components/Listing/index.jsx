@@ -5,10 +5,12 @@ import './style.css'
 // Components
 import {Project} from '../Project'
 import {Spinner} from '../../theme/Spinner'
+import {XCircle} from '../../theme/Icons'
 import {PillButton} from '../../theme/PillButton'
 
 // Actions
 import {LoadProjects} from './actions'
+import {HandleSearchForm} from '../Search/actions'
 
 // View
 export const Listing = ({state}) => (
@@ -24,7 +26,12 @@ export const Listing = ({state}) => (
 // Sub-component
 const Results = ({state}) => (
   <div class="results">
-    {state.lastSearch && <h2>Search results for: <u>{state.lastSearch}</u></h2>}
+    {state.lastSearch && (
+      <div class="search-results">
+        <h2>Search results for: <u>{state.lastSearch}</u></h2>
+        <a onclick={HandleSearchForm}><XCircle /></a>
+      </div>
+    )}
     <div class="grid">
       {
         state.listing.length > 0

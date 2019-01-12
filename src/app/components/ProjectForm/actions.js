@@ -100,10 +100,12 @@ export const HandleProjectForm = (state, ev) => {
         description: state.projectForm.description,
         author: state.projectForm.author,
         github: state.projectForm.github,
+        status: 'pending',
+        createdAt: new Date().toISOString(),
         _attachments: {
           [fileName]: {
             content_type: state.projectForm.image.type,
-            data: state.projectForm.imageBlob.replace("data:", "").replace(/^.*;base64,/, "")
+            data: state.projectForm.imageBlob.replace(/^.*;base64,/, '')
           }
         }
       },

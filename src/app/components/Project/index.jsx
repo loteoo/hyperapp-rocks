@@ -4,7 +4,7 @@ import './style.css'
 
 import {SetPath} from '../../actions'
 
-import {Github, LinkIcon} from '../icons'
+import {Github, LinkIcon} from '../../theme/Icons'
 
 import {stopPropagation} from '../../utils'
 

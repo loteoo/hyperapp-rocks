@@ -5,7 +5,7 @@ import './style.css'
 // Components
 import {Search} from '../Search'
 import {PillButton} from '../../theme/PillButton'
-import {Github} from '../icons'
+import {Github} from '../../theme/Icons'
 
 // View
 export const Header = ({state}) => (

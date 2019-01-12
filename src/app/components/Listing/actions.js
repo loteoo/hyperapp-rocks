@@ -9,7 +9,7 @@ export const LoadProjects = (state) => ([
     isFetching: true
   },
   Http.fetch({
-    url: `//${window.location.hostname}:5984/hyperapp-projects/_all_docs?include_docs=true&skip=${state.listing.length}&limit=12`,
+    url: `//${window.location.hostname}:5984/hyperapp-projects/_design/projects/_view/by-created?descending=true&skip=${state.listing.length}&limit=12`,
     action: HandleFetchResponse,
     error: HandleFetchError
   })
@@ -20,7 +20,7 @@ export const HandleFetchResponse = (state, data) => ({
   ...state,
   isFetching: false,
   listing: state.listing.concat(data.rows.map(project => project.id)),
-  projects: data.rows.reduce((projects, project) => ({...projects, [project.id]: project.doc}), state.projects)
+  projects: data.rows.reduce((projects, project) => ({...projects, [project.id]: project.value}), state.projects)
 })
 
 // Error handling

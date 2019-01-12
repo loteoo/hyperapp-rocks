@@ -39,6 +39,11 @@ export const HandleSearchForm = (state, ev) => {
               description: {
                 $regex: `(?i)${state.search}`
               }
+            },
+            {
+              author: {
+                $regex: `(?i)${state.search}`
+              }
             }
           ]
         }
