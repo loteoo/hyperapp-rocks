@@ -10,7 +10,6 @@
     "server": "parcel build ./src/server.js --target node --no-minify --no-source-maps --detailed-report --no-content-hash && node ./dist/server.js"
   },
   "dependencies": {
-    "formidable": "^1.2.1",
     "hyperapp": "github:jorgebucaran/hyperapp#V2",
     "hyperapp-render": "^3.0.0",
     "nano": "^7.1.1"
