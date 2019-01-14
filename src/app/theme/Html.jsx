@@ -5,7 +5,7 @@ import './style.css'
 
 // Root container component
 export const Html = ({state}, children) => (
-  <html>
+  <html lang="en">
     <head>
       <meta charset="utf-8"/>
       <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1"/>
