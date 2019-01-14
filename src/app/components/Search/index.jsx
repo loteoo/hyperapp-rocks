@@ -7,7 +7,7 @@ import {HandleSearchForm, SetSearch} from './actions'
 
 // View
 export const Search = ({search}) => (
-  <form class="search" onsubmit={HandleSearchForm} method="post">
+  <form class="search" role="search" onsubmit={HandleSearchForm} method="post">
     <input 
       id="search"
       type="text"

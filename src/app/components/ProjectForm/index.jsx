@@ -12,7 +12,7 @@ import {HandleProjectForm, SetProjectForm, SetProjectFormImage, ResetProjectForm
 import {SetPath} from '../../actions'
 
 export const ProjectForm = ({projectForm}) => (
-  <div class="project-form" id="submit">
+  <div class="project-form" id="submit" role="form">
     {
       !projectForm.submitted
         ? (

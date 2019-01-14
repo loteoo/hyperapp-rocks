@@ -9,7 +9,7 @@ import {Github} from '../../theme/Icons'
 
 // View
 export const Header = ({state}) => (
-  <header>
+  <header role="banner">
     <nav>
       <a href="https://github.com/loteoo/hyperapp-examples" target="_blank" title="Source code"><Github /></a>
     </nav>

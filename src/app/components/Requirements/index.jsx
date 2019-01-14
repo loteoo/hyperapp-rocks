@@ -11,7 +11,7 @@ import {SetPath} from '../../actions'
 
 // View
 export const Requirements = () => (
-  <Modal className="requirements" close={[SetPath, '/']}>
+  <Modal className="requirements" role="dialog" close={[SetPath, '/']}>
     <h4>To be considered a 'real world' example, your project must...</h4>
     <ul>
       <li>Be live, with a public URL. (preferably with it's own domain name)</li>
