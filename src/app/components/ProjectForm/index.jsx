@@ -9,7 +9,7 @@ import {PillButton} from '../../theme/PillButton'
 
 // Actions
 import {HandleProjectForm, SetProjectForm, SetProjectFormImage, ResetProjectFormImage} from './actions'
-import {SetPath} from '../../actions'
+import {Navigate} from '../../actions'
 
 export const ProjectForm = ({projectForm}) => (
   <div class="project-form" id="submit" role="form">
@@ -34,7 +34,7 @@ export const ProjectForm = ({projectForm}) => (
             }
 
             <div class="actions">
-              <PillButton onclick={[SetPath, '/requirements']} white>View requirements</PillButton>
+              <PillButton onclick={[Navigate, '/requirements']} white>View requirements</PillButton>
               <PillButton type="submit" long green>Submit</PillButton>
             </div>
           </form>

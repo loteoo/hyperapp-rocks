@@ -4,17 +4,21 @@ import {init} from './app/init'
 import {view} from './app/view'
 
 import {SetPath} from './app/actions'
-import {enableOnMountDomEvent, LocationChanged} from './app/utils'
+import {enableOnMountDomEvent, Location} from './app/utils'
 enableOnMountDomEvent()
 
 // Initialize the app on the document
 app({
-  init: {...init, ...window.initialState},
+  init: {
+    ...init,
+    ...window.initialState,
+    path: window.location.pathname
+  },
   view,
   subscriptions: state => {
     console.log(state)
     return [
-      LocationChanged({action: SetPath})
+      Location.changed({action: SetPath})
     ]
   },
   container: document

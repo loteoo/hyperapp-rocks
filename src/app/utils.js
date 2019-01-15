@@ -103,19 +103,34 @@ export const File = {
 
 
 
-// Listen to hash changes in the browser
-export const LocationChanged = props => ({
-  effect: (props, dispatch) => {
-    const eventListener = event => {
-      dispatch(props.action, window.location.pathname)
-    }
-    addEventListener("hashchange", eventListener)
-    return () => removeEventListener("hashchange", eventListener)
-  },
-  action: props.action
-})
 
+// Location baggy
+export const Location = {
 
+  go: (props) => ({
+    effect: (props, dispatch) => {
+      history.pushState(null, '', props.to)
+      dispatchEvent(new CustomEvent('pushstate'))
+    },
+    to: props.to
+  }),
+
+  // Listen to location changes
+  changed: props => ({
+    effect: (props, dispatch) => {
+      const handleLocationChange = ev => {
+        dispatch(props.action, window.location.pathname)
+      }
+      addEventListener('pushstate', handleLocationChange)
+      addEventListener('popstate', handleLocationChange)
+      return () => {
+        removeEventListener('pushstate', handleLocationChange)
+        removeEventListener('popstate', handleLocationChange)
+      }
+    },
+    action: props.action
+  })
+}
 
 
 

@@ -8,8 +8,9 @@ import {Spinner} from '../../theme/Spinner'
 import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../../theme/Icons'
 
 // Actions
-import {SetPath} from '../../actions'
+// import {LoadProject} from './actions'
 import {LoadProjects} from '../Listing/actions'
+import {Navigate} from '../../actions'
 
 // View
 export const ProjectViewer = ({state}) => {
@@ -26,7 +27,7 @@ export const ProjectViewer = ({state}) => {
 
 
   return (
-    <Modal close={[SetPath, '/']}>
+    <Modal close={[Navigate, '/']}>
       <div class="project-viewer">
         {
           project
@@ -76,11 +77,11 @@ const NavBtns = ({currId, state}) => {
   const currIndex = state.listing.indexOf(currId)
   return (
     <div class="nav-btns">
-      {currIndex > 0 && <a onclick={[SetPath, '/' + state.listing[currIndex - 1]]} title="Previous" class="left"><ArrowLeftCircle /></a>}
+      {currIndex > 0 && <a onclick={[Navigate, '/' + state.listing[currIndex - 1]]} title="Previous" class="left"><ArrowLeftCircle /></a>}
       {
         currIndex < state.listing.length &&
           state.listing[currIndex + 1]
-          ? <a onclick={[SetPath, '/' + state.listing[currIndex + 1]]} title="Next" class="right"><ArrowRightCircle /></a>
+          ? <a onclick={[Navigate, '/' + state.listing[currIndex + 1]]} title="Next" class="right"><ArrowRightCircle /></a>
           : <span onclick={LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
       }
     </div>
