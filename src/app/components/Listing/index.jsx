@@ -14,7 +14,7 @@ import {HandleSearchForm} from '../Search/actions'
 
 // View
 export const Listing = ({state}) => (
-  <main class="listing" id="projects" role="main" onmount={LoadProjects}>
+  <main class="listing" id="projects" role="main">
     {
       state.listing
         ? <Results state={state} />
