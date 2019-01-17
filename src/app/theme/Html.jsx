@@ -59,8 +59,17 @@ export const Html = ({state}, children) => (
       {
         // This will only appear in the server-side rendered views
         typeof window === 'undefined' && [
+
+          // State used for the server-side render. 
+          // Hyperapp will pick this up and hydrate the app.
           <script>window.initialState = [INJECT_INIT_STATE]</script>,
-          <script src="/client.62456f60.js"></script>
+
+          // JS bundle
+          <script src="/client.62456f60.js"></script>,
+          
+          // Google Analytics, fight me - (ง ͠° ͟ʖ ͡°)ง
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73430538-4"></script>,
+          <script>{"window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-73430538-4');"}</script>
         ]
       }
     </body>
