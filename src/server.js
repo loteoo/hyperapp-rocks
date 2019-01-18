@@ -9,7 +9,9 @@ import {renderToString} from 'hyperapp-render'
 import {init} from './app/init' // Default initial state
 import {view} from './app/view' // App view
 
-import {HandleFetchResponse} from './app/components/Listing/actions'
+import {SetPath} from './app/actions'
+import {HandleFetchResponse as HandleListingData} from './app/components/Listing/actions'
+import {HandleFetchResponse as HandleProjectData} from './app/components/ProjectViewer/actions'
 
 const port = 8080;
 
@@ -23,7 +25,7 @@ const projects = nano.use('hyperapp-projects')
 // Injects the state used for the render, into the render, 
 // so the client can pick it up and memoize efficiently,
 // while also avoiding unnecessary fetches on initialization.
-const renderWithState = (view, state) => {
+const render = (view, state) => {
 
   // Render the app with given state
   let html = renderToString(view(state))
@@ -45,20 +47,45 @@ const renderWithState = (view, state) => {
 
 
 
-const render = (req, res) => {
 
-  projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12}).then((body) => {
+const populateState = (req) => {
 
-    // Pre-load data into the state so the first render isn't an empty app
-    const state = HandleFetchResponse(init, body)
+  const state = SetPath(init, url.parse(req.url).pathname)
 
-    // Set headers
-    res.writeHead(200, {'Content-Type': 'text/html'})
+  if (state.path.length > 1) {
 
-    // Render the app with our populated state
-    res.end(renderWithState(view, state))
+    return projects.get(state.path.substring(1))
+      .then(project => HandleProjectData(state, project))
+      .catch(project => HandleProjectData(state, project))
 
-  });
+  } else {
+    
+    // Query listing data from DB
+    return projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
+    .then(projectsData => HandleListingData(state, projectsData))
+
+  }
+}
+
+
+
+
+
+const respond = (req, res) => {
+  
+  // Set headers
+  res.writeHead(200, {'Content-Type': 'text/html'})
+
+  // Populate state
+  populateState(req).then(state => {
+
+    // Render the app
+    res.end(render(view, state))
+    
+  })
+
+
+  
 }
 
 
@@ -66,7 +93,7 @@ const render = (req, res) => {
 
 // HTTP server
 // http.createServer((req, res) => {
-//   render(req, res)
+//   respond(req, res)
 // }).listen(port);
 
 
@@ -120,7 +147,7 @@ http.createServer((req, res) => {
       })
     } else {
       
-      render(req, res)
+      respond(req, res)
 
     }
   })
