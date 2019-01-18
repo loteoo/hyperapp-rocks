@@ -12,6 +12,8 @@ import {LoadProjectIfNeeded} from './actions'
 import {LoadProjects} from '../Listing/actions'
 import {Navigate} from '../../actions'
 
+import {hostname} from '../../utils'
+
 // View
 export const ProjectViewer = ({state}) => {
 
@@ -48,7 +50,7 @@ export const ProjectViewer = ({state}) => {
 const Project = ({project, state}) => (
   <div class="project-content" key={project._id}>
     <a href={project.link} target="_blank" class="img">
-      {project._attachments && <img src={`//${window.location.hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
+      {project._attachments && <img src={`//${hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
     </a>
     <div class="info">
       <h2>{project.title}</h2>

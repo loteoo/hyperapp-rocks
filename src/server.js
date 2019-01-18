@@ -5,7 +5,6 @@ import fs from 'fs'
 import path from 'path'
 
 import {renderToString} from 'hyperapp-render'
-import formidable  from 'formidable'
 
 import {init} from './app/init' // Default initial state
 import {view} from './app/view' // App view
@@ -45,7 +44,7 @@ const renderWithState = (view, state) => {
 
 const render = (req, res) => {
 
-  projects.list({include_docs: true, skip: 0, limit: 6}).then((body) => {
+  projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 6}).then((body) => {
 
     // Pre-load data into the state so the first render isn't an empty app
     const state = HandleFetchResponse(init, body)

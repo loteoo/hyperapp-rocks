@@ -6,12 +6,12 @@ import {Navigate} from '../../actions'
 
 import {Github, LinkIcon} from '../../theme/Icons'
 
-import {stopPropagation} from '../../utils'
+import {stopPropagation, hostname} from '../../utils'
 
 export const Project = ({project}) => (
   <div class="project" role="dialog" key={project._id} onclick={[Navigate, `/${project._id}`]}>
     <div class="img">
-      {project._attachments && <img src={`//${window.location.hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
+      {project._attachments && <img src={`//${hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
       <div class="overlay">
         {project.github && <a href={project.github} onclick={stopPropagation} target="_blank"><Github /></a>}
         {project.link && <a href={project.link} onclick={stopPropagation} target="_blank"><LinkIcon /></a>}
