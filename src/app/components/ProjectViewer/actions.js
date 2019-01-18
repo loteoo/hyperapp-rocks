@@ -5,8 +5,6 @@ import {Http} from '../../utils'
 // Loads projects
 export const LoadProjectIfNeeded = (state, id) => {
   
-  console.log('LOAD PROJECT IF NEEDED')
-  
   const project = state.projects && state.projects[id] && state.projects[id]
 
   if (!project) {
@@ -43,12 +41,15 @@ export const HandleFetchResponse = (state, project) => ({
 })
 
 // Error handling
-const HandleFetchError = (state, id, data) => ({
-  ...state,
-  projects: {
-    ...state.projects,
-    [id]: {
-      error: true
+const HandleFetchError = (state, id, data) => {
+  console.error(data)
+  return {
+    ...state,
+    projects: {
+      ...state.projects,
+      [id]: {
+        error: 'Fetch failed'
+      }
     }
   }
-})
+}

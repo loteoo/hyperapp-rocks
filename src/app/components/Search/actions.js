@@ -70,13 +70,10 @@ export const HandleSearchResponse = (state, data) => {
 
 // Error handling
 const HandleSearchError = (state, data) => {
-  console.log(data);
+  console.error(data);
   return ({
     ...state,
     isFetching: false,
-    error: true
+    error: 'Search failed'
   })
 }
-
-
-

@@ -37,16 +37,18 @@ export const HandleFetchResponse = (state, id, data) => ({
 
 
 // Error handling
-const HandleFetchError = (state, id, data) => ({
-  ...state,
-  projectCache: {
-    ...state.projectCache,
-    [id]: {
-      error: 'Failed to fetch'
+const HandleFetchError = (state, id, data) => {
+  console.error(data)
+  return {
+    ...state,
+    projectCache: {
+      ...state.projectCache,
+      [id]: {
+        error: 'Failed to fetch'
+      }
     }
   }
-})
-
+}
 
 
 

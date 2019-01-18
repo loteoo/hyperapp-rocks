@@ -128,7 +128,7 @@ export const HandleSubmissionResponse = (state, res) => {
 }
 
 export const HandleSubmissionError = (state, err) => {
-  console.log(err);
+  console.error(err);
   return {
     ...state,
     projectForm: {

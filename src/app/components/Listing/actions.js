@@ -25,8 +25,11 @@ export const HandleFetchResponse = (state, data) => ({
 })
 
 // Error handling
-const HandleFetchError = (state, data) => ({
-  ...state,
-  isFetching: false,
-  error: true
-})
+const HandleFetchError = (state, err) => {
+  console.error(err)
+  return {
+    ...state,
+    isFetching: false,
+    error: 'Fetch failed'
+  }
+}
