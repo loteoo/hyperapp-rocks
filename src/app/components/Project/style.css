@@ -33,12 +33,14 @@
       background-color: rgba(0, 0, 0, 0.33);
       opacity: 0;
       transition: opacity 200ms;
+      pointer-events: none;
       >* {
         color: #f8faff;
         display: inline-block;
         padding: 0.5rem;
         border-radius: 0.15em;
         transition: color 200ms, background-color 200ms;
+        pointer-events: all;
         @media (hover: none) {
           pointer-events: none;
         }

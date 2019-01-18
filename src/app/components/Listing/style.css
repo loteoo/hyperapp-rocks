@@ -73,4 +73,7 @@
   @media (max-width: 480px) {
     padding: 1.5em;
   }
+  .the-end {
+    margin-top: 3rem;
+  }
 }

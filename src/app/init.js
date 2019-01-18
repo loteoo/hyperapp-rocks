@@ -13,6 +13,7 @@ export const init = {
   isFetching: false,
   listing: [],
   projects: {},
+  total: 0,
   
   projectForm: {}
 }

@@ -82,6 +82,7 @@ img {
 
 svg {
   fill: none;
+  display: block;
 }
 
 ::selection {

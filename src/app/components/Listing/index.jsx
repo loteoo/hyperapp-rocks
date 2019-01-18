@@ -43,8 +43,17 @@ const Results = ({state}) => (
         )
       }
     </div>
-    {!state.lastSearch && (
-      <PillButton onclick={LoadProjects}>Load more {state.isFetching && <Spinner />} </PillButton>
-    )}
+    {
+      state.lastSearch 
+        ? state.listing.length + ' results'
+        : state.listing.length !== 0 && state.listing.length >= state.total
+          ? (
+            <div class="the-end">
+              <h2>You've reached the end</h2>
+              <p>Post projects to keep the list going!</p>
+            </div>
+          )
+          : <PillButton onclick={LoadProjects}>Load more {state.isFetching && <Spinner />} </PillButton>
+    }
   </div>
 )

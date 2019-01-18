@@ -12,10 +12,10 @@ export const Project = ({project}) => (
   <a href={`/${project._id}`} class="project" role="dialog" key={project._id} onclick={[Navigate, `/${project._id}`]}>
     <div class="img">
       {project._attachments && <img src={`//${hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
-      <div class="overlay">
+      <object class="overlay">
         {project.github && <a href={project.github} onclick={stopPropagation} target="_blank"><Github /></a>}
         {project.link && <a href={project.link} onclick={stopPropagation} target="_blank"><LinkIcon /></a>}
-      </div>
+      </object>
     </div>
     <div class="info">
       <h4>{project.title}</h4>
