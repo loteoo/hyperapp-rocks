@@ -11,7 +11,10 @@ export const SetPath = (state, path) => ({
 })
 
 
-export const Navigate = (state, path, ev) => [
-  state,
-  Location.go({to: path})
-]
+export const Navigate = (state, path, ev) => {
+  ev.preventDefault()
+  return [
+    state,
+    Location.go({to: path})
+  ]
+}

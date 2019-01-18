@@ -31,6 +31,9 @@ const renderWithState = (view, state) => {
   // Inject state into the render
   html = html.replace('[INJECT_INIT_STATE]', JSON.stringify(state))
 
+  // Inject special JS
+  html = html.replace('[INJECT_GA_CODE]', "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-73430538-4');")
+
   // Add the doctype tag
   html = '<!DOCTYPE html>' + html
 
@@ -44,7 +47,7 @@ const renderWithState = (view, state) => {
 
 const render = (req, res) => {
 
-  projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 6}).then((body) => {
+  projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12}).then((body) => {
 
     // Pre-load data into the state so the first render isn't an empty app
     const state = HandleFetchResponse(init, body)
@@ -79,7 +82,7 @@ http.createServer((req, res) => {
   // parse URL
   const parsedUrl = url.parse(req.url)
   
-  const diskPath = `${__dirname}/../public/${parsedUrl.pathname}`
+  const diskPath = `${__dirname}/../dist/${parsedUrl.pathname}`
 
   // based on the URL path, extract the file extention. e.g. .js, .doc, ...
   const ext = path.parse(parsedUrl.pathname).ext

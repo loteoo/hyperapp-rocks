@@ -14,12 +14,12 @@ import {Footer} from './components/Footer/'
 export const view = (state) => (
   <Html state={state}>
     <Header state={state} />
-    <Listing state={state} />
-    <ProjectForm projectForm={state.projectForm} />
     {
       state.path === '/requirements' ? <Requirements /> :
       state.path.length > 1 && <ProjectViewer state={state} />
     }
+    <Listing state={state} />
+    <ProjectForm projectForm={state.projectForm} />
     <Footer state={state} />
   </Html>
 )
