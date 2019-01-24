@@ -22,7 +22,7 @@ export const SetProjectFormImage = (state, key, ev) => {
       ...state,
       projectForm: {
         ...state.projectForm,
-        error: 'Invalid file type'
+        imageError: 'Invalid file type'
       }
     }
   }
@@ -32,7 +32,7 @@ export const SetProjectFormImage = (state, key, ev) => {
       ...state,
       projectForm: {
         ...state.projectForm,
-        error: 'File too large'
+        imageError: 'File is too large. Maximum: 1MB'
       }
     }
   }
@@ -78,7 +78,8 @@ export const ResetProjectFormImage = (state, blob) => ({
   projectForm: {
     ...state.projectForm,
     imageBlob: null,
-    image: null
+    image: null,
+    imageError: null
   }
 })
 

@@ -35,6 +35,7 @@ export const ProjectForm = ({projectForm}) => (
               blob={projectForm.imageBlob}
               setter={SetProjectFormImage}
               resetter={ResetProjectFormImage}
+              error={projectForm.imageError}
               required
             />
 

@@ -4,7 +4,7 @@ import './style.css'
 
 import {XCircle, ArrowRight} from '../Icons'
 
-export const ImageInput = ({label = label || 'Label', name = name || 'name', image, blob, setter, resetter, hint, ...rest}) => (
+export const ImageInput = ({label = label || 'Label', name = name || 'name', image, blob, setter, resetter, hint, error, ...rest}) => (
   <div class={`image-input${name ? ' ' + name : ''}`} key={name}>
     {blob ? (
       <div class="preview">
@@ -25,14 +25,13 @@ export const ImageInput = ({label = label || 'Label', name = name || 'name', ima
           <img src={blob} title={image.name + ' - Cropped 3:2'} alt={image.name} />
         </div>
       </div>
-    ) : (
-      <div class="input">
-        <input type="file" name={name} id={name} onchange={[setter, name]} {...rest} />
-        <div class="picker"></div>
-        <label for={name}>{label}</label>
-        <div class="border"></div>
-        {hint && <p class="hint">{hint}</p>}
-      </div>
-    )}
+    ) : [
+        <input type="file" name={name} id={name} onchange={[setter, name]} invalid={!!error} {...rest} />,
+        <div class="picker"></div>,
+        <div class="border"></div>,
+        hint && <p class="hint">{hint}</p>,
+        error && <p class="error">{error}</p>
+    ]}
+    <label key={'label-' + name} for={name}>{label}</label>
   </div>
 )

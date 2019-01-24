@@ -4,98 +4,85 @@
   position: relative;
   margin-top: 1.5rem;
 
-  .input {
-    label {
-      pointer-events: none;
-      position: absolute 0 auto auto 0;
+  label {
+    pointer-events: none;
+    position: absolute 0 auto auto 0;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    transition: transform 150ms;
+    transform-origin: left;
+    transform: translate(0, 0) scale(1);
+    &::after {
+      margin-left: 0.5em;
+    }
+  }
+  .border {
+    pointer-events: none;
+    display: block;
+    position: absolute 0;
+    background: transparent;
+    border-radius: 0.25rem;
+    z-index: 0;
+    box-sizing: content-box;
+    padding: 1px;
+    margin: -1px;
+    transition: transform 100ms;
+    transform: scaleX(0);
+  }
+  .hint {
+    position: absolute 100% 0 0 0;
+    margin: 0.25em;
+    font-size: 0.8em;
+    opacity: 0.5;
+  }
+  input {
+    cursor: pointer;
+    border-radius: 0.25rem;
+    width: 100%;
+    & ~ .picker {
+      position: absolute 0;
       z-index: 1;
+      pointer-events: none;
       padding: 0.5rem 1rem;
-      transition: transform 150ms;
-      transform-origin: left;
-      transform: translate(0, 0) scale(1);
-      &::after {
-        margin-left: 0.5em;
+      color: #555555;
+      background-color: #f8faff;
+      background-image: none;
+      border: 1px solid #eef0f7;
+      border-radius: 0.25rem;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+    &:required {
+      & ~ label {
+        &:after {
+          content: "*";
+        }
       }
     }
-    .border {
-      pointer-events: none;
-      display: block;
-      position: absolute 0;
-      background: transparent;
-      border-radius: 0.25rem;
-      z-index: 0;
-      box-sizing: content-box;
-      padding: 1px;
-      margin: -1px;
-      transition: transform 100ms;
-      transform: scaleX(0);
-    }
-    .hint {
-      position: absolute 100% 0 0 0;
-      margin: 0.25em;
-      font-size: 0.8em;
-      opacity: 0.5;
-    }
-    input {
-      cursor: pointer;
-      border-radius: 0.25rem;
-      width: 100%;
-      & ~ .picker {
-        position: absolute 0;
+    &[invalid] {
+      background: #fcf1f4;
+      & ~ label {
+        color: #d95560;
+        pointer-events: all;
+        transform: translate(-0.5em, -85%) scale(0.66);
+        &:after {
+          content: "✗";
+        }
+      }
+      & ~ .border {
+        background-color: #d95560;
+        transform: scaleX(1);
+      }
+      & ~ .error {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         z-index: 1;
         pointer-events: none;
         padding: 0.5rem 1rem;
         color: #555555;
-        background-color: #f8faff;
-        background-image: none;
-        border: 1px solid #eef0f7;
-        border-radius: 0.25rem;
-        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-      }
-      &:required {
-        & ~ label {
-          &:after {
-            content: "*";
-          }
-        }
-      }
-      &:valid {
-        background: #f1fcf6;
-        z-index: 2;
-        & ~ label {
-          color: #55d98c;
-          pointer-events: all;
-          transform: translate(-0.5em, -85%) scale(0.66);
-          &:after {
-            content: "✓";
-          }
-        }
-        & ~ .border {
-          background-color: #55d98c;
-          transform: scaleX(1);
-        }
-      }
-      &.invalid-file {
-        background: #fcf1f4;
-        & ~ label {
-          color: #d95560;
-          pointer-events: all;
-          transform: translate(-0.5em, -85%) scale(0.66);
-          &:after {
-            color: #d95560;
-            content: "✗";
-          }
-        }
-        & ~ .picker {
-          &:after {
-            content: "Invalid file. Choose an image under 1MB";
-          }
-        }
-        & ~ .border {
-          background-color: #d95560;
-          transform: scaleX(1);
-        }
       }
     }
   }
@@ -104,6 +91,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    padding: 1.5rem;
+    border-radius: 0.25em;
+    background-color: #f1fcf6;
+    border: 1px solid #55d98c;
+    color: #55d98c;
+
 
     .shadow {
       background-color: var(--background-color);
@@ -130,6 +124,9 @@
             text-overflow: ellipsis;
             max-width: 12rem;
           }
+          a {
+            color: inherit;
+          }
           svg {
             margin-left: 0.5rem;
           }
@@ -155,5 +152,18 @@
         object-fit: cover;
       }
     }
+    
+
+    & ~ label {
+      color: #55d98c;
+      pointer-events: all;
+      transform: translate(-0.5em, -85%) scale(0.66);
+      &:after {
+        content: "✓";
+      }
+    }
+
   }
 }
+
+
