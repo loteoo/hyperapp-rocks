@@ -22,13 +22,13 @@ export const ProjectForm = ({projectForm}) => (
       
             <NiceInput label="Title" name="title" value={projectForm.title} placeholder="My awesome project" setter={SetProjectForm} required />
             <NiceInput type="url" label="Project URL" name="link" value={projectForm.link} placeholder="https://" setter={SetProjectForm} required />
-            <NiceInput type="textarea" label="Description" name="description" value={projectForm.description} placeholder="Short project description..." setter={SetProjectForm} required />
+            <NiceInput type="textarea" label="Description" name="description" value={projectForm.description} placeholder="Describe your project, make it sound cool!" setter={SetProjectForm} required />
             <NiceInput label="Author" name="author" value={projectForm.author} placeholder="Who did this?" setter={SetProjectForm} />
             <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={projectForm.github} placeholder="Sharing is caring :)" setter={SetProjectForm} />
             
 
             <ImageInput
-              label="Image"
+              label="Project image"
               hint="Recommended size: 640x427"
               name="image"
               image={projectForm.image}
