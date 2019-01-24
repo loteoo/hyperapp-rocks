@@ -17,7 +17,7 @@ const acceptedMimes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
 // Nested setter for the project form
 export const SetProjectFormImage = (state, key, ev) => {
   const file = ev.target.files[0]
-  if (!acceptedMimes.includes(file.type) || file.size > 1048576) {
+  if (!acceptedMimes.includes(file.type)) {
     return {
       ...state,
       projectForm: {
@@ -26,6 +26,17 @@ export const SetProjectFormImage = (state, key, ev) => {
       }
     }
   }
+  
+  if (file.size > 1048576) {
+    return {
+      ...state,
+      projectForm: {
+        ...state.projectForm,
+        error: 'File too large'
+      }
+    }
+  }
+  
   return [
     {
       ...state,

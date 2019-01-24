@@ -106,6 +106,7 @@
   }
   >textarea {
     padding: 1em;
+    resize: vertical;
   }
 }
  

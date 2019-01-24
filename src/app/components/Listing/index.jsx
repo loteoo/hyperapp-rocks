@@ -50,7 +50,7 @@ const Results = ({state}) => (
           ? (
             <div class="the-end">
               <h2>You've reached the end</h2>
-              <p>Post projects to keep the list going!</p>
+              <p>Post projects to keep the list going! ✌️</p>
             </div>
           )
           : <PillButton onclick={LoadProjects}>Load more {state.isFetching && <Spinner />} </PillButton>
