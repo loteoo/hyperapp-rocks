@@ -9,7 +9,7 @@ import {Github, LinkIcon} from '../../theme/Icons'
 import {stopPropagation, hostname} from '../../utils'
 
 export const Project = ({project}) => (
-  <a href={`/${project._id}`} class="project" role="dialog" key={project._id} onclick={[Navigate, `/${project._id}`]}>
+  <a href={`/${project._id}`} class="project" role="dialog" key={project._id} onmousedown={[Navigate, `/${project._id}`]}>
     <div class="img">
       {project._attachments && <img src={`//${hostname}:5984/hyperapp-projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
       <object class="overlay">

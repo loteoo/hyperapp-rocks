@@ -1,10 +1,9 @@
 
 import {Http} from '../../utils'
 
-
 // Loads projects
-export const LoadProjectIfNeeded = (state, id) => {
-  
+export const LoadProjectIfNeeded = (state, id, ev) => {
+
   const project = state.projects && state.projects[id] && state.projects[id]
 
   if (!project) {

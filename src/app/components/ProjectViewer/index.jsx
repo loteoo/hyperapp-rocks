@@ -21,12 +21,6 @@ export const ProjectViewer = ({state}) => {
 
   const project = state.projects && state.projects[id] && state.projects[id]
 
-  // if (!project) {
-  //   // If the project doesn't exist in the state,
-  //   // trigger a fetch to load it
-  //   actions.FetchProject(id)
-  // }
-
 
   return (
     <Modal close={[Navigate, '/']} onmount={[LoadProjectIfNeeded, id]}>
