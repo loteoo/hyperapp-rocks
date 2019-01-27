@@ -21,7 +21,7 @@ import {
 const app = new Koa()
 const router = new Router()
 const nano = require('nano')('http://localhost:5984')
-const port = 80;
+const port = 8080;
 const projects = nano.use('projects')
 
 
