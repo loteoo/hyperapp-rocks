@@ -12,11 +12,11 @@ import {Navigate} from '../../actions'
 // View
 export const Requirements = () => (
   <Modal className="requirements" role="dialog" close={[Navigate, '/']}>
-    <h4>To be considered a 'real world' example, your project must...</h4>
+    <h3>To be considered a 'real world' example, your project must...</h3>
     <ul>
-      <li>Be live, with a public URL. (preferably with it's own domain name)</li>
+      <li>Be live, with a public URL.</li>
       <li>Mainly use Hyperapp for client application logic.</li>
-      <li>Have a real, useful purpose other than to be using Hyperapp.</li>
+      <li>Have a real purpose other than to be using Hyperapp.</li>
     </ul>
     <p><b>That's it!</b></p>
     <p>
