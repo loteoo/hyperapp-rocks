@@ -18,6 +18,9 @@
     &.success::before {
       background-image: linear-gradient(256deg, #1cc7d0, #2dde98);
     }
+    @media (max-width: 640px) {
+      padding: 0;
+    }
   }
   form {
     display: grid;
@@ -60,9 +63,6 @@
         grid-column: 1/-1;
       }
     }
-  }
-  @media (max-width: 640px) {
-    padding: 0 1.5rem;
   }
   .loading {
     display: flex;
