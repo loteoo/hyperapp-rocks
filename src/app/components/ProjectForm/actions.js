@@ -105,7 +105,7 @@ export const HandleProjectForm = (state, ev) => {
       }
     },
     Http.post({
-      url: `${couchUrl}/hyperapp-projects`,
+      url: `${couchUrl}/projects`,
       data: {
         title: state.projectForm.title,
         link: state.projectForm.link,

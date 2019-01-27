@@ -19,7 +19,7 @@ export const LoadProjectIfNeeded = (state, id, ev) => {
         }
       },
       Http.fetch({
-        url: `${couchUrl}/hyperapp-projects/${id}`,
+        url: `${couchUrl}/projects/${id}`,
         action: [HandleFetchResponse, id],
         error: [HandleFetchError, id]
       })

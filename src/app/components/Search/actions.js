@@ -26,7 +26,7 @@ export const HandleSearchForm = (state, ev) => {
   return state.search ? [
     next,
     Http.post({
-      url: `${couchUrl}/hyperapp-projects/_find`,
+      url: `${couchUrl}/projects/_find`,
       data: {
         selector: {
           $or: [

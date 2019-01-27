@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 
-
 fetch('https://hyperapp.rocks/api/project')
   .then(res => res.json())
   .then(data => {
@@ -9,7 +8,7 @@ fetch('https://hyperapp.rocks/api/project')
       .then(res => {
         const type = res.headers.get('content-type')
         res.buffer().then(buffer => {
-          fetch(`http://localhost:5984/hyperapp-projects`, {
+          fetch(`http://localhost:5984/projects`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',

@@ -9,7 +9,7 @@ export const LoadProjects = (state) => ([
     isFetching: true
   },
   Http.fetch({
-    url: `${couchUrl}/hyperapp-projects/_design/projects/_view/by-created?descending=true&skip=${state.listing.length}&limit=12`,
+    url: `${couchUrl}/projects/_design/projects/_view/by-created?descending=true&skip=${state.listing.length}&limit=12`,
     action: HandleFetchResponse,
     error: HandleFetchError
   })
