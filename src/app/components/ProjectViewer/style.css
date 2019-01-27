@@ -1,0 +1,107 @@
+.project-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .project-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3em;
+    width: 100%;
+    >.img {
+      grid-column: 1;
+      background-color: var(--background-color);
+      padding-top: 66.66%;
+      border-radius: 0.25em;
+      box-shadow: 0 10px 40px 0 rgba(62,57,107,.07), 0 2px 9px 0 rgba(62,57,107,.06);
+      overflow: hidden;
+      position: relative;
+      >img {
+        width: 100%;
+        height: 100%;
+        position: absolute 0;
+        object-fit: cover;
+      }
+    }
+    >.info {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      >h2 {
+        margin-top: 1rem;
+      }
+      a>svg {
+        margin-right: 0.5em;
+      }
+      >.nav-btns {
+        padding: 1em;
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        >.left,
+        >.right {
+          cursor: pointer;
+          >svg {
+            margin: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
+        >.left {
+          margin-right: auto;
+        }
+        >.right {
+          margin-left: auto;
+        }
+      }
+    }
+    >.description {
+      grid-column: 1/3;
+      position: relative;
+      padding: 1em 1.5em;
+      background-color: var(--background-color);
+      border-radius: 0.15rem;
+      overflow: hidden;
+      &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0.15rem;
+        height: 100%;
+        background: linear-gradient(315deg,#b06ab3 0,#4568dc 100%);
+      }
+    }
+    @media (max-width: 1280px) {
+      grid-gap: 1.5em;
+    }
+    @media (max-width: 740px) {
+      >.img,
+      >.info,
+      >.description, {
+        grid-column: 1/-1;
+      }
+      >.info{
+        >.nav-btns {
+          padding: 1em 1em 0 1em;
+          >.left,
+          >.right {
+            >svg {
+              width: 2rem;
+              height: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+    
+  @media (max-width: 740px) {
+    .project-content {
+      grid-template-columns: 1fr;
+    }
+  }
+}

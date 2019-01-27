@@ -1,0 +1,14 @@
+.requirements {
+  .box {
+    width: auto;
+  }
+  ul {
+    margin: 1rem;
+    padding-left: 1rem;
+  }
+  .actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,51 +1,27 @@
 {
   "version": "1.0.0",
-  "name": "hyperapp-examples",
+  "name": "hyperapp-rocks",
   "description": "Hyperapp PWA boilerplate",
   "author": "Alexandre Lotte",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html --out-dir public --open",
-    "build": "parcel build ./src/index.html --no-source-maps --out-dir public --detailed-report"
+    "start": "parcel src/index.html --open",
+    "build": "parcel build ./src/index.html --no-source-maps --detailed-report --no-content-hash",
+    "server": "parcel build ./src/server.js --target node --no-minify --no-source-maps --detailed-report --no-content-hash && node ./dist/server.js"
   },
   "dependencies": {
-    "@hyperapp/render": "^2.1.0",
-    "bcrypt": "^3.0.0",
-    "bcryptjs": "^2.4.3",
-    "inspector": "^0.5.0",
-    "jsonwebtoken": "^8.3.0",
-    "koa": "^2.5.2",
-    "lodash": "4.x.x",
-    "purest": "^3.1.0",
-    "strapi": "3.0.0-alpha.13.0.1",
-    "strapi-hook-mongoose": "3.0.0-alpha.13.0.1",
-    "stream-to-array": "^2.3.0",
-    "universal-analytics": "^0.4.17",
-    "window-or-global": "^1.0.1"
+    "hyperapp": "github:jorgebucaran/hyperapp#V2",
+    "hyperapp-render": "^3.0.0",
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "nano": "^7.1.1"
   },
   "devDependencies": {
-    "@hyperapp/router": "^0.7.0",
-    "autoprefixer": "^9.0.0",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "classcat": "^3.1.2",
-    "deepmerge": "^2.1.0",
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^6.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "hygen": "^1.6.2",
-    "hyperapp": "^1.2.5",
-    "parcel-bundler": "^1.9.7",
-    "parcel-plugin-sw-precache": "^1.0.1",
-    "postcss-modules": "^1.1.0",
-    "postcss-nested": "^3.0.0",
+    "autoprefixer": "^9.4.3",
+    "node-fetch": "^2.3.0",
+    "parcel-bundler": "^1.11.0",
+    "postcss-nested": "^4.1.1",
     "rucksack-css": "^1.0.2",
-    "sanitize.css": "^6.0.0"
+    "parcel-plugin-static-files-copy": "^2.0.0"
   }
 }
