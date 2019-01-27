@@ -58,23 +58,19 @@ const render = (state) => {
 
 
 // Query listing data from DB
-router.get('/', (ctx, next) => {
-  
-  return projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
+router.get('/', (ctx, next) => 
+  projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
     .then(projectsData => HandleListingData(init, projectsData))
     .catch(error => HandleListingError(init, error))
     .then(state => ctx.body = render(state))
-
-
-  
-});
+ );
 
 
 
 router.get('/:id', (ctx, next) => {
 
   const state = SetPath(init, ctx.request.url)
-  
+
   return projects.get(ctx.params.id)
     .then(project => HandleProjectData(state, ctx.params.id, project))
     .catch(error => {
