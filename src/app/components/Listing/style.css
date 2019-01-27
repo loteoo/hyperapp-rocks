@@ -54,14 +54,21 @@
         text-align: center;
         grid-column: 1/-1;
       }
-      @media (max-width: 1024px) {
-        // grid-template-columns: repeat(2, 1fr); // TODO: ENABLE THIS LINE WITHOUT POSTCSS CRASHING
+    }
+
+    @media (max-width: 1024px) {
+      >.grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      @media (max-width: 740px) {
+    }
+    @media (max-width: 740px) {
+      >.grid {
         max-width: 32em;
-        // grid-template-columns: 1fr; // TODO: ENABLE THIS LINE WITHOUT POSTCSS CRASHING
+        grid-template-columns: 1fr;
       }
-      @media (max-width: 480px) {
+    }
+    @media (max-width: 480px) {
+      >.grid {
         grid-gap: 1.5em;
       }
     }

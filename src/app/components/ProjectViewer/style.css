@@ -96,7 +96,12 @@
           }
         }
       }
-      // grid-template-columns: 1fr; // TODO: ENABLE THIS WITHOUT POSTCSS CRASHING
+    }
+  }
+    
+  @media (max-width: 740px) {
+    .project-content {
+      grid-template-columns: 1fr;
     }
   }
 }
