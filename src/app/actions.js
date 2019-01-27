@@ -1,7 +1,7 @@
 
 // Global actions for the app
 
-import {Location} from './utils'
+import {Location} from './../utils'
 
 
 // Sets the navigation path

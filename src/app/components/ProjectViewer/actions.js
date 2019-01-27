@@ -1,5 +1,5 @@
 
-import {Http} from '../../utils'
+import {Http} from '../../../utils'
 
 // Loads projects
 export const LoadProjectIfNeeded = (state, id, ev) => {

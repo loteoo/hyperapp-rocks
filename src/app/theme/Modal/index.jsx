@@ -2,7 +2,7 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
-import {stopPropagation} from '../../utils'
+import {stopPropagation} from '../../../utils'
 
 // Trigger css slidein transition
 const slideIn = el => {

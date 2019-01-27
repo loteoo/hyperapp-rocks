@@ -12,7 +12,7 @@ import {LoadProjectIfNeeded} from './actions'
 import {LoadProjects} from '../Listing/actions'
 import {Navigate} from '../../actions'
 
-import {hostname} from '../../utils'
+import {hostname} from '../../../utils'
 
 // View
 export const ProjectViewer = ({state}) => {

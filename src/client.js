@@ -4,16 +4,15 @@ import {init as defaultState} from './app/init'
 import {view} from './app/view'
 
 import {SetPath} from './app/actions'
-import {enableOnMountDomEvent, Location} from './app/utils'
+import {enableOnMountDomEvent, Location} from './utils'
 
 enableOnMountDomEvent()
 
 
 
-// // Activate the service worker
+// Activate the service worker
 // if ('serviceWorker' in navigator) {
-//   const swPath = 'sw.js'
-//   navigator.serviceWorker.register(`/${swPath}`)
+//   navigator.serviceWorker.register('./sw.js')
 //   .then((registration) => {
 //     console.log('Registration successful, scope is:', registration.scope)
 //   })
