@@ -22,32 +22,7 @@ const projects = nano.use('hyperapp-projects')
 
 
 
-// Injects the state used for the render, into the render, 
-// so the client can pick it up and memoize efficiently,
-// while also avoiding unnecessary fetches on initialization.
-const render = (view, state) => {
-
-  // Render the app with given state
-  let html = renderToString(view(state))
-
-  // Inject state into the render
-  html = html.replace('[INJECT_INIT_STATE]', JSON.stringify(state))
-
-  // Inject special JS
-  html = html.replace('[INJECT_GA_CODE]', "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-73430538-4');")
-
-  // Add the doctype tag
-  html = '<!DOCTYPE html>' + html
-
-  // Return the rendered app
-  return html
-}
-
-
-
-
-
-
+// Populate the state that will be used for the render
 const populateState = (req) => {
 
   const state = SetPath(init, url.parse(req.url).pathname)
@@ -70,89 +45,45 @@ const populateState = (req) => {
 
 
 
+// Injects the state used for the render, into the render, 
+// so the client can pick it up and memoize efficiently,
+// while also avoiding unnecessary fetches on initialization.
+const render = (state) => {
 
-const respond = (req, res) => {
-  
-  // Set headers
-  res.writeHead(200, {'Content-Type': 'text/html'})
+  // Render the app with given state
+  let html = renderToString(view(state))
 
-  // Populate state
-  populateState(req).then(state => {
+  // Inject state into the render
+  html = html.replace('[INJECT_INIT_STATE]', JSON.stringify(state))
 
-    // Render the app
-    res.end(render(view, state))
-    
-  })
+  // Inject special JS
+  html = html.replace('[INJECT_GA_CODE]', "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-73430538-4');")
 
+  // Add the doctype tag
+  html = '<!DOCTYPE html>' + html
 
-  
+  // Return the rendered app
+  return html
 }
 
 
 
 
+
+
+
 // HTTP server
-// http.createServer((req, res) => {
-//   respond(req, res)
-// }).listen(port);
-
-
-
-
-
-
-
-
-// With file server
 http.createServer((req, res) => {
-
-  // parse URL
-  const parsedUrl = url.parse(req.url)
   
-  const diskPath = `${__dirname}/../dist/${parsedUrl.pathname}`
+  // Set headers
+  res.writeHead(200, {'Content-Type': 'text/html'})
 
-  // based on the URL path, extract the file extention. e.g. .js, .doc, ...
-  const ext = path.parse(parsedUrl.pathname).ext
+  populateState(req)
+    .then(state => res.end(render(state)))
 
-  // maps file extention to MIME typere
-  const map = {
-    '.ico': 'image/x-icon',
-    '.html': 'text/html',
-    '.js': 'text/javascript',
-    '.json': 'application/json',
-    '.css': 'text/css',
-    '.png': 'image/png',
-    '.jpg': 'image/jpeg',
-    '.wav': 'audio/wav',
-    '.mp3': 'audio/mpeg',
-    '.svg': 'image/svg+xml',
-    '.pdf': 'application/pdf',
-    '.doc': 'application/msword'
-  }
+}).listen(port);
 
-  fs.exists(diskPath, (exist) => {
 
-    if (exist && !fs.statSync(diskPath).isDirectory()) {
-
-      // read file from file system
-      fs.readFile(diskPath, (err, data) => {
-        if (err) {
-          res.statusCode = 500
-          res.end(`Error getting the file: ${err}.`)
-        } else {
-          // if the file is found, set Content-type and send data
-          res.setHeader('Content-type', map[ext] || 'text/plain' )
-          res.end(data)
-        }
-      })
-    } else {
-      
-      respond(req, res)
-
-    }
-  })
-
-}).listen(parseInt(port))
 
 
 

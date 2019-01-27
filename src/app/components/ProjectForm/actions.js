@@ -139,7 +139,7 @@ export const HandleSubmissionResponse = (state, res) => {
       }
     },
     Sound.play({
-      trackUrl: '/success.mp3',
+      trackUrl: require('../../../assets/success.mp3'),
       volume: 0.25
     })
   ]
