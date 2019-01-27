@@ -21,7 +21,7 @@ const scrollToForm = (state, ev) => {
 export const Header = ({state}) => (
   <header role="banner">
     <nav>
-      <a href="https://github.com/loteoo/hyperapp-examples" target="_blank" title="Source code"><Github /></a>
+      <a href="https://github.com/loteoo/hyperapp-rocks" target="_blank" title="Source code"><Github /></a>
     </nav>
     <h1>Hyperapp real-world examples</h1>
     <h2>A curated list of live Hyperapp projects</h2>
