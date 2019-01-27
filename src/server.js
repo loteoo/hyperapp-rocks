@@ -12,7 +12,6 @@ import {
   HandleFetchResponse as HandleListingData,
   HandleFetchError as HandleListingError
 } from './app/components/Listing/actions'
-
 import {
   HandleFetchResponse as HandleProjectData,
   HandleFetchError as HandleProjecError
@@ -21,43 +20,26 @@ import {
 
 const app = new Koa()
 const router = new Router()
-
 const nano = require('nano')('http://localhost:5984')
-
-const port = 8080;
-
+const port = 80;
 const projects = nano.use('hyperapp-projects')
-
 
 
 
 // Injects the state used for the render, into the render, 
 // so the client can pick it up and memoize efficiently,
 // while also avoiding unnecessary fetches on initialization.
-const render = (state) => {
-
-  // Render the app with given state
-  let html = renderToString(view(state))
-
+const render = (state) => 
+  '<!DOCTYPE html>' + renderToString(view(state))
   // Inject state into the render
-  html = html.replace('[INJECT_INIT_STATE]', JSON.stringify(state))
-
+  .replace('[INJECT_INIT_STATE]', JSON.stringify(state))
   // Inject special JS
-  html = html.replace('[INJECT_GA_CODE]', "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-73430538-4');")
-
-  // Add the doctype tag
-  html = '<!DOCTYPE html>' + html
-
-  // Return the rendered app
-  return html
-}
+  .replace('[INJECT_GA_CODE]', "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-73430538-4');")
 
 
 
 
-
-
-// Query listing data from DB
+// Listing page SSR
 router.get('/', (ctx, next) => 
   projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
     .then(projectsData => HandleListingData(init, projectsData))
@@ -66,11 +48,9 @@ router.get('/', (ctx, next) =>
  );
 
 
-
+// Project page SSR
 router.get('/:id', (ctx, next) => {
-
   const state = SetPath(init, ctx.request.url)
-
   return projects.get(ctx.params.id)
     .then(project => HandleProjectData(state, ctx.params.id, project))
     .catch(error => {
@@ -78,8 +58,8 @@ router.get('/:id', (ctx, next) => {
       return HandleProjecError(state, ctx.params.id, error)
     })
     .then(state => ctx.body = render(state))
-
 });
+
 
 
 app.use(router.routes())
