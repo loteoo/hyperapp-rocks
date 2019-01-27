@@ -8,7 +8,7 @@ import {Spinner} from '../../theme/Spinner'
 import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../../theme/Icons'
 
 // Actions
-import {LoadProjectIfNeeded} from './actions'
+import {LoadProjectIfNeeded, CloseProject} from './actions'
 import {LoadProjects} from '../Listing/actions'
 import {Navigate} from '../../actions'
 
@@ -23,7 +23,7 @@ export const ProjectViewer = ({state}) => {
 
 
   return (
-    <Modal close={[Navigate, '/']} onmount={[LoadProjectIfNeeded, id]}>
+    <Modal close={CloseProject} onmount={[LoadProjectIfNeeded, id]}>
       <div class="project-viewer">
         {
           project

@@ -1,11 +1,13 @@
 // Initial state of the app
+
+import {appTitle, appDesc} from '../utils'
+
 export const init = {
 
   path: '/',
 
-  title: 'Hyperapp real-world examples',
-  description: 'A curated list of live Hyperapp projects',
-
+  title: appTitle,
+  description: appDesc,
 
   search: '',
   lastSearch: '',

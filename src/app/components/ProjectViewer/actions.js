@@ -1,5 +1,5 @@
 
-import {Http, couchUrl} from '../../../utils'
+import {Http, Location, couchUrl, appTitle, appDesc} from '../../../utils'
 
 // Loads projects
 export const LoadProjectIfNeeded = (state, id, ev) => {
@@ -25,6 +25,12 @@ export const LoadProjectIfNeeded = (state, id, ev) => {
       })
     ]
 
+  } else {
+    return {
+      ...state,
+      title: project.title,
+      description: project.description
+    }
   }
 }
 
@@ -33,6 +39,8 @@ export const LoadProjectIfNeeded = (state, id, ev) => {
 // Adds projects to the list
 export const HandleFetchResponse = (state, id, data) => ({
   ...state,
+  title: data.title,
+  description: data.description,
   projects: {
     ...state.projects,
     [id]: data
@@ -53,3 +61,14 @@ export const HandleFetchError = (state, id, data) => {
     }
   }
 }
+
+
+
+export const CloseProject = (state) => [
+  {
+    ...state,
+    title: appTitle,
+    description: appDesc
+  },
+  Location.go({to: '/'})
+]

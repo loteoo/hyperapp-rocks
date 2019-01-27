@@ -181,3 +181,9 @@ export const slugify = (text) =>
 
 // export const couchUrl = `//${window.location.hostname}:5984`
 export const couchUrl = `//localhost:5984`
+
+
+
+
+export const appTitle = 'Hyperapp real-world examples'
+export const appDesc = 'A curated list of live Hyperapp projects'
