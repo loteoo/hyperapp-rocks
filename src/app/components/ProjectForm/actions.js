@@ -100,7 +100,8 @@ export const HandleProjectForm = (state, ev) => {
       ...state,
       projectForm: {
         ...state.projectForm,
-        submitted: true
+        submitted: true,
+        loading: true
       }
     },
     Http.post({
@@ -135,6 +136,7 @@ export const HandleSubmissionResponse = (state, res) => {
       ...state,
       projectForm: {
           ...state.projectForm,
+        loading: false,
         success: true
       }
     },
@@ -151,7 +153,8 @@ export const HandleSubmissionError = (state, err) => {
     ...state,
     projectForm: {
       ...state.projectForm,
-      error: 'Submission failed'
+      loading: false,
+      error: 'Submission failed. Could not reach database.'
     }
   }
 }

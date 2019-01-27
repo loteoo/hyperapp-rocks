@@ -47,21 +47,23 @@ export const ProjectForm = ({projectForm}) => (
               <PillButton type="submit" long green>Submit</PillButton>
             </div>
           </form>
-        ) : !projectForm.success
+        ) : projectForm.loading
           ? (
             <div class="loading">
               <Spinner large />
             </div>
           )
-          : (
-            <div class="thanks">
-              <h2>Thanks for participating! 💖</h2>
-              <p>Your project should soon be added to the list!</p>
-              <Confetti />
-              <p>If you want to update anything about it, just ask me <br />on the <a href="https://hyperappjs.herokuapp.com/" target="_blank">hyperapp slack</a> (@loteoo) or via <a href="mailto:dev@alexlotte.ca">email</a>!</p>
-            </div>
-          )
-    }
+          : projectForm.success 
+            ? (
+              <div class="thanks">
+                <h2>Thanks for participating! 💖</h2>
+                <p>Your project should soon be added to the list!</p>
+                <Confetti />
+                <p>If you want to update anything about it, just ask me <br />on the <a href="https://hyperappjs.herokuapp.com/" target="_blank">hyperapp slack</a> (@loteoo) or via <a href="mailto:dev@alexlotte.ca">email</a>!</p>
+              </div>
+            )
+            : <div class="error">Error: {projectForm.error}</div>
+        }
     </div>
   </div>
 )

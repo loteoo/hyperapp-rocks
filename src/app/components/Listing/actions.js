@@ -30,6 +30,6 @@ const HandleFetchError = (state, err) => {
   return {
     ...state,
     isFetching: false,
-    error: 'Fetch failed'
+    error: 'Could not fetch projects'
   }
 }

@@ -81,5 +81,9 @@
       fill: #2dde98;
     }
   }
+  .error {
+    text-align: center;
+    color: #d95560;
+  }
 }
  

@@ -20,7 +20,7 @@ export const LoadProjectIfNeeded = (state, id, ev) => {
       },
       Http.fetch({
         url: `${couchUrl}/hyperapp-projects/${id}`,
-        action: HandleFetchResponse,
+        action: [HandleFetchResponse, id],
         error: [HandleFetchError, id]
       })
     ]
@@ -31,23 +31,24 @@ export const LoadProjectIfNeeded = (state, id, ev) => {
 
 
 // Adds projects to the list
-export const HandleFetchResponse = (state, project) => ({
+export const HandleFetchResponse = (state, id, data) => ({
   ...state,
   projects: {
     ...state.projects,
-    [project._id]: project
+    [id]: data
   }
 })
 
 // Error handling
 const HandleFetchError = (state, id, data) => {
+  console.error('Failed to fetch project')
   console.error(data)
   return {
     ...state,
     projects: {
       ...state.projects,
       [id]: {
-        error: 'Fetch failed'
+        error: data
       }
     }
   }

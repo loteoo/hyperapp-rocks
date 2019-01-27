@@ -83,4 +83,12 @@
   .the-end {
     margin-top: 3rem;
   }
+  .error {
+    margin: 3rem;
+    z-index: 1;
+    color: #d95560;
+    * {
+      color: inherit;
+    }
+  }
 }
