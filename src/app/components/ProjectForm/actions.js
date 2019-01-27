@@ -1,6 +1,6 @@
 
 
-import {Http, File, Sound, slugify} from '../../../utils'
+import {Http, File, Sound, slugify, couchUrl} from '../../../utils'
 
 // Nested setter for the project form
 export const SetProjectForm = (state, key, ev) => ({
@@ -104,7 +104,7 @@ export const HandleProjectForm = (state, ev) => {
       }
     },
     Http.post({
-      url: `//${window.location.hostname}:5984/hyperapp-projects`,
+      url: `${couchUrl}/hyperapp-projects`,
       data: {
         title: state.projectForm.title,
         link: state.projectForm.link,

@@ -1,5 +1,5 @@
 
-import {Http} from '../../../utils'
+import {Http, couchUrl} from '../../../utils'
 
 import {LoadProjects} from '../Listing/actions'
 
@@ -26,7 +26,7 @@ export const HandleSearchForm = (state, ev) => {
   return state.search ? [
     next,
     Http.post({
-      url: `//${window.location.hostname}:5984/hyperapp-projects/_find`,
+      url: `${couchUrl}/hyperapp-projects/_find`,
       data: {
         selector: {
           $or: [

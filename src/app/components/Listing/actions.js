@@ -1,5 +1,5 @@
 
-import {Http} from '../../../utils'
+import {Http, couchUrl} from '../../../utils'
 
 
 // Loads projects
@@ -9,7 +9,7 @@ export const LoadProjects = (state) => ([
     isFetching: true
   },
   Http.fetch({
-    url: `//${window.location.hostname}:5984/hyperapp-projects/_design/projects/_view/by-created?descending=true&skip=${state.listing.length}&limit=12`,
+    url: `${couchUrl}/hyperapp-projects/_design/projects/_view/by-created?descending=true&skip=${state.listing.length}&limit=12`,
     action: HandleFetchResponse,
     error: HandleFetchError
   })
