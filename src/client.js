@@ -31,15 +31,10 @@ app({
     path: window.location.pathname
   },
   view,
-  subscriptions: state => {
-    console.log(state)
-    return [
-      Location.changed({action: SetPath})
-    ]
-  },
+  subscriptions: state => [Location.changed({action: SetPath})],
   container: document
 })
 
 
-console.log('%cSource code available here: \nhttps://github.com/loteoo/hyperapp-examples.', 'color: #a6a6a6; font-weight: 100; font-size: 1em;')
-console.log('%cStar the project on github while you\'re there! :)', 'color: #a6a6a6; font-weight: 100; font-size: 1em;')
+console.log('%cSource code available on github: \nhttps://github.com/loteoo/hyperapp-examples.', 'color: #a6a6a6; font-weight: 100; font-size: 1em;')
+console.log('%cStar the project while you\'re there! :)', 'color: #a6a6a6; font-weight: 100; font-size: 1em;')
