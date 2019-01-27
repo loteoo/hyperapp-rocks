@@ -1,6 +1,6 @@
 
 
-import {Http, File, slugify} from '../../utils'
+import {Http, File, Sound, slugify} from '../../utils'
 
 // Nested setter for the project form
 export const SetProjectForm = (state, key, ev) => ({
@@ -130,13 +130,19 @@ export const HandleProjectForm = (state, ev) => {
 export const HandleSubmissionResponse = (state, res) => {
   console.log(res);
 
-  return {
-    ...state,
-    projectForm: {
-        ...state.projectForm,
-      success: true
-    }
-  }
+  return [
+    {
+      ...state,
+      projectForm: {
+          ...state.projectForm,
+        success: true
+      }
+    },
+    Sound.play({
+      trackUrl: '/success.mp3',
+      volume: 0.25
+    })
+  ]
 }
 
 export const HandleSubmissionError = (state, err) => {

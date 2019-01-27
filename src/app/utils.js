@@ -135,6 +135,23 @@ export const Location = {
 
 
 
+
+// Audio effect baggy
+export const Sound = {
+  play: (props) => ({
+    effect: (props, dispatch) => {
+      const sound = new Audio(props.trackUrl)
+      sound.volume = props.volume
+      sound.play()
+    },
+    trackUrl: props.trackUrl,
+    volume: props.volume
+  })
+}
+
+
+
+
 // DOM custom event (hyperapp will treat this like any other event)
 export const enableOnMountDomEvent = () => {
   const mountEvent = new Event('mount')

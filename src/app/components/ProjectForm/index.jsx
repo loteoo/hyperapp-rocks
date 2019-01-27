@@ -6,6 +6,8 @@ import './style.css'
 import {NiceInput} from '../../theme/NiceInput'
 import {ImageInput} from '../../theme/ImageInput'
 import {PillButton} from '../../theme/PillButton'
+import {Spinner} from '../../theme/Spinner'
+import {Confetti} from '../../theme/Icons'
 
 // Actions
 import {HandleProjectForm, SetProjectForm, SetProjectFormImage, ResetProjectFormImage} from './actions'
@@ -13,6 +15,7 @@ import {Navigate} from '../../actions'
 
 export const ProjectForm = ({projectForm}) => (
   <div class="project-form" id="submit" role="form">
+    <div class={'box' + (projectForm.success ? ' success' : '')}>
     {
       !projectForm.submitted
         ? (
@@ -44,17 +47,21 @@ export const ProjectForm = ({projectForm}) => (
               <PillButton type="submit" long green>Submit</PillButton>
             </div>
           </form>
-        ) : projectForm.success
+        ) : !projectForm.success
           ? (
-            <div class="thanks">
-              <h2>Loading...</h2>
+            <div class="loading">
+              <Spinner large />
             </div>
           )
           : (
             <div class="thanks">
-              <h2>Thank you for your submission!</h2>
+              <h2>Thanks for participating! 💖</h2>
+              <p>Your project should soon be added to the list!</p>
+              <Confetti />
+              <p>If you want to update anything about it, just ask me <br />on the <a href="https://hyperappjs.herokuapp.com/" target="_blank">hyperapp slack</a> (@loteoo) or via <a href="mailto:dev@alexlotte.ca">email</a>!</p>
             </div>
           )
     }
+    </div>
   </div>
 )

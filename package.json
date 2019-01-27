@@ -12,7 +12,8 @@
   "dependencies": {
     "hyperapp": "github:jorgebucaran/hyperapp#V2",
     "hyperapp-render": "^3.0.0",
-    "nano": "^7.1.1"
+    "nano": "^7.1.1",
+    "parcel-plugin-static-files-copy": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.3",
@@ -20,5 +21,9 @@
     "parcel-bundler": "^1.11.0",
     "postcss-nested": "^4.1.1",
     "rucksack-css": "^1.0.2"
+  },
+  "staticFiles": {
+    "staticPath": "src/assets",
+    "watcherGlob": "**"
   }
 }
