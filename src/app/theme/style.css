@@ -37,6 +37,8 @@
 	--background-color: #f8faff;
 	--border-color: #e7e9ed;
 	--accent-color: #5755d9;
+	--success-color: #55d98c;
+	--error-color: #d95560;
 }
 
 html {

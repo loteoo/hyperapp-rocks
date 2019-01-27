@@ -62,7 +62,7 @@
     &[invalid] {
       background: #fcf1f4;
       & ~ label {
-        color: #d95560;
+        color: var(--error-color);
         pointer-events: all;
         transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
@@ -70,7 +70,7 @@
         }
       }
       & ~ .border {
-        background-color: #d95560;
+        background-color: var(--error-color);
         transform: scaleX(1);
       }
       & ~ .error {
@@ -95,8 +95,8 @@
     padding: 1.5rem;
     border-radius: 0.25em;
     background-color: #f1fcf6;
-    border: 1px solid #55d98c;
-    color: #55d98c;
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
 
     .shadow {
@@ -155,7 +155,7 @@
     
 
     & ~ label {
-      color: #55d98c;
+      color: var(--success-color);
       pointer-events: all;
       transform: translate(-0.5em, -85%) scale(0.66);
       &:after {

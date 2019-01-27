@@ -83,7 +83,7 @@
   }
   .error {
     text-align: center;
-    color: #d95560;
+    color: var(--error-color);
   }
 }
  

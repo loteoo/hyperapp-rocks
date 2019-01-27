@@ -76,7 +76,7 @@
     &:not(:focus):not(:placeholder-shown):invalid {
       background: #fcf1f4;
       & ~ label {
-        color: #d95560;
+        color: var(--error-color);
         pointer-events: all;
         transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
@@ -84,14 +84,14 @@
         }
       }
       & ~ .border {
-        background-color: #d95560;
+        background-color: var(--error-color);
         transform: scaleX(1);
       }
     }
     &:not(:focus):not(:placeholder-shown):valid {
       background: #f1fcf6;
       & ~ label {
-        color: #55d98c;
+        color: var(--success-color);
         pointer-events: all;
         transform: translate(-0.5em, -85%) scale(0.66);
         &:after {
@@ -99,7 +99,7 @@
         }
       }
       & ~ .border {
-        background-color: #55d98c;
+        background-color: var(--success-color);
         transform: scaleX(1);
       }
     }

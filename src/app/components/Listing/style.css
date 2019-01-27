@@ -86,7 +86,7 @@
   .error {
     margin: 3rem;
     z-index: 1;
-    color: #d95560;
+    color: var(--error-color);
     * {
       color: inherit;
     }
