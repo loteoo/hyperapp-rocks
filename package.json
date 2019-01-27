@@ -6,20 +6,22 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html --open",
-    "build": "parcel build ./src/index.html --no-source-maps --detailed-report",
+    "build": "parcel build ./src/index.html --no-source-maps --detailed-report --no-content-hash",
     "server": "parcel build ./src/server.js --target node --no-minify --no-source-maps --detailed-report --no-content-hash && node ./dist/server.js"
   },
   "dependencies": {
     "hyperapp": "github:jorgebucaran/hyperapp#V2",
     "hyperapp-render": "^3.0.0",
-    "nano": "^7.1.1",
-    "parcel-plugin-static-files-copy": "^2.0.0"
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "nano": "^7.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.3",
     "node-fetch": "^2.3.0",
     "parcel-bundler": "^1.11.0",
     "postcss-nested": "^4.1.1",
-    "rucksack-css": "^1.0.2"
+    "rucksack-css": "^1.0.2",
+    "parcel-plugin-static-files-copy": "^2.0.0"
   }
 }

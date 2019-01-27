@@ -40,7 +40,7 @@ export const HandleFetchResponse = (state, id, data) => ({
 })
 
 // Error handling
-const HandleFetchError = (state, id, data) => {
+export const HandleFetchError = (state, id, data) => {
   console.error('Failed to fetch project')
   console.error(data)
   return {

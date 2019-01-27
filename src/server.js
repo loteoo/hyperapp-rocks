@@ -1,8 +1,6 @@
 
-import http from 'http'
-import url from 'url'
-import fs from 'fs'
-import path from 'path'
+import Koa from 'koa'
+import Router from 'koa-router'
 
 import {renderToString} from 'hyperapp-render'
 
@@ -10,37 +8,25 @@ import {init} from './app/init' // Default initial state
 import {view} from './app/view' // App view
 
 import {SetPath} from './app/actions'
-import {HandleFetchResponse as HandleListingData} from './app/components/Listing/actions'
-import {HandleFetchResponse as HandleProjectData} from './app/components/ProjectViewer/actions'
+import {
+  HandleFetchResponse as HandleListingData,
+  HandleFetchError as HandleListingError
+} from './app/components/Listing/actions'
 
-const port = 8080;
+import {
+  HandleFetchResponse as HandleProjectData,
+  HandleFetchError as HandleProjecError
+} from './app/components/ProjectViewer/actions'
+
+
+const app = new Koa()
+const router = new Router()
 
 const nano = require('nano')('http://localhost:5984')
 
+const port = 8080;
+
 const projects = nano.use('hyperapp-projects')
-
-
-
-
-// Populate the state that will be used for the render
-const populateState = (req) => {
-
-  const state = SetPath(init, url.parse(req.url).pathname)
-
-  if (state.path.length > 1) {
-
-    return projects.get(state.path.substring(1))
-      .then(project => HandleProjectData(state, project))
-      .catch(project => HandleProjectData(state, project))
-
-  } else {
-    
-    // Query listing data from DB
-    return projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
-    .then(projectsData => HandleListingData(state, projectsData))
-
-  }
-}
 
 
 
@@ -71,22 +57,36 @@ const render = (state) => {
 
 
 
-
-// HTTP server
-http.createServer((req, res) => {
+// Query listing data from DB
+router.get('/', (ctx, next) => {
   
-  // Set headers
-  res.writeHead(200, {'Content-Type': 'text/html'})
-
-  populateState(req)
-    .then(state => res.end(render(state)))
-
-}).listen(port);
+  return projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
+    .then(projectsData => HandleListingData(init, projectsData))
+    .catch(error => HandleListingError(init, error))
+    .then(state => ctx.body = render(state))
 
 
-
+  
+});
 
 
 
+router.get('/:id', (ctx, next) => {
 
-console.log(`SSR and file server listening on port ${port}`)
+  const state = SetPath(init, ctx.request.url)
+  
+  
+  return projects.get(ctx.params.id)
+    .then(project => HandleProjectData(state, ctx.params.id, project))
+    .catch(error => {
+      ctx.status = 404
+      return HandleProjecError(state, ctx.params.id, error)
+    })
+    .then(state => ctx.body = render(state))
+
+});
+
+
+app.use(router.routes())
+app.use(router.allowedMethods())
+app.listen(port, () => console.log(`SSR and file server listening on port ${port}`))

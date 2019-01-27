@@ -25,7 +25,7 @@ export const HandleFetchResponse = (state, data) => ({
 })
 
 // Error handling
-const HandleFetchError = (state, err) => {
+export const HandleFetchError = (state, err) => {
   console.error(err)
   return {
     ...state,

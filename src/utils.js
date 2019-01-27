@@ -179,4 +179,5 @@ export const slugify = (text) =>
     .replace(/-+$/, '');            // Trim - from end of text
 
 
-export const couchUrl = `//${window.location.hostname}:5984`
+// export const couchUrl = `//${window.location.hostname}:5984`
+export const couchUrl = `//localhost:5984`
