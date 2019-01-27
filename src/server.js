@@ -75,7 +75,6 @@ router.get('/:id', (ctx, next) => {
 
   const state = SetPath(init, ctx.request.url)
   
-  
   return projects.get(ctx.params.id)
     .then(project => HandleProjectData(state, ctx.params.id, project))
     .catch(error => {
