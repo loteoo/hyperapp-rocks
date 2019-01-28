@@ -1,5 +1,5 @@
 // Import dependencies
-import {h} from 'hyperapp'
+import {h} from '../../hyperapp'
 
 // Components
 import {Html} from './theme/Html'

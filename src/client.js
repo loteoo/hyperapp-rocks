@@ -1,5 +1,5 @@
 // App dependencies
-import {app} from 'hyperapp'
+import {app} from '../hyperapp'
 import {init as defaultState} from './app/init'
 import {view} from './app/view'
 
