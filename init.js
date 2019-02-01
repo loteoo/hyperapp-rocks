@@ -26,3 +26,40 @@ projects.insert({
 })
 .then(console.log)
 
+
+
+
+
+
+// Read-only DB
+const readOnlyDb = function(newDoc, oldDoc, userCtx) {
+  if (userCtx.roles.indexOf('_admin') !== -1) {
+    return;
+  } else {
+    throw ({
+      forbidden: 'Only admins may edit the database'
+    });
+  }
+}
+
+
+
+// Project WRITE ONLY security + basic validation
+const projectsValidateDocUpdate = function(newDoc, oldDoc, userCtx) {
+  
+  function require(field, message) {
+    message = message || 'Document must have a ' + field;
+    if (!newDoc[field]) throw({forbidden : message});
+  };
+  
+  require('title');
+  require('link');
+  require('description');
+}
+
+projects.insert({
+  _id: '_design/auth',
+  validate_doc_update: projectsValidateDocUpdate.toString()
+})
+.then(console.log)
+

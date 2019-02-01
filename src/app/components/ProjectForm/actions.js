@@ -109,7 +109,6 @@ export const HandleProjectForm = (state, ev) => {
       data: {
         title: state.projectForm.title,
         link: state.projectForm.link,
-        title: state.projectForm.title,
         description: state.projectForm.description,
         author: state.projectForm.author,
         github: state.projectForm.github,
