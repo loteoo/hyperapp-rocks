@@ -21,8 +21,8 @@ const RUNTIME = 'runtime';
 const PRECACHE_URLS = [
   './',
   '/index.html',
-  '/app.e87ca0bd.js',
-  '/app.e87ca0bd.css'
+  '/client.62456f60.js',
+  '/client.62456f60.css'
 ];
 
 // The install handler takes care of precaching the resources we always need.
