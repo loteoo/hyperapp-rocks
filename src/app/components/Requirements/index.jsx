@@ -5,6 +5,7 @@ import './style.css'
 // Components
 import {Modal} from '../../theme/Modal'
 import {PillButton} from '../../theme/PillButton'
+import {Navigate} from '../../actions'
 
 // View
 export const Requirements = () => (
