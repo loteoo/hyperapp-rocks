@@ -71,13 +71,15 @@ const FourOhFour = () => (
 // Previous and Next buttons.
 const NavBtns = ({currId, state}) => {
   const currIndex = state.listing.indexOf(currId)
+  const prevLink = '/' + state.listing[currIndex - 1]
+  const nextLink = '/' + state.listing[currIndex + 1]
   return (
     <div class="nav-btns">
-      {currIndex > 0 && <a onclick={[Navigate, '/' + state.listing[currIndex - 1]]} title="Previous" class="left"><ArrowLeftCircle /></a>}
+      {currIndex > 0 && <a href={prevLink} onclick={[Navigate, prevLink]} title="Previous" class="left"><ArrowLeftCircle /></a>}
       {
         currIndex < state.listing.length &&
           state.listing[currIndex + 1]
-          ? <a onclick={[Navigate, '/' + state.listing[currIndex + 1]]} title="Next" class="right"><ArrowRightCircle /></a>
+          ? <a href={nextLink} onclick={[Navigate, nextLink]} title="Next" class="right"><ArrowRightCircle /></a>
           : <span onclick={LoadProjects} title="Load more" class="right">{state.isFetching ? <Spinner /> : <PlusCircle />}</span>
       }
     </div>
