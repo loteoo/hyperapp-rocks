@@ -179,11 +179,4 @@ export const slugify = (text) =>
     .replace(/-+$/, '');            // Trim - from end of text
 
 
-// export const couchUrl = `//${window.location.hostname}:5984`
-export const couchUrl = `//localhost:5984`
-
-
-
-
-export const appTitle = 'Hyperapp real-world examples'
-export const appDesc = 'A curated list of live Hyperapp projects'
+export const couchUrl = process.env.COUCH_URL || 'http://localhost:5984'

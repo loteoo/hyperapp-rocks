@@ -1,5 +1,7 @@
 
-import {Http, Location, couchUrl, appTitle, appDesc} from '../../../utils'
+import {Http, Location, couchUrl} from '../../../utils'
+import {init} from '../../init'
+
 
 // Loads projects
 export const LoadProjectIfNeeded = (state, id, ev) => {
@@ -67,8 +69,8 @@ export const HandleFetchError = (state, id, data) => {
 export const CloseProject = (state) => [
   {
     ...state,
-    title: appTitle,
-    description: appDesc
+    title: init.title,
+    description: init.description
   },
   Location.go({to: '/'})
 ]
