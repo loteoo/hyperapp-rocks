@@ -23,7 +23,7 @@ export const ProjectViewer = ({state}) => {
 
 
   return (
-    <Modal close={CloseProject} onmount={[LoadProjectIfNeeded, id]}>
+    <Modal closePath="/" onClose={CloseProject} onmount={[LoadProjectIfNeeded, id]}>
       <div class="project-viewer">
         {
           project

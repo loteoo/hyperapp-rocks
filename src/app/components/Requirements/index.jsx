@@ -6,12 +6,9 @@ import './style.css'
 import {Modal} from '../../theme/Modal'
 import {PillButton} from '../../theme/PillButton'
 
-// Actions
-import {Navigate} from '../../actions'
-
 // View
 export const Requirements = () => (
-  <Modal className="requirements" role="dialog" close={[Navigate, '/']}>
+  <Modal className="requirements" role="dialog" closePath="/">
     <h3>To be considered a 'real world' example, your project must...</h3>
     <ul>
       <li>Be live, with a public URL.</li>

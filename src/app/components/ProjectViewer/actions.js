@@ -66,11 +66,8 @@ export const HandleFetchError = (state, id, data) => {
 
 
 
-export const CloseProject = (state) => [
-  {
-    ...state,
-    title: init.title,
-    description: init.description
-  },
-  Location.go({to: '/'})
-]
+export const CloseProject = (state) => ({
+  ...state,
+  title: init.title,
+  description: init.description
+})
