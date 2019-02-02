@@ -52,6 +52,7 @@
 
   &.closed {
     opacity: 0;
+    pointer-events: none;
     >.box {
       transform: translateY(3em);
     }
