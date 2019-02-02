@@ -60,7 +60,7 @@ export const HandleSearchForm = (state, ev) => {
 
 // Sets the project list (replaces)
 export const HandleSearchResponse = (state, data) => {
-  console.log(data);
+  // console.log(data);
   return ({
     ...state,
     listing: data.docs.map(project => project._id),
