@@ -1,6 +1,6 @@
 {
-  "short_name": "Hyperapp rocks",
-  "name": "Hyperapp examples",
+  "short_name": "HA rocks",
+  "name": "Hyperapp rocks",
   "description": "A curated list of live hyperapp projects",
   "display": "fullscreen",
   "scope": "/",
