@@ -34,56 +34,14 @@ export const Http = {
     data: props.data,
     action: props.action,
     error: props.error
-  }),
-
-  put: (props) => ({
-    effect: (props, dispatch) => {
-      fetch(props.url, {
-        method: 'PUT',
-        body: props.data
-      })
-        .then(response => response.json())
-        .then(data => dispatch(props.action, data))
-        .catch(err => dispatch(props.error, err))
-    },
-    url: props.url,
-    data: props.data,
-    action: props.action,
-    error: props.error
-  }),
-
-  upload: (props) => ({
-    effect: (props, dispatch) => {
-
-      
-
-      // Convert a data object to a 'FormData' object.
-      // This allows the fetch API to set the proper
-      // headers for file uploading, which depends 
-      // on the uploaded file by the user
-      let formData = new FormData();
-
-      formData.append('file', props.data);
-      
-      fetch(props.url, {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => response.json())
-        .then(data => dispatch(props.action, data))
-        .catch(err => dispatch(props.error, err))
-    },
-    url: props.url,
-    data: props.data,
-    action: props.action,
-    error: props.error
   })
+  
 };
 
 
 
 
-
+// File effects
 export const File = {
   read: (props) => ({
     effect: (props, dispatch) => {
@@ -104,7 +62,7 @@ export const File = {
 
 
 
-// Location baggy
+// Location effects / subs baggy
 export const Location = {
 
   go: (props) => ({
@@ -136,7 +94,7 @@ export const Location = {
 
 
 
-// Audio effect baggy
+// Audio effect utility
 export const Sound = {
   play: (props) => ({
     effect: (props, dispatch) => {

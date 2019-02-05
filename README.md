@@ -1,10 +1,13 @@
 # Hyperapp real-world examples
 *A curated list of live Hyperapp projects*
 
-Built with Hyperapp, complete with SSR, offline support and PWA enhancements.
+Built with Hyperapp 2.0.
 
-Bundle: 
-JS: X KB
-CSS: X KB
+Features dynamic SSR with hydration and a pre-fetched state.
 
-[Boilerplate](https://github.com/loteoo/hyperapp-boilerplate)
+Offline support with PWA enhancements.
+
+"Serverless" data handling with CouchDB as the back-end.
+
+Graceful fallbacks for navigating the app without javascript enabled.
+
