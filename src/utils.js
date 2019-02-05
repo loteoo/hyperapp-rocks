@@ -179,4 +179,4 @@ export const slugify = (text) =>
     .replace(/-+$/, '');            // Trim - from end of text
 
 
-export const couchUrl = process.env.COUCH_URL || 'http://localhost:5984'
+export const couchUrl = process.env.COUCH_URL || 'http://hyperapp.rocks'
