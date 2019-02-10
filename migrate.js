@@ -1,4 +1,4 @@
-// Initialize a couchdb database
+// Initialize a couchdb development database
 
 const nano = require('nano')('http://admin:password@localhost:5984')
 const projects = nano.use('projects')
