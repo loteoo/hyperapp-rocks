@@ -56,7 +56,12 @@ router.get('/:id', (ctx, next) => {
       ctx.status = 404
       return HandleProjecError(state, ctx.params.id, error)
     })
-    .then(state => ctx.body = render(state))
+    .then(state => {
+      return projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
+        .then(projectsData => HandleListingData(state, projectsData))
+        .catch(error => HandleListingError(init, error))
+        .then(state => ctx.body = render(state))
+    })
 })
 
 
