@@ -21,7 +21,7 @@ import {
 const app = new Koa()
 const router = new Router()
 const nano = require('nano')('http://localhost:5984')
-const port = 8080;
+const port = 8080
 const projects = nano.use('projects')
 
 
@@ -40,13 +40,12 @@ const render = (state) =>
 
 
 // Listing page SSR
-router.get('/', (ctx, next) => 
+router.get('/', (ctx, next) =>
   projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
     .then(projectsData => HandleListingData(init, projectsData))
     .catch(error => HandleListingError(init, error))
     .then(state => ctx.body = render(state))
- );
-
+)
 
 // Project page SSR
 router.get('/:id', (ctx, next) => {
@@ -58,7 +57,7 @@ router.get('/:id', (ctx, next) => {
       return HandleProjecError(state, ctx.params.id, error)
     })
     .then(state => ctx.body = render(state))
-});
+})
 
 
 
