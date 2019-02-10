@@ -14,12 +14,6 @@ enableOnMountDomEvent()
 if ('serviceWorker' in navigator) {
   const swPath = '/service-worker.js'
   navigator.serviceWorker.register(swPath)
-  .then((registration) => {
-    console.log('SW registered:', registration.scope)
-  })
-  .catch((error) => {
-    console.log('Service worker registration failed, error:', error)
-  });
 }
 
 
