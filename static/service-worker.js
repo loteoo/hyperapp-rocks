@@ -14,11 +14,13 @@
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const PRECACHE = 'precache-v2.0.20';
+const PRECACHE = 'precache-v2.0.22';
 const RUNTIME = 'runtime';
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
+  './',
+  '/index.html',
   '/client.62456f60.js',
   '/client.62456f60.css'
 ];
@@ -50,7 +52,6 @@ self.addEventListener('activate', event => {
 // If no response is found, it populates the runtime cache with the response
 // from the network before returning it to the page.
 self.addEventListener('fetch', event => {
-  console.log(event.request.url)
   if (
     event.request.url.startsWith(self.location.origin) // From this origin (eg: don't cache GA requests)
     && !event.request.url.includes('_view/by-created') // Not from the main couchDB view

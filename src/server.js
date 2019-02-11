@@ -40,15 +40,17 @@ const render = (state) =>
 
 
 // Listing page SSR
-router.get('/', (ctx, next) =>
-  projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
+router.get('/', (ctx, next) => {
+  ctx.set('Cache-Control', 'no-cache')
+  return projects.view('projects', 'by-created', {descending: true, skip: 0, limit: 12})
     .then(projectsData => HandleListingData(init, projectsData))
     .catch(error => HandleListingError(init, error))
     .then(state => ctx.body = render(state))
-)
+})
 
 // Project page SSR
 router.get('/:id', (ctx, next) => {
+  ctx.set('Cache-Control', 'no-cache')
   const state = SetPath(init, ctx.request.url)
   return projects.get(ctx.params.id)
     .then(project => HandleProjectData(state, ctx.params.id, project))
