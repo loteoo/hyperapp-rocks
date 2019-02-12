@@ -8,7 +8,7 @@ export const Html = ({state}, children) => (
   <html lang="en">
     <head>
       <meta charset="utf-8"/>
-      <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1"/>
+      <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"/>
 
       <title>{state.title}</title>
       <meta name="description" content={state.description} />
@@ -31,7 +31,7 @@ export const Html = ({state}, children) => (
       <meta property="og:image:alt" content={state.title} />
 
       {/* Twitter */}
-      <meta name="twitter:card" value="summary"/>
+      <meta name="twitter:card" content="summary"/>
       <meta name="twitter:url" content="https://hyperapp.rocks/"/>
       <meta name="twitter:title" content={state.title} />
 
