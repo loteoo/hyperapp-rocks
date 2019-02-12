@@ -44,6 +44,7 @@
 html {
 	font-size: responsive 14px 20px;
   font-family: 'Nunito', 'Helvetica', 'Arial', sans-serif;
+  font-display: swap;
 	color: var(--text-color);
 	background-color: var(--background-color);
   width: 100%;
