@@ -50,7 +50,7 @@ export const Html = ({state}, children) => (
       <meta name="msapplication-TileImage" content="/icon-512x512.png" />
       <meta name="msapplication-TileColor" content="#3369e7"/>
 
-      {/* Parcel bundles */}
+      {/* CSS bundle */}
       <link rel="stylesheet" href="/client.62456f60.css"/>
 
     </head>
