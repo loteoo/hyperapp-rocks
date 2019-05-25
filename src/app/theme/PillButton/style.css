@@ -13,40 +13,39 @@
   transform: scale(1);
   transition: box-shadow 150ms ease-out-quart, transform 150ms ease-out-quart;
   text-decoration: none;
-  &:hover {
-    transform: translateY(-0.1em) scale(1.04);
-    box-shadow: 0 0.3em 1.15em 0 rgba(19, 38, 97, 0.4);
-  }
-  &:active {
-    outline: none;
-    transition-duration: 25ms;
-    -webkit-tap-highlight-color: transparent;
-    transform: translateY(0.05em) scale(0.95);
-    box-shadow: 0 0.05em 0.3em 0 rgba(19, 38, 97, 0.6);
-  }
-  &:focus {
-    outline: none;
-  }
-  &[big] {
-    padding: 0.75em 2em;
-    @media (max-width: 480px) {
-      padding: 0.75em 1.5em;
-    }
-  }
-  &[long] {
-    padding-left: 4em;
-    padding-right: 4em;
-  }
-  &[green] {
-    background-image: linear-gradient(284deg, #1cc7d0, #2dde98);
-  }
-  &[white] {
-    background: white;
-    color: #3369e7;
-  }
-  >* {
-    margin-left: 0.5em;
-    margin-right: -0.5em;
+}
+.pill-button:hover {
+  transform: translateY(-0.1em) scale(1.04);
+  box-shadow: 0 0.3em 1.15em 0 rgba(19, 38, 97, 0.4);
+}
+.pill-button:active {
+  outline: none;
+  transition-duration: 25ms;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateY(0.05em) scale(0.95);
+  box-shadow: 0 0.05em 0.3em 0 rgba(19, 38, 97, 0.6);
+}
+.pill-button:focus {
+  outline: none;
+}
+.pill-button[big] {
+  padding: 0.75em 2em;
+  @media (max-width: 480px) {
+    padding: 0.75em 1.5em;
   }
 }
- 
+.pill-button[long] {
+  padding-left: 4em;
+  padding-right: 4em;
+}
+.pill-button[green] {
+  background-image: linear-gradient(284deg, #1cc7d0, #2dde98);
+}
+.pill-button[white] {
+  background: white;
+  color: #3369e7;
+}
+.pill-button>* {
+  margin-left: 0.5em;
+  margin-right: -0.5em;
+}

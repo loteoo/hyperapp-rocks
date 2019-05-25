@@ -9,68 +9,85 @@
   will-change: transform, box-shadow;
   cursor: pointer;
   text-decoration: none;
-  &:hover {
-    box-shadow: 0 16px 32px 0 rgba(62,57,107,0.28), 0 0 0 transparent;
-    transform: translateY(-5px);
-  }
-  >.img {
-    background-color: var(--text-color);
-    padding-top: 66.66%;
-    position: relative;
-    overflow: hidden;
-    >img {
-      width: 100%;
-      height: 100%;
-      position: absolute 0;
-      object-fit: cover;
-    }
-    >.overlay {
-      position: absolute 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding: 0.5rem;
-      background-color: rgba(0, 0, 0, 0.33);
-      opacity: 0;
-      transition: opacity 200ms;
-      pointer-events: none;
-      >* {
-        color: #f8faff;
-        display: inline-block;
-        padding: 0.5rem;
-        border-radius: 0.15em;
-        transition: color 200ms, background-color 200ms;
-        pointer-events: all;
-        @media (hover: none) {
-          pointer-events: none;
-        }
-        @media (max-width: 640px) {
-          pointer-events: none;
-        }
-        &:not(:last-child) {
-          margin-right: 0.25rem;
-        }
-        &:hover {
-          color: white;
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
-  }
-  >.info {
-    padding: 1rem;
-    >* {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-  &:hover {
-    >.img {
-      >.overlay {
-        opacity: 1;
-      }
-    }
+}
+.project:hover {
+  box-shadow: 0 16px 32px 0 rgba(62,57,107,0.28), 0 0 0 transparent;
+  transform: translateY(-5px);
+}
+
+.project.img {
+  background-color: var(--text-color);
+  padding-top: 66.66%;
+  position: relative;
+  overflow: hidden;
+}
+.project.img > img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  object-fit: cover;
+}
+.project.img > .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.33);
+  opacity: 0;
+  transition: opacity 200ms;
+  pointer-events: none;
+}
+.project.img > .overlay > * {
+  color: #f8faff;
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 0.15em;
+  transition: color 200ms, background-color 200ms;
+  pointer-events: all;
+}
+
+
+@media (hover: none) {
+  .project.img > .overlay > * {
+    pointer-events: none;
   }
 }
- 
+
+
+@media (max-width: 640px) {
+  .project.img > .overlay > * {
+    pointer-events: none;
+  }
+}
+
+.project.img > .overlay > *:not(:last-child) {
+  margin-right: 0.25rem;
+}
+
+.project.img > .overlay > *:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.project.info {
+  padding: 1rem;
+}
+.project.info>* {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.project:hover >.img >.overlay {
+  opacity: 1;
+}
+
