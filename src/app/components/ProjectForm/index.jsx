@@ -1,4 +1,4 @@
-import {h} from '../../../../hyperapp'
+import { h } from 'hyperapp'
 
 import './style.css'
 
@@ -13,7 +13,7 @@ import {Confetti} from '../../theme/Icons'
 import {HandleProjectForm, SetProjectForm, SetProjectFormImage, ResetProjectFormImage} from './actions'
 import {Navigate} from '../../actions'
 
-export const ProjectForm = ({projectForm}) => (
+export const ProjectForm = ({projectForm = projectForm || {}}) => (
   <div class="project-form" id="submit" role="form">
     <div class={'box' + (projectForm.success ? ' success' : '')}>
     {
@@ -22,13 +22,13 @@ export const ProjectForm = ({projectForm}) => (
           <form method="post" onsubmit={HandleProjectForm}>
             <h2>Submit your project!</h2>
             {/* <p>Full name: <b>{author} {description}</b></p> */}
-      
+
             <NiceInput label="Title" name="title" value={projectForm.title} placeholder="My awesome project" setter={SetProjectForm} required />
             <NiceInput type="url" label="Project URL" name="link" value={projectForm.link} placeholder="https://" setter={SetProjectForm} required />
             <NiceInput type="textarea" label="Description" name="description" value={projectForm.description} placeholder="Describe your project, make it sound cool!" setter={SetProjectForm} required />
             <NiceInput label="Author" name="author" value={projectForm.author} placeholder="Who did this?" setter={SetProjectForm} />
             <NiceInput pattern="^https://github.com/(.*)" label="Github" name="github" value={projectForm.github} placeholder="Sharing is caring :)" setter={SetProjectForm} />
-            
+
 
             <ImageInput
               label="Project image"
@@ -53,7 +53,7 @@ export const ProjectForm = ({projectForm}) => (
               <Spinner large />
             </div>
           )
-          : projectForm.success 
+          : projectForm.success
             ? (
               <div class="thanks">
                 <h2>Thanks for participating! 💖</h2>

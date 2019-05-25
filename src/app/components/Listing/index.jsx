@@ -1,4 +1,4 @@
-import {h} from '../../../../hyperapp'
+import { h } from 'hyperapp'
 
 import './style.css'
 
@@ -49,7 +49,7 @@ const Results = ({state}) => (
       }
     </div>
     {
-      state.lastSearch 
+      state.lastSearch
         ? state.listing.length + ' results'
         : state.listing.length !== 0 && state.listing.length >= state.total
           ? (

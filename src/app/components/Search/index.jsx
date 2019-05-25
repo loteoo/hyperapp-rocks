@@ -1,4 +1,4 @@
-import {h} from '../../../../hyperapp'
+import { h } from 'hyperapp'
 
 import './style.css'
 
@@ -8,7 +8,7 @@ import {HandleSearchForm, SetSearch} from './actions'
 // View
 export const Search = ({search}) => (
   <form class="search" role="search" onsubmit={HandleSearchForm} method="post">
-    <input 
+    <input
       id="search"
       type="text"
       name="search"
