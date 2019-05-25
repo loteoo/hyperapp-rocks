@@ -1,7 +1,7 @@
 {
-  "short_name": "Hyperapp",
-  "name": "Hyperapp boilerplate",
-  "description": "Hyperapp starter kit with development on steroids",
+  "short_name": "HA rocks",
+  "name": "Hyperapp rocks",
+  "description": "A curated list of live hyperapp projects",
   "display": "fullscreen",
   "scope": "/",
   "start_url": "/",

@@ -2,21 +2,45 @@
   Global css
 \*------------------------------------*/
 
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Nunito Light'), local('Nunito-Light'), url('./assets/Nunito/Nunito-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Nunito Regular'), local('Nunito-Regular'), url('./assets/Nunito/Nunito-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Nunito Bold'), local('Nunito-Bold'), url('./assets/Nunito/Nunito-Bold.ttf') format('truetype');
+}
+
+
 /* === Global variables === */
 :root {
-	--background-color: #ffffff;
-	--alt-background-color: #f4f4f4;
-	--text-color: #111;
-  --accent-color: #4641FF;
-  --border-color: #eee;
-  --success-color: #06d19c;
-  --danger-color: tomato;
+	--text-color: #8994c6;
+	--dark-text-color: #3e396b;
+	--background-color: #f8faff;
+	--border-color: #e7e9ed;
+	--accent-color: #5755d9;
+	--success-color: #55d98c;
+	--error-color: #d95560;
 }
 
 /* === Default cascade === */
 html {
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-display: swap;
+  font-family: 'Nunito', 'Helvetica', 'Arial', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
   scroll-behavior: smooth;
@@ -30,4 +54,9 @@ body {
 ::selection {
 	background: var(--accent-color);
 	color: var(--background-color);
+}
+
+a {
+	color: var(--text-color);
+  cursor: pointer;
 }

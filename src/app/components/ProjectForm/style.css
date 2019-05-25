@@ -1,0 +1,92 @@
+.project-form {
+  max-width: 48rem;
+  padding: 0 3rem;
+  margin: 6rem auto;
+  .box {
+    padding: 3rem;
+    box-shadow: 0 16px 32px 0 rgba(62,57,107,0.2);
+    background-color: white;
+    border-radius: 0.33em;
+    overflow: hidden;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute 0 0 auto 0;
+      height: 0.33em;
+      background-image: linear-gradient(256deg, #00aeff, #3369e7);
+    }
+    &.success::before {
+      background-image: linear-gradient(256deg, #1cc7d0, #2dde98);
+    }
+    @media (max-width: 640px) {
+      padding: 0;
+    }
+  }
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    h2 {
+      grid-column: 1/-1;
+      text-align: center;
+    }
+  
+    .description,
+    .image {
+      grid-column: 1/-1;
+    }
+  
+    .actions {
+      grid-column: 1/-1;
+      text-align: center;
+      &>*:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+      @media (max-width: 740px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &>*:not(:last-child) {
+          margin: 0 0 1.5rem 0;
+        }
+      }
+    }
+    >* {
+      margin-top: 1em;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    @media (max-width: 640px) {
+      padding: 3rem 1.5rem;
+      >* {
+        grid-column: 1/-1;
+      }
+    }
+  }
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0;
+  }
+  .thanks {
+    text-align: center;
+    svg {
+      width: 6rem;
+      height: auto;
+      margin: 3rem 0;
+      stroke: none;
+      fill: #2dde98;
+    }
+  }
+  .error {
+    text-align: center;
+    color: var(--error-color);
+  }
+  @media (max-width: 640px) {
+    padding: 0 1.5rem;
+  }
+}
+ 
