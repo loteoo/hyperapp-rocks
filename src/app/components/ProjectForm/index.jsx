@@ -19,7 +19,7 @@ export const ProjectForm = ({projectForm = projectForm || {}}) => (
     {
       !projectForm.submitted
         ? (
-          <form method="post" onsubmit={HandleProjectForm}>
+          <form method="post" onsubmit={HandleProjectForm} data-netlify="true">
             <h2>Submit your project!</h2>
             {/* <p>Full name: <b>{author} {description}</b></p> */}
 

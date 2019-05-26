@@ -13,18 +13,23 @@ import {LoadProjects} from '../../actions'
 
 // View
 export const Listing = ({state}) => (
-  <main class="listing" id="projects" role="main" onmount={LoadProjects}>
-    {state.error && (
-      <div class="error">
-        <h2>Error: {state.error}</h2>
-      </div>
-    )}
-    {
-      state.listing
-        ? <Results state={state} />
-        : <Spinner large />
-    }
-  </main>
+  <div class="listing" id="projects" onmount={LoadProjects}>
+    <aside class="side-bar">
+      Tags
+    </aside>
+    <main role="main">
+      {state.error && (
+        <div class="error">
+          <h2>Error: {state.error}</h2>
+        </div>
+      )}
+      {
+        state.listing
+          ? <Results state={state} />
+          : <Spinner large />
+      }
+    </main>
+  </div>
 )
 
 
