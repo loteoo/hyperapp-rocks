@@ -9,7 +9,7 @@ import {Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle} from '../../theme
 
 // Actions
 import {LoadProjectIfNeeded, CloseProject} from './actions'
-import {LoadProjects} from '../Listing/actions'
+import {LoadProjects} from '../../actions'
 import {Navigate} from '../../actions'
 
 import {couchUrl} from '../../../utils'
