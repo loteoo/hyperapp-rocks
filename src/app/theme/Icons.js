@@ -1,4 +1,3 @@
-import { h } from 'hyperapp'
 
 // SVG components (to avoid redundent code in views)
 

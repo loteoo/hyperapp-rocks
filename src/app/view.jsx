@@ -1,5 +1,3 @@
-// Import dependencies
-import { h } from 'hyperapp'
 
 // Components
 import {Header} from './components/Header'
