@@ -4,5 +4,3 @@ export const SetSearch = (state, ev) => ({
   ...state,
   search: ev.target.value
 })
-
-

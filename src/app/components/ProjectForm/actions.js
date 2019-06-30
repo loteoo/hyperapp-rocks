@@ -1,6 +1,5 @@
 
-
-import {Http, File, Sound, slugify, couchUrl} from '../../../utils'
+import { Http, File, Sound, slugify, couchUrl } from '../../../utils'
 
 // Nested setter for the project form
 export const SetProjectForm = (state, key, ev) => ({
@@ -10,7 +9,6 @@ export const SetProjectForm = (state, key, ev) => ({
     [key]: ev.target.value
   }
 })
-
 
 const acceptedMimes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
 
@@ -26,7 +24,7 @@ export const SetProjectFormImage = (state, key, ev) => {
       }
     }
   }
-  
+
   if (file.size > 1048576) {
     return {
       ...state,
@@ -36,7 +34,7 @@ export const SetProjectFormImage = (state, key, ev) => {
       }
     }
   }
-  
+
   return [
     {
       ...state,
@@ -62,7 +60,7 @@ export const HandleFileReadOutput = (state, blob) => ({
 })
 
 export const HandleFileReadError = (state, err) => {
-  console.log(err);
+  console.log(err)
   return {
     ...state,
     projectForm: {
@@ -71,7 +69,6 @@ export const HandleFileReadError = (state, err) => {
     }
   }
 }
-
 
 export const ResetProjectFormImage = (state, blob) => ({
   ...state,
@@ -83,16 +80,10 @@ export const ResetProjectFormImage = (state, blob) => ({
   }
 })
 
-
-
-
-
-
-
 // Handles project submission
 export const HandleProjectForm = (state, ev) => {
   ev.preventDefault()
-  
+
   const fileName = slugify(state.projectForm.image.name.split('.')[0]) + '.' + state.projectForm.image.name.split('.')[1]
 
   return [
@@ -128,13 +119,13 @@ export const HandleProjectForm = (state, ev) => {
 }
 
 export const HandleSubmissionResponse = (state, res) => {
-  console.log(res);
+  console.log(res)
 
   return [
     {
       ...state,
       projectForm: {
-          ...state.projectForm,
+        ...state.projectForm,
         loading: false,
         success: true
       }
@@ -147,7 +138,7 @@ export const HandleSubmissionResponse = (state, res) => {
 }
 
 export const HandleSubmissionError = (state, err) => {
-  console.error(err);
+  console.error(err)
   return {
     ...state,
     projectForm: {
@@ -157,4 +148,3 @@ export const HandleSubmissionError = (state, err) => {
     }
   }
 }
-   

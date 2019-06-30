@@ -1,18 +1,15 @@
 
-import {Http} from '../utils'
+import { Http } from '../utils'
 
 // ==================
 // Global actions
 // ==================
 
 // Sets a value to the given key in the state
-export const SetValue = (state, {key, value}) => ({
+export const SetValue = (state, { key, value }) => ({
   ...state,
   [key]: value
 })
-
-
-
 
 // Loads projects
 export const LoadProjects = (state) => ([

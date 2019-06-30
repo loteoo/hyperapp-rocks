@@ -2,23 +2,23 @@
 import './style.css'
 
 // Components
-import {Project} from '../Project'
-import {Spinner} from '../../theme/Spinner'
-import {XCircle} from '../../theme/Icons'
-import {PillButton} from '../../theme/PillButton'
+import { Project } from '../Project'
+import { Spinner } from '../../theme/Spinner'
+import { XCircle } from '../../theme/Icons'
+import { PillButton } from '../../theme/PillButton'
 
 // Actions
-import {LoadProjects} from '../../actions'
+import { LoadProjects } from '../../actions'
 
 // View
-export const Listing = ({state}) => (
-  <div class="listing" id="projects" onmount={LoadProjects}>
-    <aside class="side-bar">
+export const Listing = ({ state }) => (
+  <div class='listing' id='projects' onmount={LoadProjects}>
+    <aside class='side-bar'>
       Tags
     </aside>
-    <main role="main">
+    <main role='main'>
       {state.error && (
-        <div class="error">
+        <div class='error'>
           <h2>Error: {state.error}</h2>
         </div>
       )}
@@ -31,34 +31,32 @@ export const Listing = ({state}) => (
   </div>
 )
 
-
 const getResults = (state) => state.listing.filter(
-  project => project.title.toLowerCase().includes(state.search.toLowerCase())
-   || project.description.toLowerCase().includes(state.search.toLowerCase())
+  project => project.title.toLowerCase().includes(state.search.toLowerCase()) ||
+   project.description.toLowerCase().includes(state.search.toLowerCase())
 )
 
 // Sub-component
-const Results = ({state}) => {
-
+const Results = ({ state }) => {
   const results = getResults(state)
 
   return (
-    <div class="results">
+    <div class='results'>
       {state.lastSearch && (
-        <div class="search-results">
+        <div class='search-results'>
           <h2>Search results for: <u>{state.lastSearch}</u></h2>
           <a onclick={console.log}><XCircle /></a>
         </div>
       )}
-      <div class="grid">
+      <div class='grid'>
         {
           results.length > 0
-          ? results.map(project => <Project project={project} />)
-          : (
-            <div class="empty">
-              <h2>0 results</h2>
-            </div>
-          )
+            ? results.map(project => <Project project={project} />)
+            : (
+              <div class='empty'>
+                <h2>0 results</h2>
+              </div>
+            )
         }
       </div>
       {
@@ -66,7 +64,7 @@ const Results = ({state}) => {
           ? results.length + ' results'
           : results.length !== 0 && results.length >= state.total
             ? (
-              <div class="the-end">
+              <div class='the-end'>
                 <h2>You've reached the end</h2>
                 <p>Post projects to keep the list going! ✌️</p>
               </div>

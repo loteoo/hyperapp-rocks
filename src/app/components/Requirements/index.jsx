@@ -2,13 +2,13 @@
 import './style.css'
 
 // Components
-import {Modal} from '../../theme/Modal'
-import {PillButton} from '../../theme/PillButton'
-import {Navigate} from '../../actions'
+import { Modal } from '../../theme/Modal'
+import { PillButton } from '../../theme/PillButton'
+import { Navigate } from '../../actions'
 
 // View
 export const Requirements = () => (
-  <Modal className="requirements" role="dialog" closePath="/">
+  <Modal className='requirements' role='dialog' closePath='/'>
     <h3>To be considered a 'real world' example, your project must...</h3>
     <ul>
       <li>Be live, with a public URL.</li>
@@ -17,10 +17,10 @@ export const Requirements = () => (
     </ul>
     <p><b>That's it!</b></p>
     <p>
-      Codepens and quick experiments will not be added to the list. <br/>
+      Codepens and quick experiments will not be added to the list. <br />
       Projects considered <b>awesome</b> will be added to the list!
     </p>
-    <div class="actions">
+    <div class='actions'>
       <PillButton onclick={[Navigate, '/']}>Submit away!</PillButton>
     </div>
   </Modal>

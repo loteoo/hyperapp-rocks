@@ -7,7 +7,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Nunito Light'), local('Nunito-Light'), url('./assets/Nunito/Nunito-Light.ttf') format('truetype');
+  src: local('Nunito Light'), local('Nunito-Light'), url('../static/Nunito/Nunito-Light.ttf') format('truetype');
 }
 
 @font-face {
@@ -15,7 +15,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Nunito Regular'), local('Nunito-Regular'), url('./assets/Nunito/Nunito-Regular.ttf') format('truetype');
+  src: local('Nunito Regular'), local('Nunito-Regular'), url('../static/Nunito/Nunito-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -23,7 +23,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Nunito Bold'), local('Nunito-Bold'), url('./assets/Nunito/Nunito-Bold.ttf') format('truetype');
+  src: local('Nunito Bold'), local('Nunito-Bold'), url('../static/Nunito/Nunito-Bold.ttf') format('truetype');
 }
 
 

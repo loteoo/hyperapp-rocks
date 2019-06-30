@@ -1,5 +1,4 @@
 
-
 // Http service
 export const Http = {
 
@@ -36,31 +35,22 @@ export const Http = {
     error: props.error
   })
 
-};
-
-
-
+}
 
 // File effects
 export const File = {
   read: (props) => ({
     effect: (props, dispatch) => {
-      let reader = new FileReader();
-      reader.addEventListener("load", () => {
+      let reader = new FileReader()
+      reader.addEventListener('load', () => {
         dispatch(props.action, reader.result)
-      }, false);
-      reader.readAsDataURL(props.file);
+      }, false)
+      reader.readAsDataURL(props.file)
     },
     file: props.file,
     action: props.action
   })
-};
-
-
-
-
-
-
+}
 
 // Location effects / subs baggy
 export const Location = {
@@ -90,10 +80,6 @@ export const Location = {
   })
 }
 
-
-
-
-
 // Audio effect utility
 export const Sound = {
   play: (props) => ({
@@ -107,21 +93,12 @@ export const Sound = {
   })
 }
 
-
-
-
-
-
-
-
 export const stopPropagation = (state, ev) => ev.stopPropagation()
-
 
 export const slugify = (text) =>
   text.toString().toLowerCase()
-    .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    .replace(/^-+/, '')             // Trim - from start of text
-    .replace(/-+$/, '');            // Trim - from end of text
-
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
