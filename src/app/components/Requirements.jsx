@@ -1,14 +1,27 @@
 
-import './style.css'
+import { css } from 'emotion'
 
 // Components
-import { Modal } from '../../theme/Modal'
-import { PillButton } from '../../theme/PillButton'
-import { Navigate } from '../../actions'
+import { Modal } from '../theme/Modal'
+import { PillButton } from '../theme/PillButton'
+import { Navigate } from '../actions'
+
+const style = css`
+  width: auto;
+  ul {
+    margin: 1rem;
+    padding-left: 1rem;
+  }
+  .actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+`
 
 // View
-export const Requirements = () => (
-  <Modal className='requirements' role='dialog' closePath='/'>
+export default () => (
+  <Modal class={style} role='dialog' closePath='/'>
     <h3>To be considered a 'real world' example, your project must...</h3>
     <ul>
       <li>Be live, with a public URL.</li>

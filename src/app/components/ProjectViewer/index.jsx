@@ -7,9 +7,7 @@ import { Spinner } from '../../theme/Spinner'
 import { Github, ArrowLeftCircle, ArrowRightCircle, PlusCircle } from '../../theme/Icons'
 
 // Actions
-import { LoadProjectIfNeeded, CloseProject } from './actions'
-import { LoadProjects } from '../../actions'
-import { Navigate } from '../../actions'
+import { LoadProjectIfNeeded, CloseProject, LoadProjects, Navigate } from './actions'
 
 import { couchUrl } from '../../../utils'
 

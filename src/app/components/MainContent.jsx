@@ -42,7 +42,9 @@ const style = css`
       transform: skewY(-6deg);
     }
   }
-
+  main {
+    width: 100%;
+  }
   .spinner {
     margin: 6em auto;
   }
