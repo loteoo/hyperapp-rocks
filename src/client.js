@@ -10,11 +10,11 @@ enableOnMountDomEvent()
 
 
 
-// Activate the service worker
-if ('serviceWorker' in navigator) {
-  const swPath = '/service-worker.js'
-  navigator.serviceWorker.register(swPath)
-}
+// // Activate the service worker
+// if ('serviceWorker' in navigator) {
+//   const swPath = '/service-worker.js'
+//   navigator.serviceWorker.register(swPath)
+// }
 
 
 
