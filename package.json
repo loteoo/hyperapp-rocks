@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "emotion": "^10.0.14",
-    "hyperapp": "^2.0.0-beta.22",
+    "hyperapp": "^2.0.0",
     "sanitize.css": "^10.0.0"
   },
   "devDependencies": {

@@ -46,7 +46,7 @@ const style = css`
     width: 100%;
   }
   .spinner {
-    margin: 6em auto;
+    margin: 0 0 0 1rem;
   }
   .the-end {
     margin-top: 3rem;
