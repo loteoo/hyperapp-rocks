@@ -52,8 +52,6 @@ export const File = {
   })
 }
 
-
-
 const historyFx = (dispatch, props) => {
   history.pushState(null, '', props.to)
   dispatchEvent(new CustomEvent('pushstate'))
@@ -67,7 +65,6 @@ export const Location = {
     props
   ]
 }
-
 
 // Audio effect utility
 export const Sound = {
@@ -94,4 +91,4 @@ export const slugify = (text) =>
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '') // Trim - from end of text
 
-export const couchUrl = 'https://hyperapp.rocks/couchdb'
+export const couchUrl = '/images'

@@ -5,7 +5,7 @@ import { Navigate } from '../actions'
 
 import { Github, LinkIcon } from '../theme/Icons'
 
-import { stopPropagation, couchUrl } from '../../utils'
+import { stopPropagation } from '../../utils'
 
 const style = css`
   background-color: white;
@@ -99,7 +99,7 @@ const style = css`
 export const Project = ({ project }) => (
   <a href={`/${project._id}`} class={style} role='dialog' key={project._id} onclick={[Navigate, ev => { ev.preventDefault(); return `/${project._id}` }]}>
     <div class='img'>
-      {project._attachments && <img src={`${couchUrl}/projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
+      {project._attachments && <img src={`/images/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
       <object class='overlay'>
         {project.github && <a href={project.github} onclick={stopPropagation} target='_blank'><Github /></a>}
         {project.link && <a href={project.link} onclick={stopPropagation} target='_blank'><LinkIcon /></a>}
