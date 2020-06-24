@@ -28,7 +28,7 @@ export const LoadProjects = (state) => ([
 export const HandleFetchResponse = (state, data) => ({
   ...state,
   isFetching: false,
-  listing: state.listing.concat(data.rows.map(project => project.value))
+  listing: state.listing.concat(data)
 })
 
 // Error handling
