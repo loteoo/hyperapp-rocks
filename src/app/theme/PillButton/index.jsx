@@ -1,8 +1,7 @@
-import {h} from '../../../../hyperapp'
 
 import './style.css'
 
-export const PillButton = ({href, className, type, ...rest}, children) => (
+export const PillButton = ({ href, className, type, ...rest }, children) => (
   href ? (
     <a className={`pill-button${className ? ' ' + className : ''}`} href={href} {...rest}>
       {children}

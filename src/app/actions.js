@@ -1,20 +1,55 @@
+/* eslint-disable no-unused-vars */
 
-// Global actions for the app
+import { Http, Location } from '../utils'
 
-import {Location} from './../utils'
-
-
-// Sets the navigation path
 export const SetPath = (state, path) => ({
   ...state,
   path
 })
 
+// ==================
+// Global actions
+// ==================
 
-export const Navigate = (state, path, ev) => {
-  ev.preventDefault()
+// Sets a value to the given key in the state
+export const SetValue = (state, { key, value }) => ({
+  ...state,
+  [key]: value
+})
+
+// Loads projects
+export const LoadProjects = (state) => ([
+  {
+    ...state,
+    isFetching: true
+  },
+  Http.fetch({
+    url: `/data/projects.json`,
+    action: HandleFetchResponse,
+    error: HandleFetchError
+  })
+])
+
+// Adds projects to the list
+export const HandleFetchResponse = (state, data) => ({
+  ...state,
+  isFetching: false,
+  listing: state.listing.concat(data)
+})
+
+// Error handling
+export const HandleFetchError = (state, err) => {
+  console.error(err)
+  return {
+    ...state,
+    isFetching: false,
+    error: 'Could not fetch projects'
+  }
+}
+
+export const Navigate = (state, path) => {
   return [
     state,
-    Location.go({to: path})
+    Location.go({ to: path })
   ]
 }

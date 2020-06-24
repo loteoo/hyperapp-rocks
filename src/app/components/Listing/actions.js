@@ -19,8 +19,8 @@ export const LoadProjects = (state) => ([
 export const HandleFetchResponse = (state, data) => ({
   ...state,
   isFetching: false,
-  listing: state.listing.concat(data.rows.map(project => project.id)),
-  projects: data.rows.reduce((projects, project) => ({...projects, [project.id]: project.value}), state.projects),
+  listing: state.listing.concat(data.map(project => project.id)),
+  projects: data.reduce((projects, project) => ({...projects, [project.id]: project}), state.projects),
   total: data.total_rows
 })
 

@@ -1,19 +1,13 @@
 // Initial state of the app
 
-export const init = {
+import data from '../../projects.json'
 
-  path: '/',
+export default {
 
   title: 'Hyperapp real-world examples',
   description: 'A curated list of live Hyperapp projects',
-
+  path: window.location.pathname,
   search: '',
-  lastSearch: '',
-
-  isFetching: false,
-  listing: [],
-  projects: {},
-  total: 0,
-  
-  projectForm: {}
+  listing: data,
+  isFetching: false
 }

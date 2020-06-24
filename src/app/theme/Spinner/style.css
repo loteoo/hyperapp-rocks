@@ -8,11 +8,13 @@
   height: 1em;
   width: 1em;
   z-index: 1;
-  &[large] {
-    font-size: 3rem;
-    color: #8050E8;
-  }
 }
+
+.spinner[large] {
+  font-size: 3rem;
+  color: #8050E8;
+}
+
 @keyframes loading {
   0% {
     transform: rotate(0deg);

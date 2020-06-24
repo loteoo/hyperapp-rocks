@@ -1,5 +1,4 @@
 
-
 // Http service
 export const Http = {
 
@@ -35,63 +34,39 @@ export const Http = {
     action: props.action,
     error: props.error
   })
-  
-};
 
-
-
+}
 
 // File effects
 export const File = {
   read: (props) => ({
     effect: (props, dispatch) => {
-      let reader = new FileReader();
-      reader.addEventListener("load", () => {
+      let reader = new FileReader()
+      reader.addEventListener('load', () => {
         dispatch(props.action, reader.result)
-      }, false);
-      reader.readAsDataURL(props.file);
+      }, false)
+      reader.readAsDataURL(props.file)
     },
     file: props.file,
-    action: props.action
-  })
-};
-
-
-
-
-
-
-
-// Location effects / subs baggy
-export const Location = {
-
-  go: (props) => ({
-    effect: (props, dispatch) => {
-      history.pushState(null, '', props.to)
-      dispatchEvent(new CustomEvent('pushstate'))
-    },
-    to: props.to
-  }),
-
-  // Listen to location changes
-  changed: props => ({
-    effect: (props, dispatch) => {
-      const handleLocationChange = ev => {
-        dispatch(props.action, window.location.pathname)
-      }
-      addEventListener('pushstate', handleLocationChange)
-      addEventListener('popstate', handleLocationChange)
-      return () => {
-        removeEventListener('pushstate', handleLocationChange)
-        removeEventListener('popstate', handleLocationChange)
-      }
-    },
     action: props.action
   })
 }
 
 
 
+const historyFx = (dispatch, props) => {
+  history.pushState(null, '', props.to)
+  dispatchEvent(new CustomEvent('pushstate'))
+}
+
+// Location effects / subs baggy
+export const Location = {
+
+  go: (props) => [
+    historyFx,
+    props
+  ]
+}
 
 
 // Audio effect utility
@@ -107,34 +82,16 @@ export const Sound = {
   })
 }
 
-
-
-
-// DOM custom event (hyperapp will treat this like any other event)
-export const enableOnMountDomEvent = () => {
-  const mountEvent = new Event('mount')
-  const realCreateElement = document.createElement.bind(document)
-  document.createElement = (name) => {
-    let el = realCreateElement(name)
-    setTimeout(() => el.dispatchEvent(mountEvent))
-    return el
-  }
+export const stopPropagation = (state, ev) => {
+  ev.stopPropagation()
+  return state
 }
-
-
-
-
-
-export const stopPropagation = (state, ev) => ev.stopPropagation()
-
-
-export const slugify = (text) => 
+export const slugify = (text) =>
   text.toString().toLowerCase()
-    .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    .replace(/^-+/, '')             // Trim - from start of text
-    .replace(/-+$/, '');            // Trim - from end of text
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
 
-
-export const couchUrl = process.env.COUCH_URL || 'https://hyperapp.rocks/couchdb'
+export const couchUrl = 'https://hyperapp.rocks/couchdb'
