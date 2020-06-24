@@ -2,10 +2,6 @@ import { css } from 'emotion'
 
 import { Project } from './Project'
 import { XCircle } from '../theme/Icons'
-import { PillButton } from '../theme/PillButton'
-import { Spinner } from '../theme/Spinner'
-
-import { LoadProjects } from '../actions'
 
 const style = css`
   display: flex;
@@ -82,14 +78,13 @@ export default ({ state }) => {
       {
         state.lastSearch
           ? results.length + ' results'
-          : results.length !== 0 && results.length >= state.total
-            ? (
+          : results.length !== 0 && results.length >= state.total &&
+            (
               <div class='the-end'>
                 <h2>You've reached the end</h2>
                 <p>Post projects to keep the list going! ✌️</p>
               </div>
             )
-            : <PillButton onclick={LoadProjects}>Load more {state.isFetching && <Spinner />} </PillButton>
       }
     </div>
   )

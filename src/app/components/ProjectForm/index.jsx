@@ -43,7 +43,7 @@ export const ProjectForm = ({ projectForm }) => {
                 />
 
                 <div class='actions'>
-                  <PillButton onclick={[Navigate, '/requirements']} white>View requirements</PillButton>
+                  <PillButton onclick={[Navigate, ev => { ev.preventDefault(); return `/requirements}` }]} white>View requirements</PillButton>
                   <PillButton type='submit' long green>Submit</PillButton>
                 </div>
               </form>

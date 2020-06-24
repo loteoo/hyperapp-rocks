@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 
-import { Http, Location, couchUrl } from '../../../utils'
-import { init } from '../../init'
+import { Http, couchUrl } from '../../../utils'
+import init from '../../init'
 
 // Loads projects
 export const LoadProjectIfNeeded = (state, id, ev) => {
-  const project = state.projects && state.projects[id] && state.projects[id]
+  const project = state.listing.find(p => p._id === id)
 
   if (!project) {
     return [

@@ -63,7 +63,7 @@ const style = css`
 
 // View
 export default ({ state }) => (
-  <div class={style} id="projects" onmount={LoadProjects}>
+  <div class={style} id="projects">
     <main role='main'>
       {state.error && (
         <div class='error'>

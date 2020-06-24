@@ -27,6 +27,7 @@
 }
 
 
+
 /* === Global variables === */
 :root {
 	--text-color: #8994c6;
@@ -38,12 +39,25 @@
 	--error-color: #d95560;
 }
 
+
 /* === Default cascade === */
+*, :after, :before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Nunito', 'Helvetica', 'Arial', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
   scroll-behavior: smooth;
+  font-size: calc(14px + 6*(100vw - 420px)/860);
+}
+@media screen and (min-width: 1280px) {
+  html {
+    font-size: 20px;
+  }
 }
 
 body {
@@ -59,4 +73,17 @@ body {
 a {
 	color: var(--text-color);
   cursor: pointer;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-text-color);
+}
+
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, p:first-child {
+  margin-top: 0;
 }

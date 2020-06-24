@@ -34,7 +34,7 @@ export default () => (
       Projects considered <b>awesome</b> will be added to the list!
     </p>
     <div class='actions'>
-      <PillButton onclick={[Navigate, '/']}>Submit away!</PillButton>
+      <PillButton onclick={[Navigate, ev => { ev.preventDefault(); return `/` }]}>Submit away!</PillButton>
     </div>
   </Modal>
 )

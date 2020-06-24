@@ -52,33 +52,22 @@ export const File = {
   })
 }
 
+
+
+const historyFx = (dispatch, props) => {
+  history.pushState(null, '', props.to)
+  dispatchEvent(new CustomEvent('pushstate'))
+}
+
 // Location effects / subs baggy
 export const Location = {
 
-  go: (props) => ({
-    effect: (props, dispatch) => {
-      history.pushState(null, '', props.to)
-      dispatchEvent(new CustomEvent('pushstate'))
-    },
-    to: props.to
-  }),
-
-  // Listen to location changes
-  changed: props => ({
-    effect: (props, dispatch) => {
-      const handleLocationChange = ev => {
-        dispatch(props.action, window.location.pathname)
-      }
-      addEventListener('pushstate', handleLocationChange)
-      addEventListener('popstate', handleLocationChange)
-      return () => {
-        removeEventListener('pushstate', handleLocationChange)
-        removeEventListener('popstate', handleLocationChange)
-      }
-    },
-    action: props.action
-  })
+  go: (props) => [
+    historyFx,
+    props
+  ]
 }
+
 
 // Audio effect utility
 export const Sound = {
@@ -93,8 +82,10 @@ export const Sound = {
   })
 }
 
-export const stopPropagation = (state, ev) => ev.stopPropagation()
-
+export const stopPropagation = (state, ev) => {
+  ev.stopPropagation()
+  return state
+}
 export const slugify = (text) =>
   text.toString().toLowerCase()
     .replace(/\s+/g, '-') // Replace spaces with -

@@ -11,10 +11,10 @@ const scrollToProjects = (state, ev) => {
   document.querySelector('#projects').scrollIntoView()
 }
 
-const scrollToForm = (state, ev) => {
-  ev.preventDefault()
-  document.querySelector('#submit').scrollIntoView()
-}
+// const scrollToForm = (state, ev) => {
+//   ev.preventDefault()
+//   document.querySelector('#submit').scrollIntoView()
+// }
 
 // View
 export const Header = ({ state }) => (
@@ -27,7 +27,7 @@ export const Header = ({ state }) => (
     <Search search={state.search} />
     <div class='actions'>
       <PillButton href='#projects' onclick={scrollToProjects} big>See projects</PillButton>
-      <PillButton href='#submit' onclick={scrollToForm} big green>Share a project</PillButton>
+      <PillButton href='https://github.com/loteoo/hyperapp-rocks/issues/new' big green>Share a project</PillButton>
     </div>
   </header>
 )

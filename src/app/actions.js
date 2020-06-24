@@ -1,5 +1,11 @@
+/* eslint-disable no-unused-vars */
 
-import { Http } from '../utils'
+import { Http, Location } from '../utils'
+
+export const SetPath = (state, path) => ({
+  ...state,
+  path
+})
 
 // ==================
 // Global actions
@@ -39,4 +45,11 @@ export const HandleFetchError = (state, err) => {
     isFetching: false,
     error: 'Could not fetch projects'
   }
+}
+
+export const Navigate = (state, path) => {
+  return [
+    state,
+    Location.go({ to: path })
+  ]
 }

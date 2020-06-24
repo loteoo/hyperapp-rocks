@@ -22,13 +22,13 @@ const style = css`
     box-shadow: 0 16px 32px 0 rgba(62,57,107,0.28), 0 0 0 transparent;
     transform: translateY(-5px);
   }
-  &.img {
+  .img {
     background-color: var(--text-color);
     padding-top: 66.66%;
     position: relative;
     overflow: hidden;
   }
-  &.img > img {
+  .img > img {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -38,7 +38,7 @@ const style = css`
     left: 0;
     object-fit: cover;
   }
-  &.img > .overlay {
+  .img > .overlay {
     position: absolute;
     top: 0;
     right: 0;
@@ -53,7 +53,7 @@ const style = css`
     transition: opacity 200ms;
     pointer-events: none;
   }
-  &.img > .overlay > * {
+  .img > .overlay > * {
     color: #f8faff;
     display: inline-block;
     padding: 0.5rem;
@@ -63,30 +63,30 @@ const style = css`
   }
 
   @media (hover: none) {
-    &.img > .overlay > * {
+    .img > .overlay > * {
       pointer-events: none;
     }
   }
 
   @media (max-width: 640px) {
-    &.img > .overlay > * {
+    .img > .overlay > * {
       pointer-events: none;
     }
   }
 
-  &.img > .overlay > *:not(:last-child) {
+  .img > .overlay > *:not(:last-child) {
     margin-right: 0.25rem;
   }
 
-  &.img > .overlay > *:hover {
+  .img > .overlay > *:hover {
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  &.info {
+  .info {
     padding: 1rem;
   }
-  &.info>* {
+  .info>* {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -97,7 +97,7 @@ const style = css`
   }
 `
 export const Project = ({ project }) => (
-  <a href={`/${project._id}`} class={style} role='dialog' key={project._id} onclick={[Navigate, `/${project._id}`]}>
+  <a href={`/${project._id}`} class={style} role='dialog' key={project._id} onclick={[Navigate, ev => { ev.preventDefault(); return `/${project._id}` }]}>
     <div class='img'>
       {project._attachments && <img src={`${couchUrl}/projects/${project._id}/${Object.keys(project._attachments)[0]}`} alt={project.title} />}
       <object class='overlay'>
